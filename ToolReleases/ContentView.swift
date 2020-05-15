@@ -10,19 +10,18 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ContentView: View {
-    @ObservedObject private var feed = ToolsManager()
-    @State private var selectedFilter: ToolFilter = .all {
-        didSet {
-            feed.filter(selectedFilter)
-        }
-    }
+    @ObservedObject private var tools = ToolsManager()
+    @State private var selection: ToolFilter = .all
+
+    @State var showActivityIndicator = false
 
     var body: some View {
         VStack {
+            // Filter section
             HStack {
-                Picker("Select filter", selection: $selectedFilter) {
+                Picker("Select filter", selection: $selection) {
                     ForEach(ToolFilter.allCases, id: \.self) {
-                        Text($0.description)
+                        Text($0.rawValue)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -30,19 +29,15 @@ struct ContentView: View {
             }
             .padding([.top, .horizontal])
 
-            List(feed.filteredTools) { tool in
-                VStack(alignment: .leading) {
-                    Text(tool.description.trimmingCharacters(in: .whitespacesAndNewlines))
-                        .font(.system(size: 12, weight: .medium, design: .default))
-
-                    Text(tool.formattedDate)
-                        .font(.system(size: 10, weight: .thin, design: .default))
-                }
-                .padding(.bottom, 5)
+            // List section
+            List(self.tools.filteredTools) { tool in
+                ReleasedToolRow(tool: tool)
+                    .frame(width: 270)
             }
             .listStyle(SidebarListStyle())
+            .frame(width: 300, height: 300)
             .onAppear {
-                self.feed.fetch()
+                self.tools.fetch()
             }
         }
     }

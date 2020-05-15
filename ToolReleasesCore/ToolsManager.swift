@@ -9,21 +9,10 @@
 import FeedKit
 import Foundation
 
-public enum ToolFilter: CaseIterable, CustomStringConvertible {
-    case all
-    case beta
-    case released
-
-    public var description: String {
-        switch self {
-        case .all:
-            return "All"
-        case .beta:
-            return "Beta"
-        case .released:
-            return "Released"
-        }
-    }
+public enum ToolFilter: String, CaseIterable {
+    case all = "All"
+    case beta = "Beta"
+    case released = "Released"
 }
 
 public enum ReleaseManagerError: Error {
@@ -42,7 +31,7 @@ public class ToolsManager: ObservableObject {
     }
 
     @Published public private(set) var filteredTools = [Tool]()
-    public private(set) var currentFilter: ToolFilter = .all
+    @Published public var currentFilter: ToolFilter = .all
 
     public init() {
         self.privateQueue = DispatchQueue.global(qos: .userInitiated)
@@ -50,38 +39,30 @@ public class ToolsManager: ObservableObject {
     }
 
     public func fetch() {
-        parser.parseAsync(queue: privateQueue) { result in
+        parser.parseAsync(queue: privateQueue) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let feed):
                 guard let items = feed.rssFeed?.items else {
                     return
                 }
 
-                var tools = [Tool]()
-
-                for item in items {
-                    let tool = Tool(
-                        title: item.title ?? "N/A",
-                        link: URL(string: item.link!)!,
-                        description:
-                        item.description!,
-                        date: item.pubDate!
-                    )
-                    tools.append(tool)
+                self.tools = items.compactMap { item in
+                    if let tool = Tool(item), self.isToolRelease(tool.title) {
+                        return tool
+                    }
+                    return nil
                 }
 
-                self.tools = tools
-
-            case .failure(let error):
+            case .failure:
                 break
             }
         }
     }
 
-    public func filter(_ filter: ToolFilter) {
+    public func filter(_ newFilter: ToolFilter) {
         var toolsCopy = tools
-        currentFilter = filter
-        switch filter {
+        switch newFilter {
         case .all:
             break
         case .beta:
@@ -90,10 +71,18 @@ public class ToolsManager: ObservableObject {
             toolsCopy = toolsCopy.filter { $0.inBeta == false }
         }
 
+        toolsCopy.sort()
+        toolsCopy.reverse()
+
         DispatchQueue.main.async {
+            self.currentFilter = newFilter
             self.filteredTools = toolsCopy
-            .sorted()
-            .reversed()
         }
+    }
+
+    func isToolRelease(_ tool: String) -> Bool {
+        let range = NSRange(location: 0, length: tool.utf16.count)
+        let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
+        return regex.firstMatch(in: tool, options: [], range: range) != nil
     }
 }
