@@ -10,18 +10,22 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ContentView: View {
-    @ObservedObject private var tools = ToolsManager()
-    @State private var selection: ToolFilter = .all
+    @ObservedObject private var toolManager = ToolsManager()
+    @State private var filter: ToolFilter = .all
 
-    @State var showActivityIndicator = false
+    private var sortedTools: [Tool] {
+        toolManager.tools
+            .filtered(by: filter)
+            .sorted(by: { $0.date > $1.date })
+    }
 
     var body: some View {
         VStack {
             // Filter section
             HStack {
-                Picker("Select filter", selection: $selection) {
+                Picker("Select filter", selection: $filter) {
                     ForEach(ToolFilter.allCases, id: \.self) {
-                        Text($0.rawValue)
+                        Text($0.description)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -30,14 +34,14 @@ struct ContentView: View {
             .padding([.top, .horizontal])
 
             // List section
-            List(self.tools.filteredTools) { tool in
+            List(sortedTools) { tool in
                 ReleasedToolRow(tool: tool)
                     .frame(width: 270)
             }
             .listStyle(SidebarListStyle())
             .frame(width: 300, height: 300)
             .onAppear {
-                self.tools.fetch()
+                self.toolManager.fetch()
             }
         }
     }
