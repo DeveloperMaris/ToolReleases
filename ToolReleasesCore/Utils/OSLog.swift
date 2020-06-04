@@ -1,8 +1,8 @@
 //
 //  OSLog.swift
-//  ToolReleases
+//  ToolReleasesCore
 //
-//  Created by Maris Lagzdins on 06/03/2020.
+//  Created by Maris Lagzdins on 04/06/2020.
 //  Copyright © 2020 Developer Maris. All rights reserved.
 //
 
@@ -12,5 +12,5 @@ import os.log
 extension OSLog {
     private static var subsystem = Bundle.main.bundleIdentifier!
 
-    static let appDelegate = OSLog(subsystem: subsystem, category: "AppDelegate")
+    static let toolManager = OSLog(subsystem: subsystem, category: "ToolManager")
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */; };
+		B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D07F2488C8E3003FAEC0 /* OSLog.swift */; };
+		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
 		B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A520E2412353100DF7F22 /* AppDelegate.swift */; };
 		B52A52112412353100DF7F22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A52102412353100DF7F22 /* ContentView.swift */; };
 		B52A52132412353400DF7F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A52122412353400DF7F22 /* Assets.xcassets */; };
@@ -14,7 +17,9 @@
 		B52A52192412353500DF7F22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52A52172412353500DF7F22 /* Main.storyboard */; };
 		B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A5223241239D400DF7F22 /* EventMonitor.swift */; };
 		B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A522824123D5F00DF7F22 /* OSLog.swift */; };
+		B563A4C9247FDA6E007101C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563A4C8247FDA6E007101C7 /* Date.swift */; };
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
+		B579360F24877300001044C2 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579360E24877300001044C2 /* TooltipView.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,6 +54,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		B510D07F2488C8E3003FAEC0 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
 		B52A520B2412353100DF7F22 /* ToolReleases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolReleases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52A520E2412353100DF7F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B52A52102412353100DF7F22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +67,8 @@
 		B52A521B2412353500DF7F22 /* ToolReleases.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToolReleases.entitlements; sourceTree = "<group>"; };
 		B52A5223241239D400DF7F22 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		B52A522824123D5F00DF7F22 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		B579360E24877300001044C2 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +98,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B510D07C2488C715003FAEC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B52A52102412353100DF7F22 /* ContentView.swift */,
+				B5DE2F92246682270010DA70 /* ReleasedToolRow.swift */,
+				B510D07D2488C728003FAEC0 /* Helpers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B510D07D2488C728003FAEC0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */,
+				B579360E24877300001044C2 /* TooltipView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B510D07E2488C8D0003FAEC0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B510D07F2488C8E3003FAEC0 /* OSLog.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B52A52022412353100DF7F22 = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +149,11 @@
 			children = (
 				B52A521B2412353500DF7F22 /* ToolReleases.entitlements */,
 				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
-				B52A52102412353100DF7F22 /* ContentView.swift */,
-				B5DE2F92246682270010DA70 /* ReleasedToolRow.swift */,
 				B52A52142412353500DF7F22 /* Preview Content */,
 				B52A52222412399000DF7F22 /* Resources */,
 				B52A52212412396D00DF7F22 /* Supporting Files */,
 				B52A5225241239DD00DF7F22 /* Utils */,
+				B510D07C2488C715003FAEC0 /* Views */,
 			);
 			path = ToolReleases;
 			sourceTree = "<group>";
@@ -152,6 +188,7 @@
 			children = (
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
 				B52A522824123D5F00DF7F22 /* OSLog.swift */,
+				B563A4C8247FDA6E007101C7 /* Date.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,6 +200,7 @@
 				B5D45A4E245452C0007FF637 /* ToolsManager.swift */,
 				B5D45A5124545B02007FF637 /* Models */,
 				B5D45A4D24544DA5007FF637 /* Supporting Files */,
+				B510D07E2488C8D0003FAEC0 /* Utils */,
 			);
 			path = ToolReleasesCore;
 			sourceTree = "<group>";
@@ -179,6 +217,7 @@
 		B5D45A5124545B02007FF637 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B510D0812488D145003FAEC0 /* RSSFeedItem.swift */,
 				B5D45A5224545B20007FF637 /* Tool.swift */,
 			);
 			path = Models;
@@ -313,7 +352,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B579360F24877300001044C2 /* TooltipView.swift in Sources */,
 				B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */,
+				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
+				B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ReleasedToolRow.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
@@ -326,7 +368,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D45A4F245452C0007FF637 /* ToolsManager.swift in Sources */,
+				B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */,
 				B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */,
+				B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */,
 				B5D45A5324545B20007FF637 /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

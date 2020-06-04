@@ -28,6 +28,10 @@ public struct Tool: Identifiable {
             return nil
         }
 
+        guard Self.isTool(title) else {
+            return nil
+        }
+
         guard let date = item.pubDate else {
             return nil
         }
@@ -57,6 +61,12 @@ public struct Tool: Identifiable {
 
     public var isRelease: Bool {
         isBeta == false && isGMSeed == false
+    }
+
+    internal static func isTool(_ tool: String) -> Bool {
+        let range = NSRange(location: 0, length: tool.utf16.count)
+        let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
+        return regex.firstMatch(in: tool, options: [], range: range) != nil
     }
 }
 

@@ -23,14 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let contentView = ContentView()
         popover.contentViewController = NSHostingController(rootView: contentView)
-//        popover.contentSize = NSSize(width: 300, height: 200)
+        popover.contentSize = NSSize(width: 300, height: 300)
     }
 }
 
 private extension AppDelegate {
     func configureStatusBarButton() {
         guard let button = statusItem.button else {
-            os_log("Status item does not exist", log: .launcher, type: .error)
+            os_log(.error, log: .appDelegate, "Status item does not exist")
             return
         }
 
@@ -59,7 +59,7 @@ private extension AppDelegate {
 
     func showPopover(sender: Any?) {
         guard let button = statusItem.button else {
-            os_log("Status item does not exist, cannot show popover", log: .launcher, type: .error)
+            os_log(.error, log: .appDelegate, "Status item does not exist, cannot show popover")
             return
         }
 

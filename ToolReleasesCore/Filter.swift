@@ -11,7 +11,6 @@ import Foundation
 public enum ToolFilter: CaseIterable, CustomStringConvertible {
     case all
     case beta
-    case gmSeed
     case release
 
     public var description: String {
@@ -20,8 +19,6 @@ public enum ToolFilter: CaseIterable, CustomStringConvertible {
             return "All"
         case .beta:
             return "Beta"
-        case .gmSeed:
-            return "GM seed"
         case .release:
             return "Released"
         }
@@ -34,9 +31,7 @@ extension Sequence where Element == Tool {
         case .all:
             return self as! [Tool]
         case .beta:
-            return self.filter { $0.isBeta }
-        case .gmSeed:
-            return self.filter { $0.isGMSeed }
+            return self.filter { $0.isBeta || $0.isGMSeed }
         case .release:
             return self.filter { $0.isRelease }
         }
