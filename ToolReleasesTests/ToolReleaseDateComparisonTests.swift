@@ -16,7 +16,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(minute: 59)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .hour)
@@ -29,7 +29,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(minute: -61)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .hour)
@@ -42,7 +42,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(hour: -23)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
@@ -55,7 +55,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(day: -1, hour: -1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
@@ -68,7 +68,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(day: -1, second: 1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
@@ -81,7 +81,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(day: -1, second: -1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
@@ -94,7 +94,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(day: -2)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
@@ -107,7 +107,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(day: -4)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
@@ -120,7 +120,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(month: 1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
@@ -133,12 +133,19 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // Given
         let component = DateComponents(month: -1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
-        let tool = Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        let tool = Tool.make(with: date)
 
         // When
         let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
 
         // then
         XCTAssertFalse(result)
+    }
+}
+
+// MARK: - Helpers
+fileprivate extension Tool {
+    static func make(with date: Date) -> Self {
+        Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
     }
 }
