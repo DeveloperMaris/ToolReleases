@@ -10,36 +10,24 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ReleasedToolRow: View {
+    private let recentReleaseValue = 3
+    private let recentReleaseUnit = Calendar.Component.day
+
     let tool: Tool
-    let recentReleaseDays = 3
 
     var body: some View {
-        let isRecent = isTool(tool, releaseDayLessThan: recentReleaseDays)
+        let isRecentRelease = ToolReleaseDateComparison.isTool(tool, releasedLessThan: recentReleaseValue, recentReleaseUnit)
 
         return VStack(alignment: .leading) {
             Text(self.tool.title)
                 .font(.system(size: 12, weight: .medium, design: .default))
 
             Text(self.tool.formattedDate)
-                .font(.system(size: 10, weight: isRecent == true ? .bold : .thin, design: .default))
-                .foregroundColor(isRecent == true ? .green : .secondary)
+                .font(.system(size: 10, weight: isRecentRelease == true ? .bold : .thin, design: .default))
+                .foregroundColor(isRecentRelease == true ? .green : .secondary)
 
         }
         .padding([.vertical], 4)
-    }
-
-    /// Checks if the tool was released less than specific amount of days ago.
-    /// - Parameters:
-    ///   - tool: Provided tool release object.
-    ///   - daysAgo: For how many days ago you want to verify the release.
-    /// - Returns: Did the tool was release in less than or equal amount of days ago.
-    func isTool(_ tool: Tool, releaseDayLessThan daysAgo: Int) -> Bool {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: .now, to: tool.date)
-
-        guard let days = components.day else { return false }
-
-        return abs(days) < daysAgo
     }
 }
 
