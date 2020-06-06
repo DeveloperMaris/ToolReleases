@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'ToolReleases/**'
+      - 'ToolReleasesCore/**'
+
+jobs:
+  test:
+    name: Tool Release tests
+    runs-on: macos-latest
+
+    env:
+      simulator: OS X,arch=x86_64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_11.5.app
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild -workspace ToolReleases.xcodeproj -scheme ToolReleases -destination platform='${{ env.simulator }}' clean test | xcpretty
