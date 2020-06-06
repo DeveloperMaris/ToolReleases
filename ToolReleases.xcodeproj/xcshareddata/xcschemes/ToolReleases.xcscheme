@@ -20,6 +20,20 @@
                ReferencedContainer = "container:ToolReleases.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B510D0BC248B756C003FAEC0"
+               BuildableName = "ToolReleasesCoreTests.xctest"
+               BlueprintName = "ToolReleasesCoreTests"
+               ReferencedContainer = "container:ToolReleases.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -32,9 +46,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B510D089248A2D55003FAEC0"
+               BlueprintIdentifier = "B510D0AB248A344D003FAEC0"
                BuildableName = "ToolReleasesTests.xctest"
                BlueprintName = "ToolReleasesTests"
+               ReferencedContainer = "container:ToolReleases.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B510D0BC248B756C003FAEC0"
+               BuildableName = "ToolReleasesCoreTests.xctest"
+               BlueprintName = "ToolReleasesCoreTests"
                ReferencedContainer = "container:ToolReleases.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -29,7 +29,7 @@ extension Sequence where Element == Tool {
     public func filtered(by filter: ToolFilter) -> [Element] {
         switch filter {
         case .all:
-            return self as! [Tool]
+            return self as! [Element]
         case .beta:
             return self.filter { $0.isBeta || $0.isGMSeed }
         case .release:

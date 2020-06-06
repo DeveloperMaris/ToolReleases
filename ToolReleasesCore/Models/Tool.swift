@@ -52,21 +52,21 @@ public struct Tool: Identifiable {
     }
 
     public var isBeta: Bool {
-        title.contains("beta")
+        title.lowercased().contains("beta ") || title.lowercased().contains(" beta")
     }
 
     public var isGMSeed: Bool {
-        title.contains("GM seed")
+        title.lowercased().contains("gm seed")
     }
 
     public var isRelease: Bool {
         isBeta == false && isGMSeed == false
     }
 
-    internal static func isTool(_ tool: String) -> Bool {
-        let range = NSRange(location: 0, length: tool.utf16.count)
+    internal static func isTool(_ title: String) -> Bool {
+        let range = NSRange(location: 0, length: title.utf16.count)
         let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
-        return regex.firstMatch(in: tool, options: [], range: range) != nil
+        return regex.firstMatch(in: title, options: [], range: range) != nil
     }
 }
 
