@@ -15,6 +15,9 @@ public class ToolsManager: ObservableObject {
     let parser: FeedParser
     let privateQueue: DispatchQueue
 
+    private var autoCheckTimer: Timer?
+    private var autoCheckTimeInterval: TimeInterval = 300
+
     @Published public private(set) var tools = [Tool]()
     @Published public private(set) var isRefreshing = false
     @Published public private(set) var lastRefresh: Date?
@@ -22,6 +25,8 @@ public class ToolsManager: ObservableObject {
     public init() {
         self.privateQueue = DispatchQueue.global(qos: .userInitiated)
         self.parser = FeedParser(URL: url)
+
+        startAutoCheckTimer()
     }
 
     public func fetch() {
@@ -57,5 +62,28 @@ public class ToolsManager: ObservableObject {
                 }
             }
         }
+    }
+}
+
+private extension ToolsManager {
+    func startAutoCheckTimer() {
+        os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
+
+        autoCheckTimer?.invalidate()
+        autoCheckTimer = Timer.scheduledTimer(withTimeInterval: autoCheckTimeInterval, repeats: true, block: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
+
+            guard self.isRefreshing == false else {
+                os_log(.debug, log: .toolManager, "Skipping automatic refreshing, tools are currently being refreshed already")
+                return
+            }
+
+            os_log(.debug, log: .toolManager, "Automatic fetch executes")
+            self.fetch()
+        })
+
+        autoCheckTimer?.tolerance = autoCheckTimeInterval / 2
     }
 }
