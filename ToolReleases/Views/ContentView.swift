@@ -55,22 +55,22 @@ struct ContentView: View {
                         Image("refresh")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 16)
+                            .frame(width: 16, height: 16)
                     }
                 }
                 .buttonStyle(BorderlessButtonStyle())
-                .overlay(TooltipView(text: "Refresh"))
                 .disabled(toolManager.isRefreshing)
+
+                PreferencesView()
             }
             .padding([.top, .horizontal])
 
             Divider()
 
             // List section
-
             GeometryReader { geometry in
                 List(self.sortedTools) { tool in
-                    ReleasedToolRow(tool: tool)
+                    ToolRow(tool: tool)
                         .frame(width: geometry.size.width - 36, alignment: .leading)
                         .onTapGesture {
                             self.open(tool)

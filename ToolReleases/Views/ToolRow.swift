@@ -9,7 +9,7 @@
 import SwiftUI
 import ToolReleasesCore
 
-struct ReleasedToolRow: View {
+struct ToolRow: View {
     private let recentReleaseValue = 3
     private let recentReleaseUnit = Calendar.Component.day
 
@@ -21,6 +21,7 @@ struct ReleasedToolRow: View {
         return VStack(alignment: .leading) {
             Text(self.tool.title)
                 .font(.system(size: 12, weight: .medium, design: .default))
+                .layoutPriority(1)
 
             Text(self.tool.formattedDate)
                 .font(.system(size: 10, weight: isRecentRelease == true ? .bold : .thin, design: .default))
@@ -40,7 +41,7 @@ struct ReleasedToolRow_Previews: PreviewProvider {
     )
 
     static var previews: some View {
-        ReleasedToolRow(tool: Self.tool)
+        ToolRow(tool: Self.tool)
             .frame(width: 300)
     }
 }

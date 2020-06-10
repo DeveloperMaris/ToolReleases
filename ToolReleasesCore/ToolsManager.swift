@@ -16,7 +16,7 @@ public class ToolsManager: ObservableObject {
     let privateQueue: DispatchQueue
 
     private var autoCheckTimer: Timer?
-    private var autoCheckTimeInterval: TimeInterval = 300
+    private var autoCheckTimeInterval: TimeInterval = 3600 // 1 hour
 
     @Published public private(set) var tools = [Tool]()
     @Published public private(set) var isRefreshing = false

@@ -35,6 +35,7 @@ private extension AppDelegate {
         }
 
         button.image = NSImage(named: .init("status_bar_logo"))
+        button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover(_:))
     }
 

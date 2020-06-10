@@ -16,6 +16,22 @@ public struct Tool: Identifiable {
     public let url: URL?
     public let date: Date
 
+    public var isBeta: Bool {
+        title.lowercased().contains("beta ") || title.lowercased().contains(" beta")
+    }
+
+    public var isGMSeed: Bool {
+        title.lowercased().contains("gm seed")
+    }
+
+    public var isRelease: Bool {
+        isBeta == false && isGMSeed == false
+    }
+
+    public var formattedDate: String {
+        RelativeDateTimeFormatter().localizedString(for: date, relativeTo: Date()).capitalized
+    }
+
     public init(title: String, link: URL, description: String, date: Date) {
         self.title = title
         self.url = link
@@ -45,22 +61,6 @@ public struct Tool: Identifiable {
         } else {
             self.url = nil
         }
-    }
-
-    public var formattedDate: String {
-        DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .short)
-    }
-
-    public var isBeta: Bool {
-        title.lowercased().contains("beta ") || title.lowercased().contains(" beta")
-    }
-
-    public var isGMSeed: Bool {
-        title.lowercased().contains("gm seed")
-    }
-
-    public var isRelease: Bool {
-        isBeta == false && isGMSeed == false
     }
 
     internal static func isTool(_ title: String) -> Bool {
