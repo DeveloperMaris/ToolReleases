@@ -30,7 +30,8 @@ public class ToolsManager: ObservableObject {
     }
 
     public func fetch() {
-        os_log(.debug, log: .toolManager, "Begin fetching tool list")
+        os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
+
         isRefreshing = true
         parser.parseAsync(queue: privateQueue) { [weak self] result in
             guard let self = self else { return }
@@ -80,7 +81,7 @@ private extension ToolsManager {
                 return
             }
 
-            os_log(.debug, log: .toolManager, "Automatic fetch executes")
+            os_log(.debug, log: .toolManager, "Executes automatic fetch")
             self.fetch()
         })
 
