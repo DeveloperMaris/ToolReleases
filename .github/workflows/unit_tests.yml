@@ -30,4 +30,4 @@ jobs:
       - name: Test
         run: |
           set -o pipefail
-          xcodebuild -project ToolReleases.xcodeproj -scheme ToolReleases -destination platform='${{ env.simulator }}' clean test | xcpretty
+          xcodebuild clean test -scheme ToolReleases -destination platform='${{ env.simulator }}' | xcpretty

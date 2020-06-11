@@ -34,6 +34,20 @@
                ReferencedContainer = "container:ToolReleases.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B510D0AB248A344D003FAEC0"
+               BuildableName = "ToolReleasesTests.xctest"
+               BlueprintName = "ToolReleasesTests"
+               ReferencedContainer = "container:ToolReleases.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,16 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B510D0AB248A344D003FAEC0"
-               BuildableName = "ToolReleasesTests.xctest"
-               BlueprintName = "ToolReleasesTests"
-               ReferencedContainer = "container:ToolReleases.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
