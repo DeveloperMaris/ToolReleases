@@ -9,21 +9,21 @@
 import Cocoa
 import os.log
 import SwiftUI
+import ToolReleasesCore
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let popover = NSPopover()
+    private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
-    var eventMonitor: EventMonitor?
+    private lazy var popover = NSPopover()
+    private lazy var toolManager = ToolsManager()
+
+    private var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         configureStatusBarButton()
         configureEventMonitor()
-
-        let contentView = ContentView()
-        popover.contentViewController = NSHostingController(rootView: contentView)
-        popover.contentSize = NSSize(width: 300, height: 300)
+        configurePopover()
     }
 }
 
@@ -34,9 +34,9 @@ private extension AppDelegate {
             return
         }
 
-        button.image = NSImage(named: .init("status_bar_logo"))
+        button.image = NSImage(named: "status_bar_logo")
         button.image?.size = NSSize(width: 20, height: 20)
-        button.action = #selector(togglePopover(_:))
+        button.action = #selector(togglePopover)
     }
 
     func configureEventMonitor() {
@@ -47,6 +47,16 @@ private extension AppDelegate {
                 self.closePopover(sender: event)
             }
         }
+    }
+
+    func configurePopover() {
+        let contentView = ContentView()
+            .environmentObject(toolManager)
+
+        let host = NSHostingController(rootView: contentView)
+
+        popover.contentViewController = host
+        popover.contentSize = NSSize(width: 300, height: 300)
     }
 
     @objc
@@ -64,8 +74,8 @@ private extension AppDelegate {
             return
         }
 
-        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         eventMonitor?.start()
+        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
     }
 
     func closePopover(sender: Any?) {

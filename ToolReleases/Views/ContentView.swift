@@ -10,7 +10,7 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ContentView: View {
-    @ObservedObject private var toolManager = ToolsManager()
+    @EnvironmentObject private var toolManager: ToolsManager
     @State private var filter = ToolFilter.all
 
     private let formatter: DateFormatter = {
