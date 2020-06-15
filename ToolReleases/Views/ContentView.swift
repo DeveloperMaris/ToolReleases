@@ -54,7 +54,6 @@ struct ContentView: View {
                     } else {
                         Image("refresh")
                             .resizable()
-                            .scaledToFit()
                             .frame(width: 16, height: 16)
                     }
                 }
