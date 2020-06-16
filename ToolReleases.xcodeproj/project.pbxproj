@@ -26,6 +26,7 @@
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
 		B593D8B22490C1D1006E8265 /* AppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* AppInformation.swift */; };
+		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -98,6 +99,7 @@
 		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		B593D8B02490C16C006E8265 /* AppInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformation.swift; sourceTree = "<group>"; };
+		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				B52A52122412353400DF7F22 /* Assets.xcassets */,
+				B594ABB82498B0570042ED1F /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52A52192412353500DF7F22 /* Main.storyboard in Resources */,
+				B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */,
 				B52A52162412353500DF7F22 /* Preview Assets.xcassets in Resources */,
 				B52A52132412353400DF7F22 /* Assets.xcassets in Resources */,
 			);
@@ -772,7 +776,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -799,7 +803,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;

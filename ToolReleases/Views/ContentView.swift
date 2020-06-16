@@ -13,7 +13,7 @@ struct ContentView: View {
     @EnvironmentObject private var toolManager: ToolsManager
     @State private var filter = ToolFilter.all
 
-    private let formatter: DateFormatter = {
+    private static let formatter: DateFormatter = {
         let formatter = DateFormatter()
 
         formatter.dateStyle = .short
@@ -30,10 +30,10 @@ struct ContentView: View {
 
     private var formattedLastRefreshDate: String {
         if let date = toolManager.lastRefresh {
-            return formatter.string(from: date)
+            return "Last refresh: \(Self.formatter.string(from: date))"
         }
 
-        return "..."
+        return "Data hasn't loaded yet"
     }
 
     var body: some View {
@@ -48,6 +48,45 @@ struct ContentView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .labelsHidden()
 
+                PreferencesView()
+            }
+            .padding([.top, .horizontal])
+
+            Divider()
+
+            // List section
+            if toolManager.tools.isEmpty {
+                // No tools are available
+                Text("No information about the released tools")
+                    .frame(maxHeight: .infinity)
+                    .padding()
+            } else if sortedTools.isEmpty {
+                // No tools with specific filter are available
+                Text("No releases available")
+                    .frame(maxHeight: .infinity)
+                    .padding()
+            } else {
+                GeometryReader { geometry in
+                    List(self.sortedTools) { tool in
+                        ToolRow(tool: tool)
+                            .frame(width: geometry.size.width - 36, alignment: .leading)
+                            .onTapGesture {
+                                self.open(tool)
+                        }
+                    }
+                    .listStyle(SidebarListStyle())
+                }
+            }
+
+            Divider()
+
+            HStack {
+                Text(formattedLastRefreshDate)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Spacer()
+
                 Button(action: self.fetch) {
                     if toolManager.isRefreshing {
                         ActivityIndicatorView(spinning: true)
@@ -59,31 +98,9 @@ struct ContentView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 .disabled(toolManager.isRefreshing)
-
-                PreferencesView()
             }
-            .padding([.top, .horizontal])
-
-            Divider()
-
-            // List section
-            GeometryReader { geometry in
-                List(self.sortedTools) { tool in
-                    ToolRow(tool: tool)
-                        .frame(width: geometry.size.width - 36, alignment: .leading)
-                        .onTapGesture {
-                            self.open(tool)
-                    }
-                }
-                .listStyle(SidebarListStyle())
-            }
-
-            Divider()
-
-            Text("Last refresh: \(formattedLastRefreshDate)")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
+            .padding(.horizontal)
         }
         .onAppear {
             self.fetch()

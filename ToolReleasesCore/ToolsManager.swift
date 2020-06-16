@@ -85,6 +85,6 @@ private extension ToolsManager {
             self.fetch()
         })
 
-        autoCheckTimer?.tolerance = autoCheckTimeInterval / 2
+        autoCheckTimer?.tolerance = autoCheckTimeInterval / 4
     }
 }

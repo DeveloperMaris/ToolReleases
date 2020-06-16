@@ -25,11 +25,11 @@ public enum ToolFilter: CaseIterable, CustomStringConvertible {
     }
 }
 
-extension Sequence where Element == Tool {
+extension Array where Element == Tool {
     public func filtered(by filter: ToolFilter) -> [Element] {
         switch filter {
         case .all:
-            return self as! [Element]
+            return self
         case .beta:
             return self.filter { $0.isBeta || $0.isGMSeed }
         case .release:
