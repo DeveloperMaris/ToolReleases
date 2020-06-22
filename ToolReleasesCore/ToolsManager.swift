@@ -21,6 +21,7 @@ public class ToolsManager: ObservableObject {
     @Published public private(set) var tools = [Tool]()
     @Published public private(set) var isRefreshing = false
     @Published public private(set) var lastRefresh: Date?
+    @Published public private(set) var newReleasesAvailable = false
 
     public init() {
         self.privateQueue = DispatchQueue.global(qos: .userInitiated)
@@ -49,15 +50,28 @@ public class ToolsManager: ObservableObject {
 
                 let tools = items.compactMap(Tool.init)
 
+                let newReleases: Bool
+
+                if self.lastRefresh == nil {
+                    // Case when the application just started, we don't want to show that there are new releases.
+                    newReleases = false
+                } else {
+
+                    let difference = self.tools.difference(from: tools)
+                    newReleases = difference.insertions.isEmpty == false
+                }
+
                 DispatchQueue.main.async {
                     self.lastRefresh = Date()
                     self.tools = tools
+                    self.newReleasesAvailable = newReleases
                     self.isRefreshing = false
                     os_log(.debug, log: .toolManager, "Tool list fetching finished successfully")
                 }
 
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self.newReleasesAvailable = false
                     self.isRefreshing = false
                     os_log(.error, log: .toolManager, "Tool list fetching failed, %{PUBLIC}@", error.localizedDescription)
                 }

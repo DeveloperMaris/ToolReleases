@@ -9,8 +9,8 @@
 import FeedKit
 import Foundation
 
-public struct Tool: Identifiable {
-    public let id = UUID()
+public struct Tool: Identifiable, Equatable {
+    public let id = UUID() //String
     public let title: String
     public let description: String?
     public let url: URL?
@@ -37,6 +37,8 @@ public struct Tool: Identifiable {
         self.url = link
         self.description = description
         self.date = date
+
+//        self.id =
     }
 
     public init?(_ item: RSSFeedItem) {
@@ -67,6 +69,19 @@ public struct Tool: Identifiable {
         let range = NSRange(location: 0, length: title.utf16.count)
         let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
         return regex.firstMatch(in: title, options: [], range: range) != nil
+    }
+
+    internal static func parseID(from url: URL) -> String? {
+        let string = url.absoluteString
+        let range = NSRange(location: 0, length: string.count)
+        let regex = try! NSRegularExpression(pattern: #"^.+\?id=(?<id>[^&\s%]+)$"#)
+        if let match = regex.firstMatch(in: string, options: [], range: range) {
+            let matchRange = match.range(withName: "id")
+            if matchRange.location != NSNotFound, let finalRange = Range(matchRange) {
+//                return string
+            }
+        }
+        return nil
     }
 }
 

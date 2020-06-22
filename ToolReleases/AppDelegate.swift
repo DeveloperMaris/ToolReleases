@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Combine
 import os.log
 import SwiftUI
 import ToolReleasesCore
@@ -18,9 +19,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var popover = NSPopover()
     private lazy var toolManager = ToolsManager()
 
+    private var subscriptions = Set<AnyCancellable>()
     private var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        subscribeForReleaseUpdates()
+
         configureStatusBarButton()
         configureEventMonitor()
         configurePopover()
@@ -28,6 +32,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 private extension AppDelegate {
+    func subscribeForReleaseUpdates() {
+        let subscription = toolManager.$newReleasesAvailable
+            .receive(on: DispatchQueue.main)
+            .sink { value in
+                print("New releases available: \(value)")
+            }
+
+        subscriptions.insert(subscription)
+    }
+
     func configureStatusBarButton() {
         guard let button = statusItem.button else {
             fatalError("Status item does not exist")
