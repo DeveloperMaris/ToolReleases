@@ -30,11 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 private extension AppDelegate {
     func configureStatusBarButton() {
         guard let button = statusItem.button else {
-            os_log(.error, log: .appDelegate, "Status item does not exist")
-            return
+            fatalError("Status item does not exist")
         }
 
-        button.image = NSImage(named: "status_bar_logo")
+        button.image = NSImage(named: "status_bar_icon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
     }
