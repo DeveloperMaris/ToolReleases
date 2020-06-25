@@ -30,7 +30,7 @@
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5D45A4F245452C0007FF637 /* ToolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A4E245452C0007FF637 /* ToolsManager.swift */; };
+		B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A4E245452C0007FF637 /* ToolManager.swift */; };
 		B5D45A5324545B20007FF637 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A5224545B20007FF637 /* Tool.swift */; };
 		B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2F92246682270010DA70 /* ToolRow.swift */; };
 		B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4EA6D2473D73100F48B38 /* Filter.swift */; };
@@ -103,7 +103,7 @@
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5D45A4E245452C0007FF637 /* ToolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsManager.swift; sourceTree = "<group>"; };
+		B5D45A4E245452C0007FF637 /* ToolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolManager.swift; sourceTree = "<group>"; };
 		B5D45A5224545B20007FF637 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B5DE2F92246682270010DA70 /* ToolRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRow.swift; sourceTree = "<group>"; };
 		B5E4EA6D2473D73100F48B38 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E4EA6D2473D73100F48B38 /* Filter.swift */,
-				B5D45A4E245452C0007FF637 /* ToolsManager.swift */,
+				B5D45A4E245452C0007FF637 /* ToolManager.swift */,
 				B5D45A5124545B02007FF637 /* Models */,
 				B5D45A4D24544DA5007FF637 /* Supporting Files */,
 				B510D07E2488C8D0003FAEC0 /* Utils */,
@@ -534,7 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5D45A4F245452C0007FF637 /* ToolsManager.swift in Sources */,
+				B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */,
 				B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */,
 				B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */,
 				B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */,

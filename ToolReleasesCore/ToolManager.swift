@@ -1,5 +1,5 @@
 //
-//  ReleaseManager.swift
+//  ToolManager.swift
 //  ToolReleasesCore
 //
 //  Created by Maris Lagzdins on 25/04/2020.
@@ -10,7 +10,7 @@ import FeedKit
 import Foundation
 import os.log
 
-public class ToolsManager: ObservableObject {
+public class ToolManager: ObservableObject {
     let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
     let parser: FeedParser
     let privateQueue: DispatchQueue
@@ -80,7 +80,7 @@ public class ToolsManager: ObservableObject {
     }
 }
 
-private extension ToolsManager {
+private extension ToolManager {
     func startAutoCheckTimer() {
         os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
 

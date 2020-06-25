@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
     private lazy var popover = NSPopover()
-    private lazy var toolManager = ToolsManager()
+    private lazy var toolManager = ToolManager()
 
     private var subscriptions = Set<AnyCancellable>()
     private var eventMonitor: EventMonitor?
