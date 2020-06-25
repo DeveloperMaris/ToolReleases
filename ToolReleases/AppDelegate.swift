@@ -18,6 +18,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private lazy var popover = NSPopover()
     private lazy var toolManager = ToolManager()
+    private lazy var badge: NSView = {
+        let view = NSView()
+        view.wantsLayer = true
+        view.layer?.cornerRadius = 5
+        view.layer?.borderWidth = 0.8
+        view.layer?.borderColor = NSColor.black.cgColor
+        view.layer?.backgroundColor = NSColor(named: "forestgreen")?.cgColor
+        view.layer?.masksToBounds = true
+        return view
+    }()
 
     private var subscriptions = Set<AnyCancellable>()
     private var eventMonitor: EventMonitor?
@@ -35,8 +45,8 @@ private extension AppDelegate {
     func subscribeForReleaseUpdates() {
         let subscription = toolManager.$newReleasesAvailable
             .receive(on: DispatchQueue.main)
-            .sink { value in
-//                os_log(.debug, log: .appDelegate, "New releases available: \(value)")
+            .sink { [weak self] newReleasesAvailable in
+                self?.badge.isHidden = newReleasesAvailable == false
             }
 
         subscriptions.insert(subscription)
@@ -50,6 +60,17 @@ private extension AppDelegate {
         button.image = NSImage(named: "status_bar_icon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
+
+        button.addSubview(badge)
+        badge.translatesAutoresizingMaskIntoConstraints = false
+        badge.isHidden = true
+
+        NSLayoutConstraint.activate([
+            badge.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -2),
+            badge.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -2),
+            badge.widthAnchor.constraint(equalToConstant: 10),
+            badge.heightAnchor.constraint(equalToConstant: 10)
+        ])
     }
 
     func configureEventMonitor() {
