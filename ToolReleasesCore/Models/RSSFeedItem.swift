@@ -12,6 +12,7 @@ extension RSSFeedItem: CustomDebugStringConvertible {
     public var debugDescription: String {
         """
         RSSFeedItem {
+            guid: \(guid?.value ?? ""),
             title: \(title ?? ""),
             link: \(link ?? ""),
             description: \(description ?? ""),

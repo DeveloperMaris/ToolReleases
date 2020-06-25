@@ -17,15 +17,16 @@ class ToolTests: XCTestCase {
 
     func testToolInit() {
         // When
-        let sut = Tool(title: "Test", link: URL(string: "www.example.com")!, description: "Test", date: Date())
+        let sut = Tool(id: UUID().uuidString, title: "Tool title", date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
 
         // Then
         XCTAssertNotNil(sut)
     }
 
     func testToolSuccessfulInitWithRSSFeedItem() {
-        // Givne
+        // Given
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -38,9 +39,42 @@ class ToolTests: XCTestCase {
         XCTAssertNotNil(sut)
     }
 
-    func testToolInitWithRSSFeedItemWithoutTitle() {
-        // Givne
+    func testToolInitWithRSSFeedItemWithoutGuid() {
+        // Given
         let item = RSSFeedItem()
+        item.guid = nil
+        item.title = "iOS 13.0 (1)"
+        item.link = "www.example.com"
+        item.description = "iOS Release"
+        item.pubDate = Date()
+
+        // When
+        let sut = Tool(item)
+
+        // Then
+        XCTAssertNil(sut)
+    }
+
+    func testToolInitWithRSSFeedItemWithEmptyGuid() {
+        // Given
+        let item = RSSFeedItem()
+        item.guid = RSSFeedItemGUID()
+        item.title = "iOS 13.0 (1)"
+        item.link = "www.example.com"
+        item.description = "iOS Release"
+        item.pubDate = Date()
+
+        // When
+        let sut = Tool(item)
+
+        // Then
+        XCTAssertNil(sut)
+    }
+
+    func testToolInitWithRSSFeedItemWithoutTitle() {
+        // Given
+        let item = RSSFeedItem()
+        item.guid = .default
         item.title = nil
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -53,9 +87,10 @@ class ToolTests: XCTestCase {
         XCTAssertNil(sut)
     }
 
-    func testToolInitWithRSSFeedItemWithoutLink() {
-        // Givne
+    func testToolInitWithRSSFeedItemWithoutURL() {
+        // Given
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = nil
         item.description = "iOS Release"
@@ -69,8 +104,9 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitWithRSSFeedItemWithoutDescription() {
-        // Givne
+        // Given
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = nil
@@ -84,8 +120,9 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitWithRSSFeedItemWithoutDate() {
-        // Givne
+        // Given
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -98,37 +135,40 @@ class ToolTests: XCTestCase {
         XCTAssertNil(sut)
     }
 
-    func testToolInitRemovesDescriptionWhitespace() {
-        // Givne
+    func testToolInitRemovesDescriptionWhitespace() throws {
+        // Given
         let description = " iOS Release "
+
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = description
         item.pubDate = Date()
 
         // When
-        let sut = Tool(item)!
+        let sut = try XCTUnwrap(Tool(item))
 
         // Then
         XCTAssertNotEqual(sut.description, description)
         XCTAssertEqual(sut.description, description.trimmingCharacters(in: .whitespaces))
     }
 
-    func testToolInitDoesNotContainIncorrectURL() {
-        // Givne
+    func testToolInitDoesNotContainIncorrectURL() throws {
+        // Given
         let url = "not a url"
+
         let item = RSSFeedItem()
+        item.guid = .default
         item.title = "iOS 13.0 (1)"
         item.link = url
         item.description = "iOS Release"
         item.pubDate = Date()
 
         // When
-        let sut = Tool(item)!
+        let sut = try XCTUnwrap(Tool(item))
 
         // Then
-        XCTAssertNotNil(sut)
         XCTAssertNil(sut.url)
     }
 
@@ -139,7 +179,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isRelease)
@@ -150,7 +190,8 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
+
 
         // Then
         XCTAssertTrue(sut.isRelease)
@@ -163,7 +204,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 beta (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -174,7 +215,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isBeta)
@@ -185,7 +226,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 Beta (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -196,7 +237,7 @@ class ToolTests: XCTestCase {
         let title = "Beta iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -207,7 +248,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1) beta"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -218,7 +259,7 @@ class ToolTests: XCTestCase {
         let title = "Betatron 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isBeta)
@@ -231,7 +272,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 gm seed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -242,7 +283,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isGMSeed)
@@ -253,7 +294,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 GMSeed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isGMSeed)
@@ -264,7 +305,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 GM Seed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -275,7 +316,7 @@ class ToolTests: XCTestCase {
         let title = "GM seed iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -286,7 +327,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1) GM seed"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -358,5 +399,60 @@ class ToolTests: XCTestCase {
 
         // Then
         XCTAssertFalse(result)
+    }
+
+    // MARK: - Contains ID
+
+    func testIDIsValid() throws {
+        // Given
+        let id = "1234567890a"
+        let string = "https://developer.apple.com/news/releases/?id=\(id)"
+
+        // When
+        let result = try Tool.parseID(from: string)
+
+        // Then
+        XCTAssertEqual(result, id)
+    }
+
+    func testIDIsEmpty() {
+        // Given
+        let string = "https://developer.apple.com/news/releases/?id="
+
+        // Then
+        XCTAssertThrowsError(try Tool.parseID(from: string))
+    }
+
+    func testIDStringPatternIsIncorrect_1() {
+        // Given
+        let string = "https://developer.apple.com/news/releases/"
+
+        // Then
+        XCTAssertThrowsError(try Tool.parseID(from: string))
+    }
+
+    func testIDStringPatternIsIncorrect_2() {
+        // Given
+        let string = "hfjshfjkhsajkfhadslfhasffsaIDdkas"
+
+        // Then
+        XCTAssertThrowsError(try Tool.parseID(from: string))
+    }
+}
+
+// MARK: - Helpers
+fileprivate extension Tool {
+    static func make(withTitle title: String) -> Self {
+        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
+    }
+}
+
+fileprivate extension RSSFeedItemGUID {
+    static var `default`: RSSFeedItemGUID {
+        let guid = RSSFeedItemGUID()
+
+        guid.value = "https://developer.apple.com/news/releases/?id=1234567890a"
+
+        return guid
     }
 }

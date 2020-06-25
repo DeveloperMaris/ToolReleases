@@ -9,8 +9,13 @@
 import FeedKit
 import Foundation
 
-public struct Tool: Identifiable {
-    public let id = UUID()
+public struct Tool: Identifiable, Equatable {
+    enum ToolError: Error {
+        case noID
+        case error(_ error: Error)
+    }
+
+    public let id: String
     public let title: String
     public let description: String?
     public let url: URL?
@@ -32,14 +37,19 @@ public struct Tool: Identifiable {
         RelativeDateTimeFormatter().localizedString(for: date, relativeTo: Date()).capitalized
     }
 
-    public init(title: String, link: URL, description: String, date: Date) {
+    public init(id: String, title: String, date: Date, url: URL?, description: String?) {
+        self.id = id
         self.title = title
-        self.url = link
-        self.description = description
         self.date = date
+        self.url = url
+        self.description = description
     }
 
     public init?(_ item: RSSFeedItem) {
+        guard let guid = item.guid?.value, let id = try? Self.parseID(from: guid) else {
+            return nil
+        }
+
         guard let title = item.title else {
             return nil
         }
@@ -52,12 +62,13 @@ public struct Tool: Identifiable {
             return nil
         }
 
+        self.id = id
         self.title = title
         self.description = item.description?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.date = date
 
-        if let stringUrl = item.link {
-            self.url = URL(string: stringUrl)
+        if let stringUrl = item.link, let url = URL(string: stringUrl) {
+            self.url = url
         } else {
             self.url = nil
         }
@@ -67,6 +78,24 @@ public struct Tool: Identifiable {
         let range = NSRange(location: 0, length: title.utf16.count)
         let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
         return regex.firstMatch(in: title, options: [], range: range) != nil
+    }
+
+    internal static func parseID(from string: String) throws -> String {
+        let idGroupName = "id"
+
+        let range = NSRange(location: 0, length: string.utf16.count)
+        do {
+            let regex = try NSRegularExpression(pattern: #"^.+id=(?<\#(idGroupName)>\w+).*$"#, options: .caseInsensitive)
+            if let match = regex.firstMatch(in: string, options: [], range: range) {
+                if let destinationRange = Range(match.range(withName: idGroupName), in: string) {
+                    return String(string[destinationRange])
+                }
+            }
+        } catch {
+            throw ToolError.error(error)
+        }
+
+        throw ToolError.noID
     }
 }
 

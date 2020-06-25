@@ -146,6 +146,6 @@ class ToolReleaseDateComparisonTests: XCTestCase {
 // MARK: - Helpers
 fileprivate extension Tool {
     static func make(with date: Date) -> Self {
-        Tool(title: "TestTool", link: URL(string: "www.example.com")!, description: "Tool Description", date: date)
+        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: "Test tool (1234567890)", date: date, url: URL(string: "www.example.com"), description: "Tool Description")
     }
 }
