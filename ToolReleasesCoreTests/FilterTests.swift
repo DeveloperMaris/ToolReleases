@@ -69,6 +69,6 @@ class FilterTests: XCTestCase {
 // MARK: - Helpers
 fileprivate extension Tool {
     static func make(withTitle title: String) -> Self {
-        Tool(id: UUID().uuidString, title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
+        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
     }
 }
