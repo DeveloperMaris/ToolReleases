@@ -17,15 +17,19 @@ class ToolTests: XCTestCase {
 
     func testToolInit() {
         // When
-        let sut = Tool(title: "Test", link: URL(string: "www.example.com")!, description: "Test", date: Date())
+        let sut = Tool(id: UUID().uuidString, title: "Tool title", date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
 
         // Then
         XCTAssertNotNil(sut)
     }
 
     func testToolSuccessfulInitWithRSSFeedItem() {
-        // Givne
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -38,9 +42,29 @@ class ToolTests: XCTestCase {
         XCTAssertNotNil(sut)
     }
 
-    func testToolInitWithRSSFeedItemWithoutTitle() {
-        // Givne
+    func testToolInitWithRSSFeedItemWithoutGuid() {
+        // Given
         let item = RSSFeedItem()
+        item.guid = nil
+        item.title = "iOS 13.0 (1)"
+        item.link = "www.example.com"
+        item.description = "iOS Release"
+        item.pubDate = Date()
+
+        // When
+        let sut = Tool(item)
+
+        // Then
+        XCTAssertNil(sut)
+    }
+
+    func testToolInitWithRSSFeedItemWithoutTitle() {
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
+        let item = RSSFeedItem()
+        item.guid = guid
         item.title = nil
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -53,9 +77,13 @@ class ToolTests: XCTestCase {
         XCTAssertNil(sut)
     }
 
-    func testToolInitWithRSSFeedItemWithoutLink() {
-        // Givne
+    func testToolInitWithRSSFeedItemWithoutURL() {
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = nil
         item.description = "iOS Release"
@@ -69,8 +97,12 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitWithRSSFeedItemWithoutDescription() {
-        // Givne
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = nil
@@ -84,8 +116,12 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitWithRSSFeedItemWithoutDate() {
-        // Givne
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = "iOS Release"
@@ -99,9 +135,13 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitRemovesDescriptionWhitespace() {
-        // Givne
+        // Given
         let description = " iOS Release "
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = "www.example.com"
         item.description = description
@@ -116,9 +156,13 @@ class ToolTests: XCTestCase {
     }
 
     func testToolInitDoesNotContainIncorrectURL() {
-        // Givne
+        // Given
         let url = "not a url"
+        let guid = RSSFeedItemGUID()
+        guid.value = UUID().uuidString
+
         let item = RSSFeedItem()
+        item.guid = guid
         item.title = "iOS 13.0 (1)"
         item.link = url
         item.description = "iOS Release"
@@ -139,7 +183,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isRelease)
@@ -150,7 +194,8 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
+
 
         // Then
         XCTAssertTrue(sut.isRelease)
@@ -163,7 +208,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 beta (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -174,7 +219,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isBeta)
@@ -185,7 +230,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 Beta (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -196,7 +241,7 @@ class ToolTests: XCTestCase {
         let title = "Beta iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -207,7 +252,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1) beta"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isBeta)
@@ -218,7 +263,7 @@ class ToolTests: XCTestCase {
         let title = "Betatron 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isBeta)
@@ -231,7 +276,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 gm seed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -242,7 +287,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isGMSeed)
@@ -253,7 +298,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 GMSeed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertFalse(sut.isGMSeed)
@@ -264,7 +309,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 GM Seed (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -275,7 +320,7 @@ class ToolTests: XCTestCase {
         let title = "GM seed iOS 13.0 (1)"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -286,7 +331,7 @@ class ToolTests: XCTestCase {
         let title = "iOS 13.0 (1) GM seed"
 
         // When
-        let sut = Tool(title: title, link: URL(string: "www.example.com")!, description: "Description", date: Date())
+        let sut = Tool.make(withTitle: title)
 
         // Then
         XCTAssertTrue(sut.isGMSeed)
@@ -358,5 +403,12 @@ class ToolTests: XCTestCase {
 
         // Then
         XCTAssertFalse(result)
+    }
+}
+
+// MARK: - Helpers
+fileprivate extension Tool {
+    static func make(withTitle title: String) -> Self {
+        Tool(id: UUID().uuidString, title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
     }
 }

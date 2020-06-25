@@ -35,9 +35,9 @@ public struct Tool: Identifiable, Equatable {
     public init(id: String, title: String, date: Date, url: URL?, description: String?) {
         self.id = id
         self.title = title
+        self.date = date
         self.url = url
         self.description = description
-        self.date = date
     }
 
     public init?(_ item: RSSFeedItem) {
