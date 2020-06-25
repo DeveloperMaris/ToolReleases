@@ -24,7 +24,7 @@ public class ToolsManager: ObservableObject {
     @Published public private(set) var newReleasesAvailable = false
 
     public init() {
-        self.privateQueue = DispatchQueue.global(qos: .userInitiated)
+        self.privateQueue = DispatchQueue(label: "com.developermaris.ToolReleases.Core.ToolsManager", qos: .userInitiated)
         self.parser = FeedParser(URL: url)
 
         startAutoCheckTimer()
@@ -40,6 +40,7 @@ public class ToolsManager: ObservableObject {
             case .success(let feed):
                 guard let items = feed.rssFeed?.items else {
                     DispatchQueue.main.async {
+                        self.newReleasesAvailable = false
                         self.isRefreshing = false
                         os_log(.error, log: .toolManager, "Tool list fetching failed, no RSS feed items are available")
                     }
@@ -56,8 +57,7 @@ public class ToolsManager: ObservableObject {
                     // Case when the application just started, we don't want to show that there are new releases.
                     newReleases = false
                 } else {
-
-                    let difference = self.tools.difference(from: tools)
+                    let difference = tools.difference(from: self.tools)
                     newReleases = difference.insertions.isEmpty == false
                 }
 
@@ -85,7 +85,7 @@ private extension ToolsManager {
         os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
 
         autoCheckTimer?.invalidate()
-        autoCheckTimer = Timer.scheduledTimer(withTimeInterval: autoCheckTimeInterval, repeats: true, block: { [weak self] _ in
+        autoCheckTimer = Timer.scheduledTimer(withTimeInterval: autoCheckTimeInterval, repeats: true) { [weak self] _ in
             guard let self = self else {
                 return
             }
@@ -97,7 +97,7 @@ private extension ToolsManager {
 
             os_log(.debug, log: .toolManager, "Executes automatic fetch")
             self.fetch()
-        })
+        }
 
         autoCheckTimer?.tolerance = autoCheckTimeInterval / 4
     }

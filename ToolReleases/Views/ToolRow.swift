@@ -55,12 +55,7 @@ struct ToolRow: View {
 }
 
 struct ReleasedToolRow_Previews: PreviewProvider {
-    static let tool = Tool(
-        title: "iOS 14.0",
-        link: URL(string: "wwww.apple.com")!,
-        description: "New release of iOS 14.0",
-        date: Date()
-    )
+    static let tool = Tool(id: UUID().uuidString, title: "iOS 14.0", date: Date(), url: URL(string: "wwww.apple.com")!, description: "New release of iOS 14.0")
 
     static var previews: some View {
         ToolRow(tool: Self.tool)

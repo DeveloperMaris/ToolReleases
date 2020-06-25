@@ -36,7 +36,7 @@ private extension AppDelegate {
         let subscription = toolManager.$newReleasesAvailable
             .receive(on: DispatchQueue.main)
             .sink { value in
-                print("New releases available: \(value)")
+//                os_log(.debug, log: .appDelegate, "New releases available: \(value)")
             }
 
         subscriptions.insert(subscription)
