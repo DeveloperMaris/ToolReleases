@@ -52,7 +52,13 @@ private extension AppDelegate {
         let subscription = toolManager.$newReleasesAvailable
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newReleasesAvailable in
-                self?.showBadge = newReleasesAvailable
+                guard self?.popover.isShown == false else {
+                    return
+                }
+
+                if newReleasesAvailable {
+                    self?.showBadge = true
+                }
             }
 
         subscriptions.insert(subscription)

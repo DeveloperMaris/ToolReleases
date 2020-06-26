@@ -66,7 +66,7 @@ public class ToolManager: ObservableObject {
                     self.tools = tools
                     self.newReleasesAvailable = newReleases
                     self.isRefreshing = false
-                    os_log(.debug, log: .toolManager, "Tool list fetching finished successfully")
+                    os_log(.debug, log: .toolManager, "Tool list fetching finished successfully, contains new releases: %{public}@", newReleases.description)
                 }
 
             case .failure(let error):
