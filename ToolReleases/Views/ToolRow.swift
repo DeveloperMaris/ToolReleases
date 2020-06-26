@@ -23,7 +23,11 @@ struct ToolRow: View {
     }
 
     private var formattedDate: String {
-        RelativeDateTimeFormatter().localizedString(for: tool.date, relativeTo: currentDate).capitalized
+        if ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .minute, since: currentDate) {
+            return "Just now"
+        } else {
+            return RelativeDateTimeFormatter().localizedString(for: tool.date, relativeTo: currentDate).capitalized
+        }
     }
 
     var body: some View {
@@ -46,10 +50,12 @@ struct ToolRow: View {
                 }
         }
         .padding([.vertical], 4)
-        .onReceive(timer) { date in
-            self.currentDate = date
-            os_log(.debug, log: .views, "Received timer update, date: %{public}@ tool: %{public}@", date.debugDescription, self.tool.title)
-        }
+        .onReceive(timer, perform: updateCurrentDate)
+    }
+
+    func updateCurrentDate(_ date: Date) {
+        self.currentDate = date
+        os_log(.debug, log: .views, "Current date updated: %{public}@, tool: %{public}@", date.debugDescription, self.tool.title)
     }
 }
 
