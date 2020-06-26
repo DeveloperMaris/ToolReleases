@@ -13,4 +13,5 @@ extension OSLog {
     private static var subsystem = Bundle.main.bundleIdentifier!
 
     static let appDelegate = OSLog(subsystem: subsystem, category: "AppDelegate")
+    static let views = OSLog(subsystem: subsystem, category: "Views")
 }

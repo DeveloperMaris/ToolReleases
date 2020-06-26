@@ -27,6 +27,8 @@
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
 		B593D8B22490C1D1006E8265 /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* AppExtension.swift */; };
 		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
+		B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */; };
+		B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* NotificationExtension.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,6 +102,8 @@
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		B593D8B02490C16C006E8265 /* AppExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
 		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolReleaseDateView.swift; sourceTree = "<group>"; };
+		B596D51F24A5F73C00A5714A /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			children = (
 				B52A52102412353100DF7F22 /* ContentView.swift */,
 				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
+				B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */,
 				B5DE2F92246682270010DA70 /* ToolRow.swift */,
 				B510D07D2488C728003FAEC0 /* Helpers */,
 			);
@@ -275,6 +280,7 @@
 				B593D8B02490C16C006E8265 /* AppExtension.swift */,
 				B563A4C8247FDA6E007101C7 /* Date.swift */,
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
+				B596D51F24A5F73C00A5714A /* NotificationExtension.swift */,
 				B52A522824123D5F00DF7F22 /* OSLog.swift */,
 				B510D095248A2E8A003FAEC0 /* ToolReleaseDateComparison.swift */,
 			);
@@ -520,8 +526,10 @@
 				B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */,
 				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
 				B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */,
+				B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */,
 				B510D096248A2E8A003FAEC0 /* ToolReleaseDateComparison.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */,
+				B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
 				B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */,
@@ -776,7 +784,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -791,6 +799,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -803,7 +812,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -818,6 +827,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

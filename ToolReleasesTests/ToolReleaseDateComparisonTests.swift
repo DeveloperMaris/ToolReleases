@@ -141,6 +141,22 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         // then
         XCTAssertFalse(result)
     }
+
+    func testToolReleasedLessThanOneDayAgoInSecondPrecisionWithProvidedSinceDate() {
+        // Given
+        let component = DateComponents(day: -5, second: 1)
+        let date = Calendar.current.date(byAdding: component, to: Date())!
+        let tool = Tool.make(with: date)
+
+        let sinceComponent = DateComponents(day: -4)
+        let sinceDate = Calendar.current.date(byAdding: sinceComponent, to: Date())!
+
+        // When
+        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day, since: sinceDate) // Calculations must track that the difference is 59 minutes.
+
+        // then
+        XCTAssertTrue(result)
+    }
 }
 
 // MARK: - Helpers

@@ -33,10 +33,6 @@ public struct Tool: Identifiable, Equatable {
         isBeta == false && isGMSeed == false
     }
 
-    public var formattedDate: String {
-        RelativeDateTimeFormatter().localizedString(for: date, relativeTo: Date()).capitalized
-    }
-
     public init(id: String, title: String, date: Date, url: URL?, description: String?) {
         self.id = id
         self.title = title

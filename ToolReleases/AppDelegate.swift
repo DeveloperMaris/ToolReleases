@@ -15,6 +15,7 @@ import ToolReleasesCore
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    private let notificationCenter = NotificationCenter.default
 
     private lazy var popover = NSPopover()
     private lazy var toolManager = ToolManager()
@@ -31,6 +32,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var subscriptions = Set<AnyCancellable>()
     private var eventMonitor: EventMonitor?
+    private var showBadge = false {
+        didSet {
+            badge.isHidden = showBadge == false
+        }
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         subscribeForReleaseUpdates()
@@ -46,7 +52,7 @@ private extension AppDelegate {
         let subscription = toolManager.$newReleasesAvailable
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newReleasesAvailable in
-                self?.badge.isHidden = newReleasesAvailable == false
+                self?.showBadge = newReleasesAvailable
             }
 
         subscriptions.insert(subscription)
@@ -108,12 +114,19 @@ private extension AppDelegate {
             return
         }
 
+        guard popover.isShown == false else {
+            return
+        }
+
+        notificationCenter.post(name: .popoverWillAppear, object: nil)
         eventMonitor?.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        showBadge = false
     }
 
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()
+        notificationCenter.post(name: .popoverDidDisappear, object: nil)
     }
 }

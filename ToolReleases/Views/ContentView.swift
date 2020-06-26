@@ -6,12 +6,15 @@
 //  Copyright © 2020 Developer Maris. All rights reserved.
 //
 
+import Combine
+import os.log
 import SwiftUI
 import ToolReleasesCore
 
 struct ContentView: View {
     @EnvironmentObject private var toolManager: ToolManager
     @State private var filter = ToolFilter.all
+    @State private var relativeDateTimeTimer = Timer.makeRelativeDateTimeTimer().autoconnect()
 
     private static let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -68,7 +71,7 @@ struct ContentView: View {
             } else {
                 GeometryReader { geometry in
                     List(self.sortedTools) { tool in
-                        ToolRow(tool: tool)
+                        ToolRow(tool: tool, timer: self.relativeDateTimeTimer)
                             .frame(width: geometry.size.width - 36, alignment: .leading)
                             .onTapGesture {
                                 self.open(tool)
@@ -105,16 +108,39 @@ struct ContentView: View {
         .onAppear {
             self.fetch()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .popoverWillAppear)) { _ in
+            os_log(.debug, log: .views, "Popover will appear event received")
+            self.startTimer()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .popoverDidDisappear)) { _ in
+            os_log(.debug, log: .views, "Popover did disappear event received")
+            self.stopTimer()
+        }
     }
 
-    func open(_ tool: Tool) {
+    private func open(_ tool: Tool) {
         if let url = tool.url {
             NSWorkspace.shared.open(url)
         }
     }
 
-    func fetch() {
+    private func fetch() {
         toolManager.fetch()
+    }
+
+    private func startTimer() {
+        stopTimer()
+        self.relativeDateTimeTimer = Timer.makeRelativeDateTimeTimer().autoconnect()
+    }
+
+    private func stopTimer() {
+        self.relativeDateTimeTimer.upstream.connect().cancel()
+    }
+}
+
+fileprivate extension Timer {
+    static func makeRelativeDateTimeTimer() -> Timer.TimerPublisher {
+        Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common)
     }
 }
 

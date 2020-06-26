@@ -47,7 +47,7 @@ public class ToolManager: ObservableObject {
                     return
                 }
 
-                os_log(.debug, log: .toolManager, "RSS feed fetched, now transforming into Tool model.\n%{PRIVATE}@", items.debugDescription)
+                os_log(.debug, log: .toolManager, "RSS feed fetched, now transforming into Tool model.\n%{PUBLIC}@", items.debugDescription)
 
                 let tools = items.compactMap(Tool.init)
 
