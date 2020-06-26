@@ -48,7 +48,7 @@ struct ToolRow: View {
         .padding([.vertical], 4)
         .onReceive(timer) { date in
             self.currentDate = date
-            os_log(.debug, log: .views, "Received timer update, date: %{PUBLIC}@ tool: %{PUBLIC}@", date.debugDescription, self.tool.title)
+            os_log(.debug, log: .views, "Received timer update, date: %{public}@ tool: %{public}@", date.debugDescription, self.tool.title)
         }
     }
 }

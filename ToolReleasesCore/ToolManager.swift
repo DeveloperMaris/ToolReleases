@@ -31,7 +31,7 @@ public class ToolManager: ObservableObject {
     }
 
     public func fetch() {
-        os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
+        os_log(.debug, log: .toolManager, "%{public}@", #function)
 
         isRefreshing = true
         parser.parseAsync(queue: privateQueue) { [weak self] result in
@@ -47,7 +47,7 @@ public class ToolManager: ObservableObject {
                     return
                 }
 
-                os_log(.debug, log: .toolManager, "RSS feed fetched, now transforming into Tool model.\n%{PUBLIC}@", items.debugDescription)
+                os_log(.debug, log: .toolManager, "RSS feed fetched, now transforming into Tool model.\n%{public}@", items.debugDescription)
 
                 let tools = items.compactMap(Tool.init)
 
@@ -73,7 +73,7 @@ public class ToolManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.newReleasesAvailable = false
                     self.isRefreshing = false
-                    os_log(.error, log: .toolManager, "Tool list fetching failed, %{PUBLIC}@", error.localizedDescription)
+                    os_log(.error, log: .toolManager, "Tool list fetching failed, %{public}@", error.localizedDescription)
                 }
             }
         }
@@ -82,7 +82,7 @@ public class ToolManager: ObservableObject {
 
 private extension ToolManager {
     func startAutoCheckTimer() {
-        os_log(.debug, log: .toolManager, "%{PUBLIC}@", #function)
+        os_log(.debug, log: .toolManager, "%{public}@", #function)
 
         autoCheckTimer?.invalidate()
         autoCheckTimer = Timer.scheduledTimer(withTimeInterval: autoCheckTimeInterval, repeats: true) { [weak self] _ in
