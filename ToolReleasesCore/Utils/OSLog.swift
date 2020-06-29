@@ -3,7 +3,7 @@
 //  ToolReleasesCore
 //
 //  Created by Maris Lagzdins on 04/06/2020.
-//  Copyright © 2020 Developer Maris. All rights reserved.
+//  Copyright © 2020 Maris Lagzdins. All rights reserved.
 //
 
 import Foundation

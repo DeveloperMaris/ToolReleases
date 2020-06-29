@@ -18,7 +18,9 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020 Developer Maris. All rights reserved.</string>
+	<string>Copyright © 2020 Maris Lagzdins. All rights reserved.</string>
 </dict>
 </plist>

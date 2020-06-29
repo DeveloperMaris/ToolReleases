@@ -3,7 +3,7 @@
 //  ToolReleases
 //
 //  Created by Maris Lagzdins on 09/05/2020.
-//  Copyright © 2020 Developer Maris. All rights reserved.
+//  Copyright © 2020 Maris Lagzdins. All rights reserved.
 //
 
 import Combine
@@ -55,7 +55,7 @@ struct ToolRow: View {
 
     func updateCurrentDate(_ date: Date) {
         self.currentDate = date
-        os_log(.debug, log: .views, "Current date updated: %{public}@, tool: %{public}@", date.debugDescription, self.tool.title)
+        os_log(.debug, log: .views, "Tool date refreshed for %{public}@", self.tool.title)
     }
 }
 

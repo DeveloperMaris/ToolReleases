@@ -424,7 +424,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
-				ORGANIZATIONNAME = "Developer Maris";
+				ORGANIZATIONNAME = "Maris Lagzdins";
 				TargetAttributes = {
 					B510D0AB248A344D003FAEC0 = {
 						CreatedOnToolsVersion = 11.4;
@@ -784,7 +784,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -812,7 +812,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
