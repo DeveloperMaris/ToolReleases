@@ -22,6 +22,8 @@
 		B52A52192412353500DF7F22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52A52172412353500DF7F22 /* Main.storyboard */; };
 		B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A5223241239D400DF7F22 /* EventMonitor.swift */; };
 		B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A522824123D5F00DF7F22 /* OSLog.swift */; };
+		B560170724AB240A0091692A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170624AB240A0091692A /* AboutView.swift */; };
+		B560170924AB42730091692A /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170824AB42730091692A /* AboutWindowController.swift */; };
 		B563A4C9247FDA6E007101C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563A4C8247FDA6E007101C7 /* Date.swift */; };
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
@@ -98,6 +100,8 @@
 		B52A521B2412353500DF7F22 /* ToolReleases.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToolReleases.entitlements; sourceTree = "<group>"; };
 		B52A5223241239D400DF7F22 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		B52A522824123D5F00DF7F22 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		B560170624AB240A0091692A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		B560170824AB42730091692A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		B593D8B02490C16C006E8265 /* AppExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		B510D07C2488C715003FAEC0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B560170624AB240A0091692A /* AboutView.swift */,
 				B52A52102412353100DF7F22 /* ContentView.swift */,
 				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
 				B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */,
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */,
+				B560170824AB42730091692A /* AboutWindowController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -527,6 +533,8 @@
 				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
 				B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */,
 				B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */,
+				B560170924AB42730091692A /* AboutWindowController.swift in Sources */,
+				B560170724AB240A0091692A /* AboutView.swift in Sources */,
 				B510D096248A2E8A003FAEC0 /* ToolReleaseDateComparison.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */,
 				B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */,
@@ -784,7 +792,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -812,7 +820,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;

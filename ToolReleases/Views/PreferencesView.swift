@@ -10,19 +10,14 @@ import Cocoa
 import SwiftUI
 
 struct PreferencesView: View {
-    private let appVersion = NSApplication.appVersion ?? "N/A"
-
     var body: some View {
         MenuButton("...") {
+            Button(action: showAbout) {
+                Text("About")
+            }
             Button(action: quit) {
                 Text("Quit")
             }
-
-            VStack { Divider() }
-
-            Text("v\(appVersion)")
-                .font(.caption)
-                .foregroundColor(.secondary)
         }
         .menuButtonStyle(BorderlessButtonMenuButtonStyle())
         .frame(width: 16, height: 16)
@@ -30,6 +25,18 @@ struct PreferencesView: View {
 
     func quit() {
         NSApp.terminate(nil)
+    }
+
+    func showAbout() {
+        let view = AboutView()
+        let controller = AboutWindowController(aboutView: view)
+
+        if let window = controller.window {
+            if let delegate = NSApp.delegate as? AppDelegate {
+                delegate.closePopover(sender: nil)
+            }
+            NSApp.runModal(for: window)
+        }
     }
 }
 

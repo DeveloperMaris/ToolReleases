@@ -45,6 +45,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureEventMonitor()
         configurePopover()
     }
+
+    func closePopover(sender: Any?) {
+        popover.performClose(sender)
+        eventMonitor?.stop()
+        notificationCenter.post(name: .popoverDidDisappear, object: nil)
+    }
 }
 
 private extension AppDelegate {
@@ -128,11 +134,5 @@ private extension AppDelegate {
         eventMonitor?.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         showBadge = false
-    }
-
-    func closePopover(sender: Any?) {
-        popover.performClose(sender)
-        eventMonitor?.stop()
-        notificationCenter.post(name: .popoverDidDisappear, object: nil)
     }
 }
