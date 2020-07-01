@@ -40,7 +40,5 @@
 	<true/>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/DeveloperMaris/ToolReleases/feature/sparkle-implementation/Releases/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>E4ipsUFpzZGMe4G6uIS6EWtPVF0ZmqoFHk7yXE2cmSE=</string>
 </dict>
 </plist>
