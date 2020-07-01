@@ -32,9 +32,13 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 1. Download the application **ToolReleases_vX.X.X.zip** from [here](/Releases).
 
-2. Unarchive the **ToolReleases_vX.X.X.zip**.
+2. Unarchive the **ToolReleases_vX.X.X.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step)
 
-3. Launch the **ToolReleases.app** file.
+3. Move the **ToolReleases.app** file to **Application** directory.
+
+![Move to Applications](./Screenshots/move_to_applications.gif)
+
+4. Launch the **ToolReleases.app** file.
 
 # Additional installation steps
 
