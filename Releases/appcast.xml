@@ -3,10 +3,10 @@
     <channel>
         <title>ToolReleases</title>
         <item>
-            <title>1.0.0</title>
-            <pubDate>Wed, 01 Jul 2020 11:01:36 +0300</pubDate>
+            <title>1.1.1</title>
+            <pubDate>Wed, 01 Jul 2020 13:09:34 +0300</pubDate>
             <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/blob/feature/sparkle-implementation/Releases/ToolReleases_v1.0.0.zip?raw=true" sparkle:version="17" sparkle:shortVersionString="1.0.0" length="899240" type="application/octet-stream"/>
+            <enclosure url="https://raw.githubusercontent.com/DeveloperMaris/ToolReleases/feature/sparkle-implementation/Releases/ToolReleases_v1.1.1.zip?raw=true" sparkle:version="21" sparkle:shortVersionString="1.1.1" length="2629100" type="application/octet-stream"/>
         </item>
     </channel>
 </rss>
