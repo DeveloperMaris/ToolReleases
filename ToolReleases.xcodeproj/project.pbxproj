@@ -806,7 +806,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -821,7 +821,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -838,7 +838,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -853,7 +853,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
