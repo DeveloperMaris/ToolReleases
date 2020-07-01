@@ -32,6 +32,28 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 1. Download the application **ToolReleases_vX.X.X.zip** from [here](/Releases).
 
-2. Unarchive the **ToolReleases_vX.X.X.zip** 
+2. Unarchive the **ToolReleases_vX.X.X.zip**.
 
 3. Launch the **ToolReleases.app** file.
+
+# Additional installation steps
+
+if app doesn't start right away after launching **ToolReleases.app** file and warning appears:
+
+<img src="./Screenshots/warning_1.png">
+
+1. Open **System Preferences** and navigate to **Security & Privacy** General tab.
+
+2. At the bottom you will see something like *"ToolReleases" was blocked from use because it is not from an identified developer*, click on **Open Anyway**.
+
+<img src="./Screenshots/warning_2.png">
+
+3. Prompt should appear (if not, launch the **ToolReleases.app** file again) and press **Open**.
+
+<img src="./Screenshots/warning_3.png">
+
+*Note: these steps will be necessary only for the first application launch.*
+
+# Updates
+
+Future application updates are available through the in-application settings.
