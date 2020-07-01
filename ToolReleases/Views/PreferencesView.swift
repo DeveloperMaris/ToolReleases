@@ -6,7 +6,7 @@
 //  Copyright © 2020 Maris Lagzdins. All rights reserved.
 //
 
-import Cocoa
+import Sparkle
 import SwiftUI
 
 struct PreferencesView: View {
@@ -14,6 +14,9 @@ struct PreferencesView: View {
         MenuButton("...") {
             Button(action: showAbout) {
                 Text("About")
+            }
+            Button(action: checkForUpdates) {
+                Text("Check for Updates")
             }
             Button(action: quit) {
                 Text("Quit")
@@ -37,6 +40,10 @@ struct PreferencesView: View {
             }
             NSApp.runModal(for: window)
         }
+    }
+
+    func checkForUpdates() {
+        SUUpdater.shared()?.checkForUpdates(nil)
     }
 }
 
