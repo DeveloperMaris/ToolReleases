@@ -38,13 +38,13 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 # Additional installation steps
 
-if app doesn't start right away after launching **ToolReleases.app** file and warning appears:
+If app doesn't start right away after launching **ToolReleases.app** file and warning appears:
 
 <img src="./Screenshots/warning_1.png">
 
 1. Open **System Preferences** and navigate to **Security & Privacy** General tab.
 
-2. At the bottom you will see something like *"ToolReleases" was blocked from use because it is not from an identified developer*, click on **Open Anyway**.
+2. At the bottom you will see something like <ins>*"ToolReleases" was blocked from use because it is not from an identified developer*</ins>, click on **Open Anyway**.
 
 <img src="./Screenshots/warning_2.png">
 
