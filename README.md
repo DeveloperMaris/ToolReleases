@@ -4,35 +4,19 @@
 
 Be informed about the latest Apple tool releases (including *Beta* releases) with just one click from your computer.
 
-This application for free retrieves, notifies and shows you the latest Apple tool releases (including Beta releases) from publicly available Apple [RSS feed](https://developer.apple.com/news/releases/rss/releases.rss) in a formatted list on your status bar so that you would not miss any new releases coming out.
+This application for free retrieves, notifies and shows you the latest Apple tool releases (including *Beta* releases) from publicly available Apple [RSS feed](https://developer.apple.com/news/releases/rss/releases.rss) in a formatted list on your status bar so that you would not miss any new releases coming out.
 
 # Requirements
 
 * macOS 10.15 (Catalina)
 
-# Screenshots
-
-<img src="./Screenshots/dark_mode_1.png">
-
-<img src="./Screenshots/light_mode_1.png">
-
-<img src="./Screenshots/dark_mode_2.png">
-
-<img src="./Screenshots/light_mode_2.png">
-
-<img src="./Screenshots/dark_mode_3.png">
-
-<img src="./Screenshots/light_mode_3.png">
-
-<img src="./Screenshots/dark_mode_4.png">
-
-<img src="./Screenshots/light_mode_4.png">
-
 # Install
 
-1. Download the application **ToolReleases_vX.X.X.zip** from [here](/Releases).
+1. Open [latest release page](https://github.com/DeveloperMaris/ToolReleases/releases/latest) and download the application binary **ToolReleases_vX.X.X.bX.zip**.
 
-2. Unarchive the **ToolReleases_vX.X.X.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step)
+![Download the applications](./Screenshots/download_application.png)
+
+2. Unarchive the **ToolReleases_vX.X.X.bX.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step)
 
 3. Move the **ToolReleases.app** file to **Application** directory.
 
@@ -61,3 +45,25 @@ If app doesn't start right away after launching **ToolReleases.app** file and wa
 # Updates
 
 Future application updates are available through the in-application settings.
+
+# Screenshots
+
+<img src="./Screenshots/dark_mode_1.png">
+
+<img src="./Screenshots/light_mode_1.png">
+
+<img src="./Screenshots/dark_mode_2.png">
+
+<img src="./Screenshots/light_mode_2.png">
+
+<img src="./Screenshots/dark_mode_3.png">
+
+<img src="./Screenshots/light_mode_3.png">
+
+<img src="./Screenshots/dark_mode_4.png">
+
+<img src="./Screenshots/light_mode_4.png">
+
+# Licence
+
+`Tool Releases` is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for details.
