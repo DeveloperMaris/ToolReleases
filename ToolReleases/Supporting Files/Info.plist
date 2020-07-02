@@ -39,8 +39,6 @@
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/DeveloperMaris/ToolReleases/master/Releases/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>E4ipsUFpzZGMe4G6uIS6EWtPVF0ZmqoFHk7yXE2cmSE=</string>
+	<string>https://developermaris.github.io/ToolReleases/appcast.xml</string>
 </dict>
 </plist>
