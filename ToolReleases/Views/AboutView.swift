@@ -32,7 +32,7 @@ struct AboutView: View {
 
             Divider()
 
-            VStack {
+            VStack(spacing: 2) {
                 Text("Application uses Apple Inc. publicly available RSS feed to collect and display information from it.")
                 Text("Collected content isn't modified in any way.")
                 Text("Collected content copyrights belongs to Apple Inc.")

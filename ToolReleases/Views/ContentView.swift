@@ -13,45 +13,47 @@ import ToolReleasesCore
 
 struct ContentView: View {
     @EnvironmentObject private var toolManager: ToolManager
-    @State private var filter = ToolFilter.all
+    @State private var typeFilter = ToolFilter.all
     @State private var relativeDateTimeTimer = Timer.makeRelativeDateTimeTimer().autoconnect()
-
-    private static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-
-        return formatter
-    }()
+    @State private var showKeywordFilter: Bool = false
+    @State private var keywordFilterText: String = ""
 
     private var sortedTools: [Tool] {
-        toolManager.tools
-            .filtered(by: filter)
+        let keywordArray = transformKeywords(keywordFilterText)
+
+        return toolManager.tools
+            .filtered(by: typeFilter)
+            .filter { showKeywordFilter && keywordFilterText.isEmpty == false ? keywordArray.contains(where: $0.title.contains) : true }
             .sorted(by: { $0.date > $1.date })
-    }
-
-    private var formattedLastRefreshDate: String {
-        if let date = toolManager.lastRefresh {
-            return "Last refresh: \(Self.formatter.string(from: date))"
-        }
-
-        return "Data hasn't loaded yet"
     }
 
     var body: some View {
         VStack {
             // Filter section
-            HStack {
-                Picker("Select filter", selection: $filter) {
-                    ForEach(ToolFilter.allCases, id: \.self) {
-                        Text($0.description)
+            VStack {
+                HStack {
+                    Picker("Select filter", selection: $typeFilter) {
+                        ForEach(ToolFilter.allCases, id: \.self) {
+                            Text($0.description)
+                        }
                     }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .labelsHidden()
 
-                PreferencesView()
+                    SearchButton {
+                        withAnimation {
+                            self.showKeywordFilter.toggle()
+                        }
+                    }
+
+                    PreferencesView()
+                }
+
+                if showKeywordFilter {
+                    TextField("Xcode; macOS beta", text: $keywordFilterText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .transition(AnyTransition.offset(x: 0, y: -30).combined(with: .opacity))
+                }
             }
             .padding([.top, .horizontal])
 
@@ -83,29 +85,12 @@ struct ContentView: View {
 
             Divider()
 
-            HStack {
-                Text(formattedLastRefreshDate)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Spacer()
-
-                Button(action: self.fetch) {
-                    if toolManager.isRefreshing {
-                        ActivityIndicatorView(spinning: true)
-                    } else {
-                        Image("refresh")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                .disabled(toolManager.isRefreshing)
-            }
-            .padding(.bottom, 10)
-            .padding(.horizontal)
+            LastRefreshView(isRefreshing: toolManager.isRefreshing, lastRefreshDate: toolManager.lastRefresh, handler: fetch)
+                .padding(.bottom, 10)
+                .padding(.horizontal)
         }
         .onAppear {
+            os_log(.debug, log: .views, "Initial fetch")
             self.fetch()
         }
         .onReceive(NotificationCenter.default.publisher(for: .popoverWillAppear)) { _ in
@@ -136,11 +121,42 @@ struct ContentView: View {
     private func stopTimer() {
         self.relativeDateTimeTimer.upstream.connect().cancel()
     }
+
+    /// Transforms keyword string into an Array containing multiple groups of search phrases.
+    ///
+    /// Each group can contain one or more search phrases.
+    /// Groups are separated by the ";" symbol and each group search phrases are separated by a whitespace.
+    ///
+    /// Examples:
+    ///
+    /// Provided string : *"iOS Beta; Xcode"*
+    ///
+    /// Group1: *["iOS", "Beta"]*
+    ///
+    /// Group2: *["Xcode"]*
+    ///
+    /// - Parameter keywords: Multiple search keywords which are translated into groups of search phrases
+    /// - Returns: 2 dimensional array where 1st level represents a collection of groups and 2nd level represents search phrases for a specific  group
+    private func transformKeywords(_ keywords: String) -> [[String]] {
+        keywords                                                // Can contain string:   "iOS Beta; Xcode 11; "
+            .split(separator: ";")                              // Creates an array:     ["iOS Beta", "Xcode 11", " "]
+            .map { $0.split(separator: " ").map(String.init) }  // Creates subarrays:    [["iOS", "Beta"], ["Xcode", "11"], []]
+            .filter { $0.isEmpty == false }                     // Removes empty arrays: [["iOS", "Beta"], ["Xcode", "11"]]
+    }
 }
 
 fileprivate extension Timer {
     static func makeRelativeDateTimeTimer() -> Timer.TimerPublisher {
         Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common)
+    }
+}
+
+fileprivate extension String {
+    func contains(_ phrases: [String]) -> Bool {
+        let string = self.lowercased()
+        return phrases
+            .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
+            .allSatisfy(string.contains)
     }
 }
 
