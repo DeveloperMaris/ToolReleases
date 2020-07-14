@@ -19,11 +19,11 @@ struct ContentView: View {
     @State private var keywordFilterText: String = ""
 
     private var sortedTools: [Tool] {
-        let keywordArray = transformKeywords(keywordFilterText)
+        let keywordGroups = Search.transformKeywords(keywordFilterText)
 
         return toolManager.tools
             .filtered(by: typeFilter)
-            .filter { showKeywordFilter && keywordFilterText.isEmpty == false ? keywordArray.contains(where: $0.title.contains) : true }
+            .filter { showKeywordFilter && keywordGroups.isEmpty == false ? $0.title.contains(keywordGroups) : true }
             .sorted(by: { $0.date > $1.date })
     }
 
@@ -121,42 +121,11 @@ struct ContentView: View {
     private func stopTimer() {
         self.relativeDateTimeTimer.upstream.connect().cancel()
     }
-
-    /// Transforms keyword string into an Array containing multiple groups of search phrases.
-    ///
-    /// Each group can contain one or more search phrases.
-    /// Groups are separated by the ";" symbol and each group search phrases are separated by a whitespace.
-    ///
-    /// Examples:
-    ///
-    /// Provided string : *"iOS Beta; Xcode"*
-    ///
-    /// Group1: *["iOS", "Beta"]*
-    ///
-    /// Group2: *["Xcode"]*
-    ///
-    /// - Parameter keywords: Multiple search keywords which are translated into groups of search phrases
-    /// - Returns: 2 dimensional array where 1st level represents a collection of groups and 2nd level represents search phrases for a specific  group
-    private func transformKeywords(_ keywords: String) -> [[String]] {
-        keywords                                                // Can contain string:   "iOS Beta; Xcode 11; "
-            .split(separator: ";")                              // Creates an array:     ["iOS Beta", "Xcode 11", " "]
-            .map { $0.split(separator: " ").map(String.init) }  // Creates subarrays:    [["iOS", "Beta"], ["Xcode", "11"], []]
-            .filter { $0.isEmpty == false }                     // Removes empty arrays: [["iOS", "Beta"], ["Xcode", "11"]]
-    }
 }
 
 fileprivate extension Timer {
     static func makeRelativeDateTimeTimer() -> Timer.TimerPublisher {
         Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common)
-    }
-}
-
-fileprivate extension String {
-    func contains(_ phrases: [String]) -> Bool {
-        let string = self.lowercased()
-        return phrases
-            .map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
-            .allSatisfy(string.contains)
     }
 }
 

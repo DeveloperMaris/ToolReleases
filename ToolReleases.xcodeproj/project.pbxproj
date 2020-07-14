@@ -24,6 +24,8 @@
 		B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A522824123D5F00DF7F22 /* OSLog.swift */; };
 		B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CF74024B71F3A00562D91 /* SearchButton.swift */; };
 		B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CF74324B7307100562D91 /* LastRefreshView.swift */; };
+		B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */; };
+		B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC78E24B8AAA600B98B46 /* Search.swift */; };
 		B560170724AB240A0091692A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170624AB240A0091692A /* AboutView.swift */; };
 		B560170924AB42730091692A /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170824AB42730091692A /* AboutWindowController.swift */; };
 		B560172224AC74020091692A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560171D24AC73650091692A /* Sparkle.framework */; };
@@ -107,6 +109,8 @@
 		B52A522824123D5F00DF7F22 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		B52CF74024B71F3A00562D91 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		B52CF74324B7307100562D91 /* LastRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastRefreshView.swift; sourceTree = "<group>"; };
+		B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchTests.swift; sourceTree = "<group>"; };
+		B52FC78E24B8AAA600B98B46 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		B560170624AB240A0091692A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B560170824AB42730091692A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		B560171D24AC73650091692A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				B510D0B7248A3470003FAEC0 /* ToolReleaseDateComparisonTests.swift */,
+				B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */,
 				B510D0B6248A3460003FAEC0 /* Supporting Files */,
 			);
 			path = ToolReleasesTests;
@@ -298,6 +303,7 @@
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
 				B596D51F24A5F73C00A5714A /* NotificationExtension.swift */,
 				B52A522824123D5F00DF7F22 /* OSLog.swift */,
+				B52FC78E24B8AAA600B98B46 /* Search.swift */,
 				B510D095248A2E8A003FAEC0 /* ToolReleaseDateComparison.swift */,
 			);
 			path = Utils;
@@ -540,6 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */,
 				B510D0B8248A3470003FAEC0 /* ToolReleaseDateComparisonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */,
+				B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */,
 				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
 				B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */,
 				B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */,
