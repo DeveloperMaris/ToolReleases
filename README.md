@@ -13,14 +13,10 @@ This application for free retrieves, notifies and shows you the latest Apple too
 # Features
 
 * Displays a list of newest Apple tool releases;
-
-* Automatic background refresh approximately once in an hour;
-
+* Automatic background refresh approximately once per hour;
 * Notifies about the new releases by adding a badge to the status bar icon ([screenshot](./Screenshots/dark_mode_4.png));
-
 * Possibility to filter the release list by keywords (multiple keyword groups can be separated with **semicolons**, for example, *"iOS beta; macOS Big Sur"*) 
-
-*(Note: Application will still notify you of any new tool releases, regardless of your currently filtered keywords)*
+  * *(Note: Application will still notify you of any new tool releases, regardless of your currently filtered keywords)*
 
 # Install
 
@@ -59,15 +55,10 @@ If app doesn't start right away after launching **ToolReleases.app** file and wa
 If you want that **ToolReleases** application would automatically launch at login, then:
 
 1. Open **System Preferences** and navigate to **Users & Groups**.
-
 2. Select *user* on the left side of the settings.
-
 3. Select **Login Items** tab
-
 4. Click on the **+** button
-
 5. Select **Applications** directory on the left side.
-
 6. Search and select the **ToolReleases.app** and click **Add**
 
 ![Launch at Login](./Screenshots/launch_at_login.gif)
