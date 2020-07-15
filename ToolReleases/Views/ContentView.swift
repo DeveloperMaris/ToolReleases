@@ -50,7 +50,7 @@ struct ContentView: View {
                 }
 
                 if showKeywordFilter {
-                    TextField("Xcode; macOS beta", text: $keywordFilterText)
+                    TextField("iOS; macOS beta", text: $keywordFilterText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .transition(AnyTransition.offset(x: 0, y: -30).combined(with: .opacity))
                 }

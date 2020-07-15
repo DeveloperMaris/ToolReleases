@@ -24,6 +24,7 @@ struct PreferencesView: View {
         }
         .menuButtonStyle(BorderlessButtonMenuButtonStyle())
         .frame(width: 16, height: 16)
+        .foregroundColor(.primary) // Special case for the enabled "Reduced Transparency" and "Light Mode" (https://github.com/DeveloperMaris/ToolReleases/issues/4)
     }
 
     func quit() {
