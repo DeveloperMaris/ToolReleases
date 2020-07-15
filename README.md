@@ -10,6 +10,18 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 * macOS 10.15 (Catalina)
 
+# Features
+
+* Displays a list of newest Apple tool releases;
+
+* Automatic background refresh approximately once in an hour;
+
+* Notifies about the new releases by adding a badge to the status bar icon ([screenshot](./Screenshots/dark_mode_4.png));
+
+* Possibility to filter the release list by keywords (multiple keyword groups can be separated with **semicolons**, for example, *"iOS beta; macOS Big Sur"*) 
+
+*(Note: Application will still notify you of any new tool releases, regardless of your currently filtered keywords)*
+
 # Install
 
 1. Open [latest release page](https://github.com/DeveloperMaris/ToolReleases/releases/latest) and download the application binary **ToolReleases_vX.X.X.bX.zip**.
@@ -18,7 +30,7 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 2. Unarchive the **ToolReleases_vX.X.X.bX.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step)
 
-3. Move the **ToolReleases.app** file to **Application** directory.
+3. Move the **ToolReleases.app** file to **Applications** directory.
 
 ![Move to Applications](./Screenshots/move_to_applications.gif)
 
@@ -42,6 +54,24 @@ If app doesn't start right away after launching **ToolReleases.app** file and wa
 
 *Note: these steps will be necessary only for the first application launch.*
 
+# Launch at Login
+
+If you want that **ToolReleases** application would automatically launch at login, then:
+
+1. Open **System Preferences** and navigate to **Users & Groups**.
+
+2. Select *user* on the left side of the settings.
+
+3. Select **Login Items** tab
+
+4. Click on the **+** button
+
+5. Select **Applications** directory on the left side.
+
+6. Search and select the **ToolReleases.app** and click **Add**
+
+![Launch at Login](./Screenshots/launch_at_login.gif)
+
 # Updates
 
 Future application updates are available through the in-application settings.
@@ -63,6 +93,10 @@ Future application updates are available through the in-application settings.
 <img src="./Screenshots/dark_mode_4.png">
 
 <img src="./Screenshots/light_mode_4.png">
+
+<img src="./Screenshots/dark_mode_5.png">
+
+<img src="./Screenshots/light_mode_5.png">
 
 # Licence
 
