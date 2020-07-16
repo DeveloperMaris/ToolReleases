@@ -14,7 +14,7 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 * Displays a list of newest Apple tool releases;
 * Automatic background refresh approximately once per hour;
-* Notifies about the new releases by adding a badge to the status bar icon ([screenshot](./Screenshots/dark_mode_4.png));
+* Notifies about the new releases by adding a badge to the status bar icon ([Notification badge on the status icon](#notification-badge-on-the-status-icon));
 * Possibility to search for a specific tool by keywords (multiple keyword groups can be separated with **semicolons**, for example, *"iOS beta; macOS Big Sur"*) 
   * *(Note: Application will still notify you of any new tool releases, regardless of your currently searched keywords)*
 
@@ -88,6 +88,12 @@ Future application updates are available through the in-application settings.
 <img src="./Screenshots/dark_mode_5.png">
 
 <img src="./Screenshots/light_mode_5.png">
+
+## Notification badge on the status icon
+
+<img src="./Screenshots/dark_mode_6.png">
+
+<img src="./Screenshots/light_mode_6.png">
 
 # Licence
 
