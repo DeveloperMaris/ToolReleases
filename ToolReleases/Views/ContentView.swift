@@ -13,45 +13,47 @@ import ToolReleasesCore
 
 struct ContentView: View {
     @EnvironmentObject private var toolManager: ToolManager
-    @State private var filter = ToolFilter.all
+    @State private var typeFilter = ToolFilter.all
     @State private var relativeDateTimeTimer = Timer.makeRelativeDateTimeTimer().autoconnect()
-
-    private static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-
-        return formatter
-    }()
+    @State private var showKeywordFilter: Bool = false
+    @State private var keywordFilterText: String = ""
 
     private var sortedTools: [Tool] {
-        toolManager.tools
-            .filtered(by: filter)
+        let keywordGroups = Search.transformKeywords(keywordFilterText)
+
+        return toolManager.tools
+            .filtered(by: typeFilter)
+            .filter { showKeywordFilter && keywordGroups.isEmpty == false ? $0.title.contains(keywordGroups) : true }
             .sorted(by: { $0.date > $1.date })
-    }
-
-    private var formattedLastRefreshDate: String {
-        if let date = toolManager.lastRefresh {
-            return "Last refresh: \(Self.formatter.string(from: date))"
-        }
-
-        return "Data hasn't loaded yet"
     }
 
     var body: some View {
         VStack {
             // Filter section
-            HStack {
-                Picker("Select filter", selection: $filter) {
-                    ForEach(ToolFilter.allCases, id: \.self) {
-                        Text($0.description)
+            VStack {
+                HStack {
+                    Picker("Select filter", selection: $typeFilter) {
+                        ForEach(ToolFilter.allCases, id: \.self) {
+                            Text($0.description)
+                        }
                     }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .labelsHidden()
 
-                PreferencesView()
+                    SearchButton {
+                        withAnimation {
+                            self.showKeywordFilter.toggle()
+                        }
+                    }
+
+                    PreferencesView()
+                }
+
+                if showKeywordFilter {
+                    TextField("iOS; macOS beta", text: $keywordFilterText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .transition(AnyTransition.offset(x: 0, y: -30).combined(with: .opacity))
+                }
             }
             .padding([.top, .horizontal])
 
@@ -83,29 +85,12 @@ struct ContentView: View {
 
             Divider()
 
-            HStack {
-                Text(formattedLastRefreshDate)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Spacer()
-
-                Button(action: self.fetch) {
-                    if toolManager.isRefreshing {
-                        ActivityIndicatorView(spinning: true)
-                    } else {
-                        Image("refresh")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                .disabled(toolManager.isRefreshing)
-            }
-            .padding(.bottom, 10)
-            .padding(.horizontal)
+            LastRefreshView(isRefreshing: toolManager.isRefreshing, lastRefreshDate: toolManager.lastRefresh, handler: fetch)
+                .padding(.bottom, 10)
+                .padding(.horizontal)
         }
         .onAppear {
+            os_log(.debug, log: .views, "Initial fetch")
             self.fetch()
         }
         .onReceive(NotificationCenter.default.publisher(for: .popoverWillAppear)) { _ in
