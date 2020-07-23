@@ -78,7 +78,6 @@ private extension AppDelegate {
         button.image = NSImage(named: "status_bar_icon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
-        button.contentTintColor = .textColor
 
         button.addSubview(badge)
         badge.translatesAutoresizingMaskIntoConstraints = false
