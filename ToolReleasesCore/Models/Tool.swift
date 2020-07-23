@@ -46,7 +46,7 @@ public struct Tool: Identifiable, Equatable {
             return nil
         }
 
-        guard let title = item.title else {
+        guard let title = item.title?.trimmingCharacters(in: .whitespaces) else {
             return nil
         }
 
