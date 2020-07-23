@@ -438,6 +438,31 @@ class ToolTests: XCTestCase {
         // Then
         XCTAssertThrowsError(try Tool.parseID(from: string))
     }
+
+    func testBigSurBeta3RSSFeedItem() {
+        // Given
+        let guid = RSSFeedItemGUID()
+        guid.value = "https://developer.apple.com/news/releases/?id=07222020e"
+
+        let item = RSSFeedItem()
+        item.guid = guid
+        item.title = " macOS Big Sur 11 beta 3 (20A5323l) "
+        item.link = "https://developer.apple.com/news/releases/?id=07222020e"
+        item.description = "Users on macOS Big Sur 10.16 beta 1 or 2 will see the full install image for macOS Big Sur 11 beta 3 in the Software Update panel, rather than a smaller incremental update image. To download the incremental update image, click “More Info…” in the Software Update panel. Either image can be used to install beta 3"
+
+        let dateString = "2020-07-22 20:30:00 +0000"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let date = formatter.date(from: dateString)
+
+        item.pubDate = date
+
+        // When
+        let sut = Tool(item)
+
+        // Then
+        XCTAssertNotNil(sut)
+    }
 }
 
 // MARK: - Helpers
