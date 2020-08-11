@@ -27,11 +27,11 @@ struct PreferencesView: View {
                     Text("About")
                 }
                 Button(action: checkForUpdates) {
-                    ZStack {
+                    ZStack(alignment: .bottomTrailing) {
                         Text("Check for Updates")
 
                         BadgeView()
-                            .offset(x: 58, y: -4)
+                            .offset(x: 6, y: -6)
                             .opacity(updater.isUpdateAvailable ? 1 : 0)
                     }
                 }
