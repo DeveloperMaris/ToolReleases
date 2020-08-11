@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B505404724E1966500A1D56B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505404624E1966500A1D56B /* BadgeView.swift */; };
 		B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */; };
 		B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D07F2488C8E3003FAEC0 /* OSLog.swift */; };
 		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
@@ -37,6 +38,7 @@
 		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
 		B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */; };
 		B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* NotificationExtension.swift */; };
+		B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE60D24C5E16C0016CC96 /* Updater.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -86,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B505404624E1966500A1D56B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		B510D07A248804F8003FAEC0 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		B510D07F2488C8E3003FAEC0 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolReleaseDateView.swift; sourceTree = "<group>"; };
 		B596D51F24A5F73C00A5714A /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		B5CBE60D24C5E16C0016CC96 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				B560170624AB240A0091692A /* AboutView.swift */,
+				B505404624E1966500A1D56B /* BadgeView.swift */,
 				B52A52102412353100DF7F22 /* ContentView.swift */,
 				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
 				B5DE2F92246682270010DA70 /* ToolRow.swift */,
@@ -305,6 +310,7 @@
 				B52A522824123D5F00DF7F22 /* OSLog.swift */,
 				B52FC78E24B8AAA600B98B46 /* Search.swift */,
 				B510D095248A2E8A003FAEC0 /* ToolReleaseDateComparison.swift */,
+				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
 				B510D07B248804F8003FAEC0 /* ActivityIndicatorView.swift in Sources */,
 				B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */,
+				B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */,
 				B560170924AB42730091692A /* AboutWindowController.swift in Sources */,
 				B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */,
 				B560170724AB240A0091692A /* AboutView.swift in Sources */,
@@ -577,6 +584,7 @@
 				B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
+				B505404724E1966500A1D56B /* BadgeView.swift in Sources */,
 				B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */,
 				B593D8B22490C1D1006E8265 /* AppExtension.swift in Sources */,
 				B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */,
@@ -830,7 +838,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -845,7 +853,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -862,7 +870,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -877,7 +885,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
