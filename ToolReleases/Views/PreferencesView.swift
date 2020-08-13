@@ -6,25 +6,46 @@
 //  Copyright © 2020 Maris Lagzdins. All rights reserved.
 //
 
-import Sparkle
+import os.log
 import SwiftUI
 
 struct PreferencesView: View {
+    @EnvironmentObject private var updater: Updater
+
+    var showBadge: Bool {
+        updater.isUpdateAvailable
+    }
+
     var body: some View {
-        MenuButton("...") {
-            Button(action: showAbout) {
-                Text("About")
+        ZStack(alignment: .bottomLeading) {
+            BadgeView()
+                .offset(x: 5, y: -7)
+                .opacity(showBadge ? 1 : 0)
+
+            MenuButton("...") {
+                Button(action: showAbout) {
+                    Text("About")
+                }
+                Button(action: checkForUpdates) {
+                    ZStack(alignment: .bottomTrailing) {
+                        Text("Check for Updates")
+
+                        BadgeView()
+                            .offset(x: 6, y: -6)
+                            .opacity(updater.isUpdateAvailable ? 1 : 0)
+                    }
+                }
+                Button(action: quit) {
+                    Text("Quit")
+                }
             }
-            Button(action: checkForUpdates) {
-                Text("Check for Updates")
-            }
-            Button(action: quit) {
-                Text("Quit")
+            .menuButtonStyle(BorderlessButtonMenuButtonStyle())
+            .frame(width: 16, height: 16)
+            .foregroundColor(.primary) // Special case for the enabled "Reduced Transparency" and "Light Mode" (https://github.com/DeveloperMaris/ToolReleases/issues/4)
+            .onReceive(NotificationCenter.default.publisher(for: .popoverWillAppear)) { _ in
+                os_log(.debug, log: .views, "Popover will appear event received")
             }
         }
-        .menuButtonStyle(BorderlessButtonMenuButtonStyle())
-        .frame(width: 16, height: 16)
-        .foregroundColor(.primary) // Special case for the enabled "Reduced Transparency" and "Light Mode" (https://github.com/DeveloperMaris/ToolReleases/issues/4)
     }
 
     func quit() {
@@ -44,7 +65,7 @@ struct PreferencesView: View {
     }
 
     func checkForUpdates() {
-        SUUpdater.shared()?.checkForUpdates(nil)
+        updater.checkForUpdates()
     }
 }
 
