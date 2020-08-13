@@ -11,15 +11,15 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class ToolReleaseDateComparisonTests: XCTestCase {
-    func testToolReleasedLessThanOneHourAgo() {
+class DateComparisonTests: XCTestCase {
+    func testToollessThanOneHourAgo() {
         // Given
         let component = DateComponents(minute: 59)
         let date = Calendar.current.date(byAdding: component, to: Date())!
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .hour)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .hour)
 
         // then
         XCTAssertTrue(result)
@@ -32,20 +32,20 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .hour)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .hour)
 
         // then
         XCTAssertFalse(result)
     }
 
-    func testToolReleasedLessThanOneDayAgo() {
+    func testToollessThanOneDayAgo() {
         // Given
         let component = DateComponents(hour: -23)
         let date = Calendar.current.date(byAdding: component, to: Date())!
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day)
 
         // then
         XCTAssertTrue(result)
@@ -58,20 +58,20 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day)
 
         // then
         XCTAssertFalse(result)
     }
 
-    func testToolReleasedLessThanOneDayAgoInSecondPrecision() {
+    func testToollessThanOneDayAgoInSecondPrecision() {
         // Given
         let component = DateComponents(day: -1, second: 1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day)
 
         // then
         XCTAssertTrue(result)
@@ -84,20 +84,20 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day)
 
         // then
         XCTAssertFalse(result)
     }
 
-    func testToolReleasedLessThanThreeDaysAgo() {
+    func testToollessThanThreeDaysAgo() {
         // Given
         let component = DateComponents(day: -2)
         let date = Calendar.current.date(byAdding: component, to: Date())!
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 3, .day)
 
         // then
         XCTAssertTrue(result)
@@ -110,7 +110,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 3, .day)
 
         // then
         XCTAssertFalse(result)
@@ -123,7 +123,7 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 3, .day)
 
         // then
         XCTAssertFalse(result)
@@ -136,13 +136,13 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let tool = Tool.make(with: date)
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day)
+        let result = DateComparison.isDate(tool.date, lessThan: 3, .day)
 
         // then
         XCTAssertFalse(result)
     }
 
-    func testToolReleasedLessThanOneDayAgoInSecondPrecisionWithProvidedSinceDate() {
+    func testToollessThanOneDayAgoInSecondPrecisionWithProvidedSinceDate() {
         // Given
         let component = DateComponents(day: -5, second: 1)
         let date = Calendar.current.date(byAdding: component, to: Date())!
@@ -152,16 +152,9 @@ class ToolReleaseDateComparisonTests: XCTestCase {
         let sinceDate = Calendar.current.date(byAdding: sinceComponent, to: Date())!
 
         // When
-        let result = ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .day, since: sinceDate) // Calculations must track that the difference is 59 minutes.
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day, since: sinceDate) // Calculations must track that the difference is 59 minutes.
 
         // then
         XCTAssertTrue(result)
-    }
-}
-
-// MARK: - Helpers
-fileprivate extension Tool {
-    static func make(with date: Date) -> Self {
-        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: "Test tool (1234567890)", date: date, url: URL(string: "www.example.com"), description: "Tool Description")
     }
 }
