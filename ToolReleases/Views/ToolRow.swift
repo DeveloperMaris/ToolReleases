@@ -19,15 +19,11 @@ struct ToolRow: View {
     @State private var currentDate = Date()
 
     private var isRecentRelease: Bool {
-        ToolReleaseDateComparison.isTool(tool, releasedLessThan: 3, .day, since: currentDate)
+        DateComparison.isDate(tool.date, lessThan: 3, .day, since: currentDate)
     }
 
-    private var formattedDate: String {
-        if ToolReleaseDateComparison.isTool(tool, releasedLessThan: 1, .minute, since: currentDate) {
-            return "Just now"
-        } else {
-            return RelativeDateTimeFormatter().localizedString(for: tool.date, relativeTo: currentDate).capitalized
-        }
+    var formattedDate: String {
+        parseDate(tool.date, relativeTo: currentDate)
     }
 
     var body: some View {
@@ -56,6 +52,35 @@ struct ToolRow: View {
     func updateCurrentDate(_ date: Date) {
         self.currentDate = date
         os_log(.debug, log: .views, "Tool date refreshed for %{public}@", self.tool.title)
+    }
+
+    /// Compares date times and produces a localized relative date time string
+    ///
+    /// Meant for comparing the Tool release date time with current date time and provide a localized string as "1 Hour Ago", etc.
+    /// - Parameters:
+    ///   - sourceDate: First date
+    ///   - relativeDate: Date to which the first date will be compared
+    /// - Returns: Localized relative date time format.
+    internal func parseDate(_ sourceDate: Date, relativeTo relativeDate: Date) -> String {
+        if DateComparison.isDate(sourceDate, lessThan: 1, .minute, since: relativeDate) {
+            return "Just now"
+        } else {
+            // Remove exact time and leave only the date
+            let sourceDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: sourceDate)
+            let relativeDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: relativeDate)
+
+            // Recreate the date object with only date available
+            let sourceDateOnly = Calendar.current.date(from: sourceDateComponents) ?? sourceDate
+            let relativeDateOnly = Calendar.current.date(from: relativeDateComponents) ?? relativeDate
+
+            if DateComparison.isDate(sourceDateOnly, lessThan: 1, .day, since: relativeDateOnly) {
+                // Show exact hour count only if the tool was released in the same day
+                return RelativeDateTimeFormatter().localizedString(for: sourceDate, relativeTo: relativeDate).capitalized
+            } else {
+                // Take in count only the dates, not exact time
+                return RelativeDateTimeFormatter().localizedString(for: sourceDateOnly, relativeTo: relativeDateOnly).capitalized
+            }
+        }
     }
 }
 
