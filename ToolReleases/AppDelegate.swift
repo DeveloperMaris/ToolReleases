@@ -19,6 +19,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private lazy var popover = NSPopover()
     private lazy var toolManager = ToolManager()
+    /// Manages in-app updates
+    private lazy var updater: Updater = {
+        let updater = Updater()
+        updater.startAutomaticBackgroundUpdateChecks()
+        return updater
+    }()
     private lazy var badge: NSView = {
         let view = NSView()
         view.wantsLayer = true
@@ -104,6 +110,7 @@ private extension AppDelegate {
     func configurePopover() {
         let contentView = ContentView()
             .environmentObject(toolManager)
+            .environmentObject(updater)
 
         let host = NSHostingController(rootView: contentView)
 
