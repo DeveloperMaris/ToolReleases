@@ -17,9 +17,8 @@ struct PreferencesView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .topTrailing) {
             BadgeView()
-                .offset(x: 5, y: -7)
                 .opacity(showBadge ? 1 : 0)
 
             MenuButton("...") {
@@ -27,12 +26,12 @@ struct PreferencesView: View {
                     Text("About")
                 }
                 Button(action: checkForUpdates) {
-                    ZStack(alignment: .bottomTrailing) {
+                    if updater.isUpdateAvailable {
+                        Text("Update is available!")
+                            .italic()
+                            .bold()
+                    } else {
                         Text("Check for Updates")
-
-                        BadgeView()
-                            .offset(x: 6, y: -6)
-                            .opacity(updater.isUpdateAvailable ? 1 : 0)
                     }
                 }
                 Button(action: quit) {
