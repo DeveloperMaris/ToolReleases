@@ -20,11 +20,23 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 # Install
 
+## 1. Using [Homebrew](https://brew.sh)
+
+1. Open Terminal.
+
+2. Execute command `brew cask install toolreleases`.
+
+![Install app using Homebrew](./Screenshots/install_using_homebrew.png)
+
+3. Open Launchpad and launch the **ToolReleases** app.
+
+## 2. Manual installation
+
 1. Open [latest release page](https://github.com/DeveloperMaris/ToolReleases/releases/latest) and download the application binary **ToolReleases_vX.X.X.bX.zip**.
 
 ![Download the applications](./Screenshots/download_application.png)
 
-2. Unarchive the **ToolReleases_vX.X.X.bX.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step)
+2. Unarchive the **ToolReleases_vX.X.X.bX.zip** (it's possible, that downloaded file will be automatically unarchived, then you can skip this step).
 
 3. Move the **ToolReleases.app** file to **Applications** directory.
 
@@ -32,7 +44,7 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 4. Launch the **ToolReleases.app** file.
 
-# Additional installation steps
+### Additional installation steps
 
 If app doesn't start right away after launching **ToolReleases.app** file and warning appears:
 
