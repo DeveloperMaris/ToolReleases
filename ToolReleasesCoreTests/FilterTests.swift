@@ -22,7 +22,7 @@ class FilterTests: XCTestCase {
         release2 = Tool.make(withTitle: "macOS 11.0 (2)")
         beta1 = Tool.make(withTitle: "watchOS 12.0 beta (3)")
         beta2 = Tool.make(withTitle: "watchOS 12.1.1 beta (4)")
-        gm1 = Tool.make(withTitle: "tvOS 13.0 GM seed (4)")
+        gm1 = Tool.make(withTitle: "tvOS 13.0 Release Candidate (4)")
     }
 
     override func tearDownWithError() throws {
