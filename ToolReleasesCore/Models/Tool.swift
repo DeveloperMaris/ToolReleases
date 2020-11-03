@@ -25,12 +25,12 @@ public struct Tool: Identifiable, Equatable {
         title.lowercased().contains("beta ") || title.lowercased().contains(" beta")
     }
 
-    public var isGMSeed: Bool {
-        title.lowercased().contains("gm seed")
+    public var isReleaseCandidate: Bool {
+        title.lowercased().contains("release candidate")
     }
 
     public var isRelease: Bool {
-        isBeta == false && isGMSeed == false
+        isBeta == false && isReleaseCandidate == false
     }
 
     public init(id: String, title: String, date: Date, url: URL?, description: String?) {

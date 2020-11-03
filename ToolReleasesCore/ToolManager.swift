@@ -6,17 +6,18 @@
 //  Copyright © 2020 Maris Lagzdins. All rights reserved.
 //
 
+import Combine
 import FeedKit
 import Foundation
 import os.log
 
 public class ToolManager: ObservableObject {
-    let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
-    let parser: FeedParser
-    let privateQueue: DispatchQueue
-
-    private var autoCheckTimer: Timer?
+    private var autoCheckTimer: AnyCancellable?
     private var autoCheckTimeInterval: TimeInterval = 3600 // 1 hour
+
+    internal let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
+    internal let parser: FeedParser
+    internal let privateQueue: DispatchQueue
 
     @Published public private(set) var tools = [Tool]()
     @Published public private(set) var isRefreshing = false
@@ -84,21 +85,21 @@ private extension ToolManager {
     func startAutoCheckTimer() {
         os_log(.debug, log: .toolManager, "%{public}@", #function)
 
-        autoCheckTimer?.invalidate()
-        autoCheckTimer = Timer.scheduledTimer(withTimeInterval: autoCheckTimeInterval, repeats: true) { [weak self] _ in
-            guard let self = self else {
-                return
+        autoCheckTimer = Timer
+            .publish(every: autoCheckTimeInterval, tolerance: autoCheckTimeInterval / 4, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] input in
+                guard let self = self else {
+                    return
+                }
+
+                guard self.isRefreshing == false else {
+                    os_log(.debug, log: .toolManager, "Skipping automatic refreshing, tools are currently being refreshed already")
+                    return
+                }
+
+                os_log(.debug, log: .toolManager, "Executes automatic fetch")
+                self.fetch()
             }
-
-            guard self.isRefreshing == false else {
-                os_log(.debug, log: .toolManager, "Skipping automatic refreshing, tools are currently being refreshed already")
-                return
-            }
-
-            os_log(.debug, log: .toolManager, "Executes automatic fetch")
-            self.fetch()
-        }
-
-        autoCheckTimer?.tolerance = autoCheckTimeInterval / 4
     }
 }

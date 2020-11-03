@@ -267,18 +267,18 @@ class ToolTests: XCTestCase {
 
     // MARK: - Is GM Seed
 
-    func testToolIsGMSeed() {
+    func testToolIsReleaseCandidate() {
         // Given
-        let title = "iOS 13.0 gm seed (1)"
+        let title = "iOS 13.0 release candidate (1)"
 
         // When
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertTrue(sut.isGMSeed)
+        XCTAssertTrue(sut.isReleaseCandidate)
     }
 
-    func testToolIsNotGMSeed() {
+    func testToolIsNotReleaseCandidate() {
         // Given
         let title = "iOS 13.0 (1)"
 
@@ -286,51 +286,51 @@ class ToolTests: XCTestCase {
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertFalse(sut.isGMSeed)
+        XCTAssertFalse(sut.isReleaseCandidate)
     }
 
-    func testToolIsNotGMSeedWithIncorrectSpelling() {
+    func testToolIsNotReleaseCandidateWithIncorrectSpelling() {
         // Given
-        let title = "iOS 13.0 GMSeed (1)"
+        let title = "iOS 13.0 ReleaseCandidate (1)"
 
         // When
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertFalse(sut.isGMSeed)
+        XCTAssertFalse(sut.isReleaseCandidate)
     }
 
-    func testToolIsGMSeedCapitalized() {
+    func testToolIsReleaseCandidateCapitalized() {
         // Given
-        let title = "iOS 13.0 GM Seed (1)"
+        let title = "iOS 13.0 Release Candidate (1)"
 
         // When
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertTrue(sut.isGMSeed)
+        XCTAssertTrue(sut.isReleaseCandidate)
     }
 
-    func testToolIsGMSeedContainingKeywordAtTheBeginning() {
+    func testToolIsReleaseCandidateContainingKeywordAtTheBeginning() {
         // Given
-        let title = "GM seed iOS 13.0 (1)"
+        let title = "Release Candidate iOS 13.0 (1)"
 
         // When
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertTrue(sut.isGMSeed)
+        XCTAssertTrue(sut.isReleaseCandidate)
     }
 
-    func testToolIsGMSeedContainingKeywordAtTheEnd() {
+    func testToolIsReleaseCandidateContainingKeywordAtTheEnd() {
         // Given
-        let title = "iOS 13.0 (1) GM seed"
+        let title = "iOS 13.0 (1) Release Candidate"
 
         // When
         let sut = Tool.make(withTitle: title)
 
         // Then
-        XCTAssertTrue(sut.isGMSeed)
+        XCTAssertTrue(sut.isReleaseCandidate)
     }
 
     // MARK: - Is a tool
