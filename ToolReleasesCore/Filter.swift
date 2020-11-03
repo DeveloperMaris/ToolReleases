@@ -31,7 +31,7 @@ extension Array where Element == Tool {
         case .all:
             return self
         case .beta:
-            return self.filter { $0.isBeta || $0.isGMSeed }
+            return self.filter { $0.isBeta || $0.isReleaseCandidate }
         case .release:
             return self.filter { $0.isRelease }
         }
