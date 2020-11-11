@@ -265,7 +265,7 @@ class ToolTests: XCTestCase {
         XCTAssertFalse(sut.isBeta)
     }
 
-    // MARK: - Is GM Seed
+    // MARK: - Is Release Candidate
 
     func testToolIsReleaseCandidate() {
         // Given
@@ -331,6 +331,72 @@ class ToolTests: XCTestCase {
 
         // Then
         XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsReleaseCandidateContainingShortKeywordInTheMiddle() {
+        // Given
+        let title = "iOS 13.0 RC (1)"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsReleaseCandidateContainingShortKeywordAtTheBeginning() {
+        // Given
+        let title = "RC iOS 13.0 (1)"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsReleaseCandidateContainingShortKeywordAtTheEnd() {
+        // Given
+        let title = "iOS 13.0 (1) RC"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsReleaseCandidateContainingShortKeywordInLowercase() {
+        // Given
+        let title = "iOS 13.0 rc (1)"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsReleaseCandidateContainingShortKeywordWithVersion() {
+        // Given
+        let title = "iOS 13.0 RC 2 (1)"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertTrue(sut.isReleaseCandidate)
+    }
+
+    func testToolIsNotReleaseCandidateContainingShortKeywordWithinDifferentKeywords() {
+        // Given
+        let title = "iOS 13.0 Overcomplicated (1)"
+
+        // When
+        let sut = Tool.make(withTitle: title)
+
+        // Then
+        XCTAssertFalse(sut.isReleaseCandidate)
     }
 
     // MARK: - Is a tool
