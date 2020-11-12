@@ -1,0 +1,14 @@
+//
+//  Release.xcconfig
+//  ToolReleases
+//
+//  Created by Maris Lagzdins on 12/11/2020.
+//  Copyright © 2020 Maris Lagzdins. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Release configuration needs to be set manually, providing the certificate signing identity.
+// It is necessary for Fastlane, so that it would sign the release build with Developer ID certificate, not the Developer certificate which in turn would fail automatic notarization.
+CODE_SIGN_IDENTITY = Developer ID Application
