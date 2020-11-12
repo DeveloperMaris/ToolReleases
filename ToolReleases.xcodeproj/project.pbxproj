@@ -451,9 +451,9 @@
 			buildConfigurationList = B52A521E2412353500DF7F22 /* Build configuration list for PBXNativeTarget "ToolReleases" */;
 			buildPhases = (
 				B52A52072412353100DF7F22 /* Sources */,
+				B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */,
 				B52A52082412353100DF7F22 /* Frameworks */,
 				B52A52092412353100DF7F22 /* Resources */,
-				B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */,
 				B5D45A4924544C08007FF637 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -892,7 +892,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -907,7 +907,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.6;
+				MARKETING_VERSION = 1.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -926,7 +926,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -941,7 +941,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.6;
+				MARKETING_VERSION = 1.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
