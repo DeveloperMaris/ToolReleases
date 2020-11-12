@@ -116,6 +116,8 @@
 		B52CF74324B7307100562D91 /* LastRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastRefreshView.swift; sourceTree = "<group>"; };
 		B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchTests.swift; sourceTree = "<group>"; };
 		B52FC78E24B8AAA600B98B46 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		B5448AB9255D54A000728F3F /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		B5448ACD255D627500728F3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B560170624AB240A0091692A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B560170824AB42730091692A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		B560171D24AC73650091692A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		B52A52022412353100DF7F22 = {
 			isa = PBXGroup;
 			children = (
+				B5448AB8255D548400728F3F /* Configuration */,
 				B52A520D2412353100DF7F22 /* ToolReleases */,
 				B5D45A4124544C07007FF637 /* ToolReleasesCore */,
 				B510D0AD248A344D003FAEC0 /* ToolReleasesTests */,
@@ -329,6 +332,15 @@
 				B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		B5448AB8255D548400728F3F /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				B5448ACD255D627500728F3F /* README.md */,
+				B5448AB9255D54A000728F3F /* Release.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		B560171524AC70020091692A /* Vendor */ = {
@@ -441,6 +453,7 @@
 				B52A52072412353100DF7F22 /* Sources */,
 				B52A52082412353100DF7F22 /* Frameworks */,
 				B52A52092412353100DF7F22 /* Resources */,
+				B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */,
 				B5D45A4924544C08007FF637 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -560,6 +573,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Vendor/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/Autoupdate",
+				"$(SRCROOT)/Vendor/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/fileop",
+			);
+			name = "Codesign Sparkle framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Automatic Fastlane notarization does not approve, unless we manually codesign these Sparkle files.\ncodesign --force -o runtime -s 'Developer ID Application' \"${SCRIPT_INPUT_FILE_0}\"\ncodesign --force -o runtime -s 'Developer ID Application' \"${SCRIPT_INPUT_FILE_1}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B510D0A8248A344D003FAEC0 /* Sources */ = {
@@ -853,10 +889,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToolReleases/ToolReleases.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -871,9 +907,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.5;
+				MARKETING_VERSION = 1.3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -881,14 +918,15 @@
 		};
 		B52A52202412353500DF7F22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5448AB9255D54A000728F3F /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToolReleases/ToolReleases.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -903,9 +941,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.5;
+				MARKETING_VERSION = 1.3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

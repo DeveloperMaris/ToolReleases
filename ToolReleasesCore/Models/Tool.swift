@@ -20,18 +20,9 @@ public struct Tool: Identifiable, Equatable {
     public let description: String?
     public let url: URL?
     public let date: Date
-
-    public var isBeta: Bool {
-        title.lowercased().contains("beta ") || title.lowercased().contains(" beta")
-    }
-
-    public var isReleaseCandidate: Bool {
-        title.lowercased().contains("release candidate")
-    }
-
-    public var isRelease: Bool {
-        isBeta == false && isReleaseCandidate == false
-    }
+    public let isBeta: Bool
+    public let isReleaseCandidate: Bool
+    public let isRelease: Bool
 
     public init(id: String, title: String, date: Date, url: URL?, description: String?) {
         self.id = id
@@ -39,6 +30,13 @@ public struct Tool: Identifiable, Equatable {
         self.date = date
         self.url = url
         self.description = description
+
+        let isBeta = Self.isBetaTool(title: title)
+        let isRC = Self.isReleaseCandidateTool(title: title)
+
+        self.isBeta = isBeta
+        self.isReleaseCandidate = isRC
+        self.isRelease = isBeta == false && isRC == false
     }
 
     public init?(_ item: RSSFeedItem) {
@@ -68,6 +66,13 @@ public struct Tool: Identifiable, Equatable {
         } else {
             self.url = nil
         }
+
+        let isBeta = Self.isBetaTool(title: title)
+        let isRC = Self.isReleaseCandidateTool(title: title)
+
+        self.isBeta = isBeta
+        self.isReleaseCandidate = isRC
+        self.isRelease = isBeta == false && isRC == false
     }
 
     internal static func isTool(_ title: String) -> Bool {
@@ -92,6 +97,18 @@ public struct Tool: Identifiable, Equatable {
         }
 
         throw ToolError.noID
+    }
+}
+
+private extension Tool {
+    static func isBetaTool(title: String) -> Bool {
+        let keywords = [" beta", "beta "]
+        return keywords.contains(where: title.lowercased().contains)
+    }
+
+    static func isReleaseCandidateTool(title: String) -> Bool {
+        let keywords = ["release candidate", " rc", "rc "]
+        return keywords.contains(where: title.lowercased().contains)
     }
 }
 

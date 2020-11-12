@@ -1,0 +1,34 @@
+default_platform(:mac)
+
+APP_BUILD_PATH = 'build'
+
+platform :mac do
+    desc "Build and notarize the app"
+    lane :build do
+        build_mac_app(
+            scheme: "ToolReleases",
+            configuration: "Release",
+            output_directory: "#{APP_BUILD_PATH}",
+            clean: true,
+            skip_package_pkg: true,
+            export_method: "developer-id"
+        )
+        notarize(
+            package: "#{APP_BUILD_PATH}/ToolReleases.app",
+            print_log: true
+        )
+    end
+
+    desc "Creates zip file with the application and provides the necessary name format (which is used by the Sparkle framework)"
+    lane :compress do
+        version = get_version_number(target: "ToolReleases")
+        build = get_build_number()
+        zip(path: "#{APP_BUILD_PATH}/ToolReleases.app", output_path: "#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip")
+    end
+
+    desc "Do all the necessary things to prepare a new release"
+    lane :release do
+        build
+        compress
+    end
+end
