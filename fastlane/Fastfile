@@ -23,7 +23,7 @@ platform :mac do
     lane :compress do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
-        zip(path: "#{APP_BUILD_PATH}/ToolReleases.app", output_path: "#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip")
+        zip(path: "#{APP_BUILD_PATH}/ToolReleases.app", output_path: "#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip", symlinks: true)
     end
 
     desc "Do all the necessary things to prepare a new release"
