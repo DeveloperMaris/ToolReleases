@@ -16,6 +16,11 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## Mac
+### mac release
+```
+fastlane mac release
+```
+Do all the necessary things to prepare a new release
 ### mac build
 ```
 fastlane mac build
@@ -25,12 +30,12 @@ Build and notarize the app
 ```
 fastlane mac compress
 ```
-Creates zip file with the application and provides the necessary name format (which is used by the Sparkle framework)
-### mac release
+Create zip file with the application and provides the necessary name format (which is used by the Sparkle framework).
+### mac release_hash
 ```
-fastlane mac release
+fastlane mac release_hash
 ```
-Do all the necessary things to prepare a new release
+Return sha-256 hash from the application zip file. This is necessary for the Homebrew version.
 
 ----
 

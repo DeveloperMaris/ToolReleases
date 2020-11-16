@@ -3,6 +3,13 @@ default_platform(:mac)
 APP_BUILD_PATH = 'build'
 
 platform :mac do
+    desc "Do all the necessary things to prepare a new release"
+    lane :release do
+        build
+        compress
+        release_hash
+    end
+
     desc "Build and notarize the app"
     lane :build do
         build_mac_app(
@@ -19,16 +26,21 @@ platform :mac do
         )
     end
 
-    desc "Creates zip file with the application and provides the necessary name format (which is used by the Sparkle framework)"
+    desc "Create zip file with the application and provides the necessary name format (which is used by the Sparkle framework)."
     lane :compress do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
-        zip(path: "#{APP_BUILD_PATH}/ToolReleases.app", output_path: "#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip", symlinks: true)
+        zip(
+            path: "#{APP_BUILD_PATH}/ToolReleases.app",
+            output_path: "#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip",
+            symlinks: true
+        )
     end
 
-    desc "Do all the necessary things to prepare a new release"
-    lane :release do
-        build
-        compress
+    desc "Return sha-256 hash from the application zip file. This is necessary for the Homebrew version."
+    lane :release_hash do
+        version = get_version_number(target: "ToolReleases")
+        build = get_build_number()
+        sh("cd .. && shasum -a 256 #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip | awk '{print $1}'")
     end
 end
