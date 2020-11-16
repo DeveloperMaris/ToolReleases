@@ -46,7 +46,9 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 ### Additional installation steps
 
-If app doesn't start right away after launching **ToolReleases.app** file and warning appears:
+macOS includes a technology called Gatekeeper, that's designed to ensure that only trusted software runs on your Mac, [more info here](https://support.apple.com/en-us/HT202491).
+
+If app doesn't start right away after launching **ToolReleases.app** file and this warning appears:
 
 <img src="./Screenshots/warning_1.png">
 
