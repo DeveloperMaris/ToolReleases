@@ -451,10 +451,10 @@
 			buildConfigurationList = B52A521E2412353500DF7F22 /* Build configuration list for PBXNativeTarget "ToolReleases" */;
 			buildPhases = (
 				B52A52072412353100DF7F22 /* Sources */,
-				B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */,
 				B52A52082412353100DF7F22 /* Frameworks */,
 				B52A52092412353100DF7F22 /* Resources */,
 				B5D45A4924544C08007FF637 /* Embed Frameworks */,
+				B5448AC9255D5D3C00728F3F /* Codesign Sparkle framework */,
 			);
 			buildRules = (
 			);
@@ -583,8 +583,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Vendor/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/Autoupdate",
-				"$(SRCROOT)/Vendor/Sparkle.framework/Resources/Autoupdate.app/Contents/MacOS/fileop",
 			);
 			name = "Codesign Sparkle framework";
 			outputFileListPaths = (
@@ -593,7 +591,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Automatic Fastlane notarization does not approve, unless we manually codesign these Sparkle files.\ncodesign --force -o runtime -s 'Developer ID Application' \"${SCRIPT_INPUT_FILE_0}\"\ncodesign --force -o runtime -s 'Developer ID Application' \"${SCRIPT_INPUT_FILE_1}\"\n";
+			shellScript = "# For Apple notarization, we need to deep sign Sparkle framework\nLOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -892,7 +890,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -926,7 +924,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
