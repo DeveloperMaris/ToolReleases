@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - 'feature/github-actions'
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'ToolReleases/**'
+      - 'ToolReleasesCore/**'
+
+jobs:
+  test:
+    name: Tool Release tests
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_12.2.app
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary
