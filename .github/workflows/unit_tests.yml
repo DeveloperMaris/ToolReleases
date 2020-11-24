@@ -33,4 +33,4 @@ jobs:
       - name: Test
         run: |
           set -o pipefail
-          xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary
+          xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary | xcpretty
