@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    name: Tool Release tests
+    name: Unit tests
     runs-on: macos-latest
 
     steps:
@@ -31,6 +31,4 @@ jobs:
           p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
       - name: Test
-        run: |
-          set -o pipefail
-          xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary | xcpretty
+        run: xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary | xcpretty
