@@ -1066,8 +1066,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nmdias/FeedKit.git";
 			requirement = {
-				kind = exactVersion;
-				version = 9.1.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
