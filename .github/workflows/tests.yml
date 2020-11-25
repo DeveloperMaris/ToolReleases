@@ -8,6 +8,8 @@ on:
     paths:
       - 'ToolReleases/**'
       - 'ToolReleasesCore/**'
+      - 'ToolReleasesTests/**'
+      - 'ToolReleasesCoreTests/**'
 
 jobs:
   test:
