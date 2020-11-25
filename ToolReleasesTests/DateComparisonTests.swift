@@ -22,7 +22,7 @@ class DateComparisonTests: XCTestCase {
         let result = DateComparison.isDate(tool.date, lessThan: 1, .hour)
 
         // then
-        XCTAssertTrue(result)
+        XCTAssertFalse(result)
     }
 
     func testToolReleasedMoreThanOneHourAgo() {
