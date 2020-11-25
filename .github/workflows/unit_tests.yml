@@ -38,10 +38,17 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: Clean project
-        run: xcodebuild -disableAutomaticPackageResolution clean
+        run: |
+          set -o pipefail
+          xcodebuild -disableAutomaticPackageResolution clean | xcpretty
+
 
       - name: Build
-        run: xcodebuild -disableAutomaticPackageResolution -scheme ToolReleases -destination platform=macOS build-for-testing | xcpretty
+        run: |
+          set -o pipefail
+          xcodebuild -disableAutomaticPackageResolution -scheme ToolReleases -destination platform=macOS build-for-testing | xcpretty
 
       - name: Test
-        run: xcodebuild -disableAutomaticPackageResolution -scheme ToolReleases -destination platform=macOS test-without-building | xcpretty
+        run: |
+          set -o pipefail
+          xcodebuild -disableAutomaticPackageResolution -scheme ToolReleases -destination platform=macOS test-without-building | xcpretty
