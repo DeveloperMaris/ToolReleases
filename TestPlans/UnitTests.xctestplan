@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "87B77756-C674-4AC1-B67F-813A1DB441CB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ToolReleases.xcodeproj",
+        "identifier" : "B510D0BC248B756C003FAEC0",
+        "name" : "ToolReleasesCoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ToolReleases.xcodeproj",
+        "identifier" : "B510D0AB248A344D003FAEC0",
+        "name" : "ToolReleasesTests"
+      }
+    }
+  ],
+  "version" : 1
+}
