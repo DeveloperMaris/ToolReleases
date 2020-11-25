@@ -41,14 +41,16 @@ jobs:
         run: xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath .build
 
       - name: Clean project
-        run: xcodebuild clean
+        run: |
+          set -o pipefail
+          xcodebuild -clonedSourcePackagesDirPath .build clean
 
       - name: Build
         run: |
           set -o pipefail
-          xcodebuild -scheme ToolReleases -destination platform=macOS build-for-testing | xcpretty
+          xcodebuild -clonedSourcePackagesDirPath .build -scheme ToolReleases -destination platform=macOS build-for-testing | xcpretty
 
       - name: Test
         run: |
           set -o pipefail
-          xcodebuild -scheme ToolReleases -destination platform=macOS test-without-building | xcpretty
+          xcodebuild -clonedSourcePackagesDirPath .build -scheme ToolReleases -destination platform=macOS test-without-building | xcpretty
