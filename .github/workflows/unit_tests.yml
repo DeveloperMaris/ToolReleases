@@ -30,5 +30,11 @@ jobs:
           p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
           p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
+      - name: Clean project
+        run: xcodebuild clean
+
+      - name: Build
+        run: xcodebuild build-for-testing -scheme ToolReleases -destination platform=macOS | xcpretty
+
       - name: Test
-        run: xcodebuild clean test -scheme ToolReleases -destination platform=macOS -showBuildTimingSummary | xcpretty
+        run: xcodebuild test-without-building -scheme ToolReleases -destination platform=macOS | xcpretty
