@@ -134,6 +134,7 @@
 		B5D45A4E245452C0007FF637 /* ToolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolManager.swift; sourceTree = "<group>"; };
 		B5D45A5224545B20007FF637 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B5DE2F92246682270010DA70 /* ToolRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRow.swift; sourceTree = "<group>"; };
+		B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
 		B5E4EA6D2473D73100F48B38 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		B5F00B1224E545CE00540FCE /* ToolRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowTests.swift; sourceTree = "<group>"; };
 		B5F00B1524E5465F00540FCE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				B5D45A4124544C07007FF637 /* ToolReleasesCore */,
 				B510D0AD248A344D003FAEC0 /* ToolReleasesTests */,
 				B510D0BE248B756C003FAEC0 /* ToolReleasesCoreTests */,
+				B5E13213256E5C3000CB4AEF /* TestPlans */,
 				B560171524AC70020091692A /* Vendor */,
 				B52A520C2412353100DF7F22 /* Products */,
 				E08DF628250256C93A46F3F4 /* Frameworks */,
@@ -379,6 +381,14 @@
 				B5D45A5224545B20007FF637 /* Tool.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B5E13213256E5C3000CB4AEF /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		B5F00B1424E5464C00540FCE /* Helpers */ = {
