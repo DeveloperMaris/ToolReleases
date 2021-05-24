@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct AboutView: View {
-    private let appVersion = NSApplication.appVersion ?? "N/A"
-    private let buildVersion = NSApplication.buildVersion ?? "N/A"
+    private let appVersion = Bundle.main.appVersion ?? "N/A"
+    private let buildVersion = Bundle.main.buildVersion ?? "N/A"
     
     var body: some View {
         VStack(spacing: 10) {
@@ -25,7 +25,7 @@ struct AboutView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text("Copyright © 2020 Maris Lagzdins. All rights reserved.")
+                Text("Copyright © 2021 Maris Lagzdins. All rights reserved.")
                     .font(.caption)
                     .italic()
             }

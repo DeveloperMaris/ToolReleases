@@ -34,10 +34,10 @@
 		B563A4C9247FDA6E007101C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563A4C8247FDA6E007101C7 /* Date.swift */; };
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
-		B593D8B22490C1D1006E8265 /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* AppExtension.swift */; };
+		B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* Bundle+Version.swift */; };
 		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
 		B596D51E24A5D1B000A5714A /* ToolReleaseDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */; };
-		B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* NotificationExtension.swift */; };
+		B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* Notification+Extension.swift */; };
 		B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE60D24C5E16C0016CC96 /* Updater.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
@@ -123,10 +123,10 @@
 		B560171D24AC73650091692A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
-		B593D8B02490C16C006E8265 /* AppExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
+		B593D8B02490C16C006E8265 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
 		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B596D51D24A5D1B000A5714A /* ToolReleaseDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolReleaseDateView.swift; sourceTree = "<group>"; };
-		B596D51F24A5F73C00A5714A /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		B596D51F24A5F73C00A5714A /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		B5CBE60D24C5E16C0016CC96 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
@@ -314,11 +314,11 @@
 		B52A5225241239DD00DF7F22 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B593D8B02490C16C006E8265 /* AppExtension.swift */,
+				B593D8B02490C16C006E8265 /* Bundle+Version.swift */,
 				B563A4C8247FDA6E007101C7 /* Date.swift */,
 				B510D095248A2E8A003FAEC0 /* DateComparison.swift */,
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
-				B596D51F24A5F73C00A5714A /* NotificationExtension.swift */,
+				B596D51F24A5F73C00A5714A /* Notification+Extension.swift */,
 				B52A522824123D5F00DF7F22 /* OSLog.swift */,
 				B52FC78E24B8AAA600B98B46 /* Search.swift */,
 				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
@@ -641,12 +641,12 @@
 				B560170724AB240A0091692A /* AboutView.swift in Sources */,
 				B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */,
-				B596D52024A5F73C00A5714A /* NotificationExtension.swift in Sources */,
+				B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
 				B505404724E1966500A1D56B /* BadgeView.swift in Sources */,
 				B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */,
-				B593D8B22490C1D1006E8265 /* AppExtension.swift in Sources */,
+				B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */,
 				B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */,
 				B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */,
 			);
@@ -827,7 +827,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -882,7 +882,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -900,7 +900,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -914,8 +914,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.7;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -934,7 +933,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -948,8 +947,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.7;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -1,5 +1,5 @@
 //
-//  NotificationExtension.swift
+//  Notification+Extension.swift
 //  ToolReleases
 //
 //  Created by Maris Lagzdins on 26/06/2020.
