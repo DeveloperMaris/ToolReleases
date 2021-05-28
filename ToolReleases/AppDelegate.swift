@@ -115,7 +115,7 @@ private extension AppDelegate {
         let host = NSHostingController(rootView: contentView)
 
         popover.contentViewController = host
-        popover.contentSize = NSSize(width: 400, height: 300)
+        popover.contentSize = NSSize(width: 400, height: 400)
     }
 
     @objc
