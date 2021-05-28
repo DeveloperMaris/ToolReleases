@@ -28,8 +28,6 @@
 		B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC78E24B8AAA600B98B46 /* Search.swift */; };
 		B560170724AB240A0091692A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170624AB240A0091692A /* AboutView.swift */; };
 		B560170924AB42730091692A /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170824AB42730091692A /* AboutWindowController.swift */; };
-		B560172224AC74020091692A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560171D24AC73650091692A /* Sparkle.framework */; };
-		B560172324AC74020091692A /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B560171D24AC73650091692A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B563A4C9247FDA6E007101C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563A4C8247FDA6E007101C7 /* Date.swift */; };
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
@@ -44,6 +42,7 @@
 		B5D45A5324545B20007FF637 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A5224545B20007FF637 /* Tool.swift */; };
 		B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2F92246682270010DA70 /* ToolRow.swift */; };
 		B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4EA6D2473D73100F48B38 /* Filter.swift */; };
+		B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B5EE21232660DDFD0070E302 /* Sparkle */; };
 		B5F00B1324E545CE00540FCE /* ToolRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowTests.swift */; };
 		B5F00B1624E5465F00540FCE /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool.swift */; };
 /* End PBXBuildFile section */
@@ -80,7 +79,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */,
-				B560172324AC74020091692A /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,7 +115,6 @@
 		B5448ACD255D627500728F3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B560170624AB240A0091692A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B560170824AB42730091692A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
-		B560171D24AC73650091692A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		B593D8B02490C16C006E8265 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
@@ -157,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */,
-				B560172224AC74020091692A /* Sparkle.framework in Frameworks */,
+				B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +246,6 @@
 				B510D0AD248A344D003FAEC0 /* ToolReleasesTests */,
 				B510D0BE248B756C003FAEC0 /* ToolReleasesCoreTests */,
 				B5E13213256E5C3000CB4AEF /* TestPlans */,
-				B560171524AC70020091692A /* Vendor */,
 				B52A520C2412353100DF7F22 /* Products */,
 				E08DF628250256C93A46F3F4 /* Frameworks */,
 			);
@@ -337,14 +333,6 @@
 				B5448AB9255D54A000728F3F /* Release.xcconfig */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		B560171524AC70020091692A /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				B560171D24AC73650091692A /* Sparkle.framework */,
-			);
-			path = Vendor;
 			sourceTree = "<group>";
 		};
 		B5D45A4124544C07007FF637 /* ToolReleasesCore */ = {
@@ -467,6 +455,7 @@
 			);
 			name = ToolReleases;
 			packageProductDependencies = (
+				B5EE21232660DDFD0070E302 /* Sparkle */,
 			);
 			productName = ToolReleases;
 			productReference = B52A520B2412353100DF7F22 /* ToolReleases.app */;
@@ -530,6 +519,7 @@
 			mainGroup = B52A52022412353100DF7F22;
 			packageReferences = (
 				B5777E77246DA2C8000B4CA9 /* XCRemoteSwiftPackageReference "FeedKit" */,
+				B5EE21202660DDBA0070E302 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = B52A520C2412353100DF7F22 /* Products */;
 			projectDirPath = "";
@@ -595,7 +585,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# For Apple notarization, we need to deep sign Sparkle framework\nLOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
+			shellScript = "# For Apple notarization, we need to deep sign Sparkle framework\n#LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n#IDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#codesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\n#codesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -897,10 +887,6 @@
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-				);
 				INFOPLIST_FILE = "ToolReleases/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -930,10 +916,6 @@
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-				);
 				INFOPLIST_FILE = "ToolReleases/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1060,6 +1042,14 @@
 				minimumVersion = 9.1.2;
 			};
 		};
+		B5EE21202660DDBA0070E302 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.26.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1067,6 +1057,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5777E77246DA2C8000B4CA9 /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
+		};
+		B5EE21232660DDFD0070E302 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EE21202660DDBA0070E302 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
