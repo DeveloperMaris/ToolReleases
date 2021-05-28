@@ -14,8 +14,10 @@ struct AboutView: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            Spacer()
+
             VStack(spacing: 5) {
-                Image("about_icon")
+                Image("AboutIcon")
                     .resizable()
                     .frame(width: 64, height: 64)
                 Text("Tool Releases")
@@ -37,8 +39,9 @@ struct AboutView: View {
                 Text("Collected content isn't modified in any way.")
                 Text("Collected content copyrights belongs to Apple Inc.")
             }
+
+            Spacer()
         }
-        .padding()
     }
 }
 

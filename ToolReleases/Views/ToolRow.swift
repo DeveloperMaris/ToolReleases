@@ -12,10 +12,18 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ToolRow: View {
+    private static let fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+
+        return formatter
+    }()
+
     let tool: Tool
     let timer: Publishers.Autoconnect<Timer.TimerPublisher>
 
-    @State private var showPopover = false
     @State private var currentDate = Date()
 
     private var isRecentRelease: Bool {
@@ -38,12 +46,7 @@ struct ToolRow: View {
                 .font(.system(size: 10, weight: isRecentRelease == true ? .bold : .light, design: .default))
                 .foregroundColor(isRecentRelease == true ? Color("forestgreen") : .secondary)
                 .lineLimit(1)
-                .onHover { hover in
-                    self.showPopover = hover
-                }
-                .popover(isPresented: $showPopover) {
-                    ToolReleaseDateView(date: self.tool.date)
-                }
+                .help(Self.fullDateFormatter.string(from: tool.date))
         }
         .padding([.vertical], 4)
         .onReceive(timer, perform: updateCurrentDate)

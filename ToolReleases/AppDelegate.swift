@@ -81,7 +81,7 @@ private extension AppDelegate {
             fatalError("Status item does not exist")
         }
 
-        button.image = NSImage(named: "status_bar_icon")
+        button.image = NSImage(named: "StatusBarIcon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
 

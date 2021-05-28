@@ -28,10 +28,9 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
-            // Filter section
+        VStack(spacing: 0) {
             VStack {
-                HStack {
+                HStack(spacing: 16) {
                     Picker("Select filter", selection: $typeFilter) {
                         ForEach(ToolFilter.allCases, id: \.self) {
                             Text($0.description)
@@ -42,7 +41,7 @@ struct ContentView: View {
 
                     SearchButton {
                         withAnimation {
-                            self.showKeywordFilter.toggle()
+                            showKeywordFilter.toggle()
                         }
                     }
 
@@ -52,14 +51,13 @@ struct ContentView: View {
                 if showKeywordFilter {
                     TextField("iOS; macOS beta", text: $keywordFilterText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .transition(AnyTransition.offset(x: 0, y: -30).combined(with: .opacity))
+                        .transition(.opacity)
                 }
             }
-            .padding([.top, .horizontal])
+            .padding()
 
             Divider()
 
-            // List section
             if toolManager.tools.isEmpty {
                 // No tools are available
                 Text("No information about the released tools")
@@ -71,24 +69,22 @@ struct ContentView: View {
                     .frame(maxHeight: .infinity)
                     .padding()
             } else {
-                GeometryReader { geometry in
-                    List(self.sortedTools) { tool in
-                        ToolRow(tool: tool, timer: self.relativeDateTimeTimer)
-                            .frame(width: geometry.size.width - 36, alignment: .leading)
+                List {
+                    ForEach(sortedTools) { tool in
+                        ToolRow(tool: tool, timer: relativeDateTimeTimer)
                             .onTapGesture {
-                                self.open(tool)
-                        }
+                                open(tool)
+                            }
                     }
-                    .listStyle(SidebarListStyle())
                 }
             }
 
             Divider()
 
             LastRefreshView(isRefreshing: toolManager.isRefreshing, lastRefreshDate: toolManager.lastRefresh, handler: fetch)
-                .padding(.bottom, 10)
-                .padding(.horizontal)
+                .padding()
         }
+        .background(Color(.windowBackgroundColor))
         .onAppear {
             os_log(.debug, log: .views, "Initial fetch")
             self.fetch()

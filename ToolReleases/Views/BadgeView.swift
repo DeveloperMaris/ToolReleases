@@ -13,7 +13,6 @@ struct BadgeView: View {
         ZStack {
             Circle()
                 .foregroundColor(.red)
-                .opacity(0.8)
 
             Text("•")
                 .foregroundColor(.white)

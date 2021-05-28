@@ -38,25 +38,27 @@ struct LastRefreshView: View {
 
             Spacer()
 
-            Button(action: handler) {
+            Group {
                 if isRefreshing {
-                    ActivityIndicatorView(spinning: true)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(0.5)
                 } else {
-                    Image("refresh")
-                        .resizable()
-                        .frame(width: 16, height: 16)
+                    Button(action: handler) {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .foregroundColor(Color(.labelColor))
+                    .disabled(isRefreshing)
                 }
             }
-            .buttonStyle(BorderlessButtonStyle())
-            .disabled(isRefreshing)
+            .frame(width: 16, height: 16)
         }
     }
 }
 
 struct LastRefreshView_Previews: PreviewProvider {
     static var previews: some View {
-        LastRefreshView(isRefreshing: false, lastRefreshDate: Date()) {
-
-        }
+        LastRefreshView(isRefreshing: false, lastRefreshDate: Date()) { }
     }
 }
