@@ -12,69 +12,102 @@ import Foundation
 import os.log
 
 public class ToolManager: ObservableObject {
-    private var autoCheckTimer: AnyCancellable?
+    public static let current: ToolManager = .init()
+
+    private let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
+    private var autoCheckTimerCancellable: AnyCancellable?
     private var autoCheckTimeInterval: TimeInterval = 3600 // 1 hour
 
-    internal let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
     internal let parser: FeedParser
     internal let privateQueue: DispatchQueue
 
-    @Published public private(set) var tools = [Tool]()
+    @Published public private(set) var tools: [Tool] = []
     @Published public private(set) var isRefreshing = false
     @Published public private(set) var lastRefresh: Date?
     @Published public private(set) var newReleasesAvailable = false
 
     public init() {
-        self.privateQueue = DispatchQueue(label: "com.developermaris.ToolReleases.Core.ToolsManager", qos: .userInitiated)
+        self.privateQueue = DispatchQueue(
+            label: "com.developermaris.ToolReleases.Core.ToolsManager",
+            qos: .userInitiated
+        )
         self.parser = FeedParser(URL: url)
 
         startAutoCheckTimer()
     }
 
-    public func fetch() {
+    public func fetch(resultQueue: DispatchQueue = .main) {
         os_log(.debug, log: .toolManager, "%{public}@", #function)
 
         isRefreshing = true
         parser.parseAsync(queue: privateQueue) { [weak self] result in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
+
+            defer {
+                resultQueue.async {
+                    self.isRefreshing = false
+                }
+            }
+
+            resultQueue.async {
+                // Refresh the date when the last
+                // response has been received.
+                self.lastRefresh = Date()
+            }
+
             switch result {
             case .success(let feed):
                 guard let items = feed.rssFeed?.items else {
-                    DispatchQueue.main.async {
+                    resultQueue.async {
                         self.newReleasesAvailable = false
-                        self.isRefreshing = false
                         os_log(.error, log: .toolManager, "Tool list fetching failed, no RSS feed items are available")
                     }
                     return
                 }
 
-                os_log(.debug, log: .toolManager, "RSS feed fetched, now transforming into Tool model.\n%{public}@", items.debugDescription)
+                os_log(
+                    .debug,
+                    log: .toolManager,
+                    "RSS feed fetched, now transforming into Tool model.\n%{public}@",
+                    items.debugDescription
+                )
 
                 let tools = items.compactMap(Tool.init)
 
                 let newReleases: Bool
 
                 if self.lastRefresh == nil {
-                    // Case when the application just started, we don't want to show that there are new releases.
+                    // If the application just started,
+                    // we won't have any new releases
+                    // available.
                     newReleases = false
                 } else {
                     let difference = tools.difference(from: self.tools)
                     newReleases = difference.insertions.isEmpty == false
                 }
 
-                DispatchQueue.main.async {
-                    self.lastRefresh = Date()
+                resultQueue.async {
                     self.tools = tools
                     self.newReleasesAvailable = newReleases
-                    self.isRefreshing = false
-                    os_log(.debug, log: .toolManager, "Tool list fetching finished successfully, contains new releases: %{public}@", newReleases.description)
+                    os_log(
+                        .debug,
+                        log: .toolManager,
+                        "Tool list fetching finished successfully, contains new releases: %{public}@",
+                        newReleases.description
+                    )
                 }
 
             case .failure(let error):
-                DispatchQueue.main.async {
+                resultQueue.async {
                     self.newReleasesAvailable = false
-                    self.isRefreshing = false
-                    os_log(.error, log: .toolManager, "Tool list fetching failed, %{public}@", error.localizedDescription)
+                    os_log(
+                        .error,
+                        log: .toolManager,
+                        "Tool list fetching failed, %{public}@",
+                        error.localizedDescription
+                    )
                 }
             }
         }
@@ -85,7 +118,7 @@ private extension ToolManager {
     func startAutoCheckTimer() {
         os_log(.debug, log: .toolManager, "%{public}@", #function)
 
-        autoCheckTimer = Timer
+        autoCheckTimerCancellable = Timer
             .publish(every: autoCheckTimeInterval, tolerance: autoCheckTimeInterval / 4, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] input in
@@ -94,11 +127,15 @@ private extension ToolManager {
                 }
 
                 guard self.isRefreshing == false else {
-                    os_log(.debug, log: .toolManager, "Skipping automatic refreshing, tools are currently being refreshed already")
+                    os_log(
+                        .debug,
+                        log: .toolManager,
+                        "Skipping automatic refreshing, tools are currently being refreshed already"
+                    )
                     return
                 }
 
-                os_log(.debug, log: .toolManager, "Executes automatic fetch")
+                os_log(.debug, log: .toolManager, "Execute automatic Tool fetching")
                 self.fetch()
             }
     }

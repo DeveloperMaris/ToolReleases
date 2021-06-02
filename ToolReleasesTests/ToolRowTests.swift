@@ -39,7 +39,7 @@ class ToolRowTests: XCTestCase {
         // Given
         let tool = Tool.make(with: actualDate)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -54,7 +54,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -69,7 +69,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -84,7 +84,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -99,7 +99,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -114,7 +114,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -129,7 +129,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -144,7 +144,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -159,7 +159,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -174,7 +174,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -189,7 +189,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -204,7 +204,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -219,7 +219,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -234,7 +234,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -249,7 +249,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -264,7 +264,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)
@@ -279,7 +279,7 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRow(tool: tool, timer: timer)
+        let sut = ToolRowView(tool: tool, timer: timer)
 
         // When
         let result = sut.parseDate(tool.date, relativeTo: actualDate)

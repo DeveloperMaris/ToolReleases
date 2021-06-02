@@ -9,6 +9,6 @@
 import Foundation
 
 extension Notification.Name {
-    static let popoverWillAppear = Notification.Name(rawValue: "ToolRelease.Notification.PopoverWillAppear")
-    static let popoverDidDisappear = Notification.Name(rawValue: "ToolRelease.Notification.PopoverDidDisappear")
+    static let windowWillAppear = Notification.Name(rawValue: "ToolRelease.Notification.WindowWillAppear")
+    static let windowDidDisappear = Notification.Name(rawValue: "ToolRelease.Notification.WindowDidDisappear")
 }

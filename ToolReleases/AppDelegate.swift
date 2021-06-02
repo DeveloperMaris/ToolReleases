@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let notificationCenter = NotificationCenter.default
 
     private lazy var popover = NSPopover()
-    private lazy var toolManager = ToolManager()
+    private lazy var toolManager = ToolManager.current
     /// Manages in-app updates
     private lazy var updater: Updater = {
         let updater = Updater()
@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()
-        notificationCenter.post(name: .popoverDidDisappear, object: nil)
+        notificationCenter.post(name: .windowDidDisappear, object: nil)
     }
 }
 
@@ -109,7 +109,6 @@ private extension AppDelegate {
 
     func configurePopover() {
         let contentView = ContentView()
-            .environmentObject(toolManager)
             .environmentObject(updater)
 
         let host = NSHostingController(rootView: contentView)
@@ -137,7 +136,7 @@ private extension AppDelegate {
             return
         }
 
-        notificationCenter.post(name: .popoverWillAppear, object: nil)
+        notificationCenter.post(name: .windowWillAppear, object: nil)
         eventMonitor?.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         showBadge = false

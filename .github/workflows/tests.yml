@@ -15,7 +15,7 @@ on:
 jobs:
   test:
     name: Unit tests
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
       - name: Checkout repository

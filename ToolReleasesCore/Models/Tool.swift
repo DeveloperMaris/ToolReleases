@@ -112,6 +112,21 @@ private extension Tool {
     }
 }
 
+public extension Tool {
+    static let example: Tool = {
+        let components = DateComponents(second: -30)
+        let date = Calendar.current.date(byAdding: components, to: Date())!
+
+        return Tool(
+            id: "https://developer.apple.com/news/releases/?id=1234567890a",
+            title: "iOS 14.0 (1234567890)",
+            date: date,
+            url: URL(string: "wwww.apple.com"),
+            description: "New release of iOS 14.0"
+        )
+    }()
+}
+
 /*
  Example:
  <title>macOS Catalina 10.15.5 beta 2 (19F62f)</title>

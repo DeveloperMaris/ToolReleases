@@ -34,15 +34,17 @@
 		B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* Bundle+Version.swift */; };
 		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
 		B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* Notification+Extension.swift */; };
+		B5C0581B266761DF00557F9D /* ToolRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */; };
 		B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE60D24C5E16C0016CC96 /* Updater.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A4E245452C0007FF637 /* ToolManager.swift */; };
 		B5D45A5324545B20007FF637 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A5224545B20007FF637 /* Tool.swift */; };
-		B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2F92246682270010DA70 /* ToolRow.swift */; };
-		B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E4EA6D2473D73100F48B38 /* Filter.swift */; };
+		B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2F92246682270010DA70 /* ToolRowView.swift */; };
 		B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B5EE21232660DDFD0070E302 /* Sparkle */; };
+		B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE21282661576E0070E302 /* ToolSummaryView.swift */; };
+		B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */; };
 		B5F00B1324E545CE00540FCE /* ToolRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowTests.swift */; };
 		B5F00B1624E5465F00540FCE /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool.swift */; };
 /* End PBXBuildFile section */
@@ -120,15 +122,17 @@
 		B593D8B02490C16C006E8265 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
 		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B596D51F24A5F73C00A5714A /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowViewModel.swift; sourceTree = "<group>"; };
 		B5CBE60D24C5E16C0016CC96 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5D45A4E245452C0007FF637 /* ToolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolManager.swift; sourceTree = "<group>"; };
 		B5D45A5224545B20007FF637 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
-		B5DE2F92246682270010DA70 /* ToolRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRow.swift; sourceTree = "<group>"; };
+		B5DE2F92246682270010DA70 /* ToolRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowView.swift; sourceTree = "<group>"; };
 		B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
-		B5E4EA6D2473D73100F48B38 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		B5EE21282661576E0070E302 /* ToolSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryView.swift; sourceTree = "<group>"; };
+		B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryViewModel.swift; sourceTree = "<group>"; };
 		B5F00B1224E545CE00540FCE /* ToolRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowTests.swift; sourceTree = "<group>"; };
 		B5F00B1524E5465F00540FCE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,11 +176,8 @@
 		B510D07C2488C715003FAEC0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B560170624AB240A0091692A /* AboutView.swift */,
 				B505404624E1966500A1D56B /* BadgeView.swift */,
-				B52A52102412353100DF7F22 /* ContentView.swift */,
 				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
-				B5DE2F92246682270010DA70 /* ToolRow.swift */,
 				B52CF74224B71FC600562D91 /* Elements */,
 				B510D07D2488C728003FAEC0 /* Helpers */,
 			);
@@ -269,6 +270,7 @@
 				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
 				B52A52142412353500DF7F22 /* Preview Content */,
 				B52A52222412399000DF7F22 /* Resources */,
+				B5EE2125266156E50070E302 /* Screens */,
 				B52A52212412396D00DF7F22 /* Supporting Files */,
 				B52A5225241239DD00DF7F22 /* Utils */,
 				B510D07C2488C715003FAEC0 /* Views */,
@@ -335,10 +337,28 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		B5C05818266760E600557F9D /* Tool Summary */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE2F92246682270010DA70 /* ToolRowView.swift */,
+				B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */,
+				B5EE21282661576E0070E302 /* ToolSummaryView.swift */,
+				B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */,
+			);
+			path = "Tool Summary";
+			sourceTree = "<group>";
+		};
+		B5C058192667613800557F9D /* About */ = {
+			isa = PBXGroup;
+			children = (
+				B560170624AB240A0091692A /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		B5D45A4124544C07007FF637 /* ToolReleasesCore */ = {
 			isa = PBXGroup;
 			children = (
-				B5E4EA6D2473D73100F48B38 /* Filter.swift */,
 				B5D45A4E245452C0007FF637 /* ToolManager.swift */,
 				B5D45A5124545B02007FF637 /* Models */,
 				B5D45A4D24544DA5007FF637 /* Supporting Files */,
@@ -371,6 +391,16 @@
 				B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */,
 			);
 			path = TestPlans;
+			sourceTree = "<group>";
+		};
+		B5EE2125266156E50070E302 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B52A52102412353100DF7F22 /* ContentView.swift */,
+				B5C058192667613800557F9D /* About */,
+				B5C05818266760E600557F9D /* Tool Summary */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		B5F00B1424E5464C00540FCE /* Helpers */ = {
@@ -617,20 +647,23 @@
 				B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */,
 				B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */,
 				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
+				B5C0581B266761DF00557F9D /* ToolRowViewModel.swift in Sources */,
 				B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */,
 				B560170924AB42730091692A /* AboutWindowController.swift in Sources */,
 				B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */,
 				B560170724AB240A0091692A /* AboutView.swift in Sources */,
 				B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */,
-				B5DE2F93246682270010DA70 /* ToolRow.swift in Sources */,
+				B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */,
 				B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
 				B505404724E1966500A1D56B /* BadgeView.swift in Sources */,
+				B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */,
 				B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */,
 				B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */,
 				B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */,
 				B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */,
+				B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +673,6 @@
 			files = (
 				B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */,
 				B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */,
-				B5E4EA6E2473D73100F48B38 /* Filter.swift in Sources */,
 				B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */,
 				B5D45A5324545B20007FF637 /* Tool.swift in Sources */,
 			);
