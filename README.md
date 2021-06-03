@@ -8,7 +8,7 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 # Requirements
 
-* macOS 10.15 (Catalina)
+* macOS 11 (Big Sur)
 
 # Features
 
