@@ -15,10 +15,12 @@ class AboutWindowController: NSWindowController {
     init(aboutView: AboutView) {
         self.aboutView = aboutView
 
-        let window = NSWindow(contentRect: CGRect(origin: .zero, size: CGSize(width: 650, height: 200)),
-                              styleMask: [.titled, .closable],
-                              backing: .buffered,
-                              defer: false)
+        let window = NSWindow(
+            contentRect: CGRect(origin: .zero, size: CGSize(width: 650, height: 250)),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
         window.title = "About"
         window.contentView = NSHostingView(rootView: aboutView)
 

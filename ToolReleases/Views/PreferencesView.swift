@@ -12,38 +12,39 @@ import SwiftUI
 struct PreferencesView: View {
     @EnvironmentObject private var updater: Updater
 
-    var showBadge: Bool {
-        updater.isUpdateAvailable
+    private var isUpdateAvailable: Bool { updater.isUpdateAvailable }
+
+    var updateMenuString: String {
+        if isUpdateAvailable {
+            return "Update is available!"
+        } else {
+            return "Check for Updates"
+        }
     }
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            BadgeView()
-                .opacity(showBadge ? 1 : 0)
+            // Menu appears as a dropdown box with an icon
+            // and a space for the text. If we to hide the
+            // text, it still shows an empty space for the
+            // text by default, so we need to set a custom
+            // frame size, so that the icon would only be
+            // visible.
+            Menu {
+                Button("About", action: showAbout)
+                Button(updateMenuString, action: checkForUpdates)
+                Button("Quit", action: quit)
+            } label: {
+                Label("Settings", systemImage: "gear")
+                    .labelStyle(IconOnlyLabelStyle())
+                    .foregroundColor(Color(.labelColor))
+            }
+            .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+            .frame(width: 14, height: 20)
 
-            MenuButton("...") {
-                Button(action: showAbout) {
-                    Text("About")
-                }
-                Button(action: checkForUpdates) {
-                    if updater.isUpdateAvailable {
-                        Text("Update is available!")
-                            .italic()
-                            .bold()
-                    } else {
-                        Text("Check for Updates")
-                    }
-                }
-                Button(action: quit) {
-                    Text("Quit")
-                }
-            }
-            .menuButtonStyle(BorderlessButtonMenuButtonStyle())
-            .frame(width: 16, height: 16)
-            .foregroundColor(.primary) // Special case for the enabled "Reduced Transparency" and "Light Mode" (https://github.com/DeveloperMaris/ToolReleases/issues/4)
-            .onReceive(NotificationCenter.default.publisher(for: .popoverWillAppear)) { _ in
-                os_log(.debug, log: .views, "Popover will appear event received")
-            }
+            BadgeView()
+                .opacity(isUpdateAvailable ? 1 : 0)
+                .allowsHitTesting(false)
         }
     }
 

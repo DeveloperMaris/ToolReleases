@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let notificationCenter = NotificationCenter.default
 
     private lazy var popover = NSPopover()
-    private lazy var toolManager = ToolManager()
+    private lazy var toolManager = ToolManager.current
     /// Manages in-app updates
     private lazy var updater: Updater = {
         let updater = Updater()
@@ -46,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         subscribeForReleaseUpdates()
+        toolManager.subscribeForAutomaticUpdates()
 
         configureStatusBarButton()
         configureEventMonitor()
@@ -55,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func closePopover(sender: Any?) {
         popover.performClose(sender)
         eventMonitor?.stop()
-        notificationCenter.post(name: .popoverDidDisappear, object: nil)
+        notificationCenter.post(name: .windowDidDisappear, object: nil)
     }
 }
 
@@ -81,7 +82,7 @@ private extension AppDelegate {
             fatalError("Status item does not exist")
         }
 
-        button.image = NSImage(named: "status_bar_icon")
+        button.image = NSImage(named: "StatusBarIcon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
 
@@ -109,13 +110,12 @@ private extension AppDelegate {
 
     func configurePopover() {
         let contentView = ContentView()
-            .environmentObject(toolManager)
             .environmentObject(updater)
 
         let host = NSHostingController(rootView: contentView)
 
         popover.contentViewController = host
-        popover.contentSize = NSSize(width: 400, height: 300)
+        popover.contentSize = NSSize(width: 400, height: 400)
     }
 
     @objc
@@ -137,7 +137,7 @@ private extension AppDelegate {
             return
         }
 
-        notificationCenter.post(name: .popoverWillAppear, object: nil)
+        notificationCenter.post(name: .windowWillAppear, object: nil)
         eventMonitor?.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         showBadge = false

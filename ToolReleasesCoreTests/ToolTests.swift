@@ -52,7 +52,7 @@ class ToolTests: XCTestCase {
         let sut = Tool(item)
 
         // Then
-        XCTAssertNil(sut)
+        XCTAssertNotNil(sut)
     }
 
     func testToolInitWithRSSFeedItemWithEmptyGuid() {
@@ -68,7 +68,7 @@ class ToolTests: XCTestCase {
         let sut = Tool(item)
 
         // Then
-        XCTAssertNil(sut)
+        XCTAssertNotNil(sut)
     }
 
     func testToolInitWithRSSFeedItemWithoutTitle() {
@@ -465,44 +465,6 @@ class ToolTests: XCTestCase {
 
         // Then
         XCTAssertFalse(result)
-    }
-
-    // MARK: - Contains ID
-
-    func testIDIsValid() throws {
-        // Given
-        let id = "1234567890a"
-        let string = "https://developer.apple.com/news/releases/?id=\(id)"
-
-        // When
-        let result = try Tool.parseID(from: string)
-
-        // Then
-        XCTAssertEqual(result, id)
-    }
-
-    func testIDIsEmpty() {
-        // Given
-        let string = "https://developer.apple.com/news/releases/?id="
-
-        // Then
-        XCTAssertThrowsError(try Tool.parseID(from: string))
-    }
-
-    func testIDStringPatternIsIncorrect_1() {
-        // Given
-        let string = "https://developer.apple.com/news/releases/"
-
-        // Then
-        XCTAssertThrowsError(try Tool.parseID(from: string))
-    }
-
-    func testIDStringPatternIsIncorrect_2() {
-        // Given
-        let string = "hfjshfjkhsajkfhadslfhasffsaIDdkas"
-
-        // Then
-        XCTAssertThrowsError(try Tool.parseID(from: string))
     }
 
     func testBigSurBeta3RSSFeedItem() {
