@@ -10,11 +10,6 @@ import FeedKit
 import Foundation
 
 public struct Tool: Identifiable, Equatable {
-    enum ToolError: Error {
-        case noID
-        case error(_ error: Error)
-    }
-
     public let id: String
     public let title: String
     public let description: String?
@@ -40,10 +35,6 @@ public struct Tool: Identifiable, Equatable {
     }
 
     public init?(_ item: RSSFeedItem) {
-        guard let guid = item.guid?.value, let id = try? Self.parseID(from: guid) else {
-            return nil
-        }
-
         guard let title = item.title?.trimmingCharacters(in: .whitespaces) else {
             return nil
         }
@@ -56,7 +47,7 @@ public struct Tool: Identifiable, Equatable {
             return nil
         }
 
-        self.id = id
+        self.id = title
         self.title = title
         self.description = item.description?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.date = date
@@ -80,24 +71,6 @@ public struct Tool: Identifiable, Equatable {
         let regex = try! NSRegularExpression(pattern: #"^.+\(.+\)$"#)
         return regex.firstMatch(in: title, options: [], range: range) != nil
     }
-
-    internal static func parseID(from string: String) throws -> String {
-        let idGroupName = "id"
-
-        let range = NSRange(location: 0, length: string.utf16.count)
-        do {
-            let regex = try NSRegularExpression(pattern: #"^.+id=(?<\#(idGroupName)>\w+).*$"#, options: .caseInsensitive)
-            if let match = regex.firstMatch(in: string, options: [], range: range) {
-                if let destinationRange = Range(match.range(withName: idGroupName), in: string) {
-                    return String(string[destinationRange])
-                }
-            }
-        } catch {
-            throw ToolError.error(error)
-        }
-
-        throw ToolError.noID
-    }
 }
 
 private extension Tool {
@@ -118,7 +91,7 @@ public extension Tool {
         let date = Calendar.current.date(byAdding: components, to: Date())!
 
         return Tool(
-            id: "https://developer.apple.com/news/releases/?id=1234567890a",
+            id: "iOS 14.0 (1234567890)",
             title: "iOS 14.0 (1234567890)",
             date: date,
             url: URL(string: "wwww.apple.com"),

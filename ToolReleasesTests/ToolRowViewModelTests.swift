@@ -12,7 +12,7 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class ToolRowTests: XCTestCase {
+class ToolRowViewModelTests: XCTestCase {
     var timer: Publishers.Autoconnect<Timer.TimerPublisher>!
     var actualDate: Date!
 
@@ -39,10 +39,10 @@ class ToolRowTests: XCTestCase {
         // Given
         let tool = Tool.make(with: actualDate)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "Just now")
@@ -54,10 +54,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "Just now")
@@ -69,10 +69,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "Just now")
@@ -84,10 +84,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Minute Ago")
@@ -99,10 +99,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Hour Ago")
@@ -114,10 +114,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "2 Hours Ago")
@@ -129,10 +129,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "16 Hours Ago")
@@ -144,10 +144,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "18 Hours Ago")
@@ -159,10 +159,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // Then
         XCTAssertEqual(result, "1 Day Ago")
@@ -174,10 +174,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Day Ago")
@@ -189,10 +189,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Day Ago")
@@ -204,10 +204,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "6 Days Ago")
@@ -219,10 +219,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Week Ago")
@@ -234,10 +234,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Week Ago")
@@ -249,10 +249,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "1 Week Ago")
@@ -264,10 +264,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "2 Weeks Ago")
@@ -279,10 +279,10 @@ class ToolRowTests: XCTestCase {
         let date = Calendar.current.date(byAdding: component, to: actualDate)!
         let tool = Tool.make(with: date)
 
-        let sut = ToolRowView(tool: tool, timer: timer)
+        let sut = ToolRowView.ViewModel(tool: tool, timer: timer)
 
         // When
-        let result = sut.parseDate(tool.date, relativeTo: actualDate)
+        let result = sut.string(for: tool.date, relativeTo: actualDate)
 
         // then
         XCTAssertEqual(result, "2 Weeks Ago")

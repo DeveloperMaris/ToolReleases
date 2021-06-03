@@ -45,22 +45,20 @@ struct ToolSummaryView: View {
 
             Divider()
 
-            Group {
-                if viewModel.tools.isEmpty {
-                    Text("No releases available")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    List {
-                        ForEach(viewModel.tools) { tool in
-                            ToolRowView(tool: tool, timer: viewModel.timer)
-                                .onTapGesture {
-                                    open(tool)
-                                }
-                        }
+            if viewModel.tools.isEmpty {
+                Text("No releases available")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(.textBackgroundColor))
+            } else {
+                List {
+                    ForEach(viewModel.tools) { tool in
+                        ToolRowView(tool: tool, timer: viewModel.timer)
+                            .onTapGesture {
+                                open(tool)
+                            }
                     }
                 }
             }
-            .background(Color(.textBackgroundColor))
 
             Divider()
 
@@ -73,7 +71,7 @@ struct ToolSummaryView: View {
         }
         .background(Color(.windowBackgroundColor))
         .onAppear {
-            os_log(.debug, log: .views, "Initial fetch")
+            os_log(.info, log: .views, "Fetch tools on view appear")
             fetch()
         }
     }

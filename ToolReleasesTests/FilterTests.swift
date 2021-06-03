@@ -7,6 +7,7 @@
 //
 
 @testable
+import ToolReleases
 import ToolReleasesCore
 import XCTest
 

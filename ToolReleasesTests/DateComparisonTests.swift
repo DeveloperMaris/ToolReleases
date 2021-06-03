@@ -152,7 +152,8 @@ class DateComparisonTests: XCTestCase {
         let sinceDate = Calendar.current.date(byAdding: sinceComponent, to: Date())!
 
         // When
-        let result = DateComparison.isDate(tool.date, lessThan: 1, .day, since: sinceDate) // Calculations must track that the difference is 59 minutes.
+        // Calculations must track that the difference is 59 minutes.
+        let result = DateComparison.isDate(tool.date, lessThan: 1, .day, since: sinceDate)
 
         // then
         XCTAssertTrue(result)

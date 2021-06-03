@@ -15,7 +15,7 @@ public class ToolManager: ObservableObject {
     public static let current: ToolManager = .init()
 
     private let url = URL(string: "https://developer.apple.com/news/releases/rss/releases.rss")!
-    private var autoCheckTimerCancellable: AnyCancellable?
+    private var cancellableAutomaticUpdates: AnyCancellable?
     private var autoCheckTimeInterval: TimeInterval = 3600 // 1 hour
 
     internal let parser: FeedParser
@@ -32,12 +32,14 @@ public class ToolManager: ObservableObject {
             qos: .userInitiated
         )
         self.parser = FeedParser(URL: url)
-
-        startAutoCheckTimer()
     }
 
     public func fetch(resultQueue: DispatchQueue = .main) {
-        os_log(.debug, log: .toolManager, "%{public}@", #function)
+        os_log(
+            .info,
+            log: .toolManager,
+            "Tool list fetching started"
+        )
 
         isRefreshing = true
         parser.parseAsync(queue: privateQueue) { [weak self] result in
@@ -62,7 +64,11 @@ public class ToolManager: ObservableObject {
                 guard let items = feed.rssFeed?.items else {
                     resultQueue.async {
                         self.newReleasesAvailable = false
-                        os_log(.error, log: .toolManager, "Tool list fetching failed, no RSS feed items are available")
+                        os_log(
+                            .error,
+                            log: .toolManager,
+                            "Tool list fetching failed, no RSS feed items available"
+                        )
                     }
                     return
                 }
@@ -70,7 +76,7 @@ public class ToolManager: ObservableObject {
                 os_log(
                     .debug,
                     log: .toolManager,
-                    "RSS feed fetched, now transforming into Tool model.\n%{public}@",
+                    "RSS feed items fetched: %{public}@",
                     items.debugDescription
                 )
 
@@ -92,10 +98,11 @@ public class ToolManager: ObservableObject {
                     self.tools = tools
                     self.newReleasesAvailable = newReleases
                     os_log(
-                        .debug,
+                        .info,
                         log: .toolManager,
-                        "Tool list fetching finished successfully, contains new releases: %{public}@",
-                        newReleases.description
+                        "Tool list fetching finished successfully, %{public}s: %{public}@",
+                        newReleases == true ? "new releases available" : "no new releases",
+                        tools.description
                     )
                 }
 
@@ -112,13 +119,11 @@ public class ToolManager: ObservableObject {
             }
         }
     }
-}
 
-private extension ToolManager {
-    func startAutoCheckTimer() {
+    public func subscribeForAutomaticUpdates() {
         os_log(.debug, log: .toolManager, "%{public}@", #function)
 
-        autoCheckTimerCancellable = Timer
+        cancellableAutomaticUpdates = Timer
             .publish(every: autoCheckTimeInterval, tolerance: autoCheckTimeInterval / 4, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] input in
@@ -130,13 +135,17 @@ private extension ToolManager {
                     os_log(
                         .debug,
                         log: .toolManager,
-                        "Skipping automatic refreshing, tools are currently being refreshed already"
+                        "Skip automatic refresh, tools are already currently being refreshed"
                     )
                     return
                 }
 
-                os_log(.debug, log: .toolManager, "Execute automatic Tool fetching")
+                os_log(.debug, log: .toolManager, "Fetch tool list automatically")
                 self.fetch()
             }
+    }
+
+    public func unsubscribeFromAutomaticUpdates() {
+        cancellableAutomaticUpdates = nil
     }
 }

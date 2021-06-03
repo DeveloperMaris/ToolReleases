@@ -13,7 +13,6 @@
 		B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* DateComparison.swift */; };
 		B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */; };
 		B510D0C2248B756C003FAEC0 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
-		B510D0CA248B75C1003FAEC0 /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0C9248B75C1003FAEC0 /* FilterTests.swift */; };
 		B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0CB248B7930003FAEC0 /* ToolTests.swift */; };
 		B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A520E2412353100DF7F22 /* AppDelegate.swift */; };
 		B52A52112412353100DF7F22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A52102412353100DF7F22 /* ContentView.swift */; };
@@ -35,6 +34,7 @@
 		B594ABB92498B0570042ED1F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B594ABB82498B0570042ED1F /* Colors.xcassets */; };
 		B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D51F24A5F73C00A5714A /* Notification+Extension.swift */; };
 		B5C0581B266761DF00557F9D /* ToolRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */; };
+		B5C0581E2668B1B000557F9D /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0C9248B75C1003FAEC0 /* FilterTests.swift */; };
 		B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBE60D24C5E16C0016CC96 /* Updater.swift */; };
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
@@ -45,7 +45,7 @@
 		B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B5EE21232660DDFD0070E302 /* Sparkle */; };
 		B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE21282661576E0070E302 /* ToolSummaryView.swift */; };
 		B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */; };
-		B5F00B1324E545CE00540FCE /* ToolRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowTests.swift */; };
+		B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */; };
 		B5F00B1624E5465F00540FCE /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,7 +133,7 @@
 		B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
 		B5EE21282661576E0070E302 /* ToolSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryView.swift; sourceTree = "<group>"; };
 		B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryViewModel.swift; sourceTree = "<group>"; };
-		B5F00B1224E545CE00540FCE /* ToolRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowTests.swift; sourceTree = "<group>"; };
+		B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowViewModelTests.swift; sourceTree = "<group>"; };
 		B5F00B1524E5465F00540FCE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,8 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */,
+				B510D0C9248B75C1003FAEC0 /* FilterTests.swift */,
 				B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */,
-				B5F00B1224E545CE00540FCE /* ToolRowTests.swift */,
+				B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */,
 				B5F00B1424E5464C00540FCE /* Helpers */,
 				B510D0B6248A3460003FAEC0 /* Supporting Files */,
 			);
@@ -223,7 +224,6 @@
 		B510D0BE248B756C003FAEC0 /* ToolReleasesCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				B510D0C9248B75C1003FAEC0 /* FilterTests.swift */,
 				B510D0CB248B7930003FAEC0 /* ToolTests.swift */,
 				B510D0C8248B7580003FAEC0 /* Supporting Files */,
 			);
@@ -624,7 +624,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F00B1324E545CE00540FCE /* ToolRowTests.swift in Sources */,
+				B5C0581E2668B1B000557F9D /* FilterTests.swift in Sources */,
+				B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */,
 				B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */,
 				B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */,
 				B5F00B1624E5465F00540FCE /* Tool.swift in Sources */,
@@ -635,7 +636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B510D0CA248B75C1003FAEC0 /* FilterTests.swift in Sources */,
 				B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -914,7 +914,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -943,7 +943,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
