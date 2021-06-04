@@ -6,6 +6,22 @@ Be informed about the latest Apple tool releases (including *Beta* releases) wit
 
 This application for free retrieves, notifies and shows you the latest Apple tool releases (including *Beta* releases) from publicly available Apple [RSS feed](https://developer.apple.com/news/releases/rss/releases.rss) in a formatted list on your status bar so that you would not miss any new releases coming out.
 
+# Screenshots
+
+<img src="./Screenshots/dark_mode_1.png">
+
+<img src="./Screenshots/light_mode_1.png">
+
+<img src="./Screenshots/dark_mode_2.png">
+
+<img src="./Screenshots/light_mode_2.png">
+
+## Notification badge on the status icon
+
+<img src="./Screenshots/dark_mode_6.png">
+
+<img src="./Screenshots/light_mode_6.png">
+
 # Requirements
 
 * macOS 11 (Big Sur)
@@ -80,34 +96,6 @@ If you want that **ToolReleases** application would automatically launch at logi
 # Updates
 
 Future application updates are available through the in-application settings.
-
-# Screenshots
-
-<img src="./Screenshots/dark_mode_1.png">
-
-<img src="./Screenshots/light_mode_1.png">
-
-<img src="./Screenshots/dark_mode_2.png">
-
-<img src="./Screenshots/light_mode_2.png">
-
-<img src="./Screenshots/dark_mode_3.png">
-
-<img src="./Screenshots/light_mode_3.png">
-
-<img src="./Screenshots/dark_mode_4.png">
-
-<img src="./Screenshots/light_mode_4.png">
-
-<img src="./Screenshots/dark_mode_5.png">
-
-<img src="./Screenshots/light_mode_5.png">
-
-## Notification badge on the status icon
-
-<img src="./Screenshots/dark_mode_6.png">
-
-<img src="./Screenshots/light_mode_6.png">
 
 # Licence
 
