@@ -8,6 +8,7 @@
                 {% unless release.prerelease and page.release_only %}
                     <item>
                         <title>{{ release.name }}</title>
+                        <sparkle:minimumSystemVersion>11.3</sparkle:minimumSystemVersion>
                         <description><![CDATA[{{ release.body | markdownify }}]]></description>
                         <pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
                         {% for asset in release.assets limit:1 %}
