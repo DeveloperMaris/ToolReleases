@@ -8,19 +8,13 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 # Screenshots
 
-<img src="./Screenshots/dark_mode_1.png">
+<img src="./Screenshots/light_mode_1.png" width="400"> <img src="./Screenshots/dark_mode_1.png" width="400">
 
-<img src="./Screenshots/light_mode_1.png">
-
-<img src="./Screenshots/dark_mode_2.png">
-
-<img src="./Screenshots/light_mode_2.png">
+<img src="./Screenshots/light_mode_2.png" width="400"> <img src="./Screenshots/dark_mode_2.png" width="400">
 
 ## Notification badge on the status icon
 
-<img src="./Screenshots/dark_mode_6.png">
-
-<img src="./Screenshots/light_mode_6.png">
+<img src="./Screenshots/light_mode_6.png" width="400"> <img src="./Screenshots/dark_mode_6.png" width="400">
 
 # Requirements
 
