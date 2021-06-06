@@ -3,7 +3,7 @@
     <channel>
         <title>{{ site.github.project_title }}</title>
         <description>Most recent changes with links to updates.</description>
-        {% for release in site.github.releases limit:2 %}
+        {% for release in site.github.releases limit:4 %}
             {% unless release.draft %}
                 {% unless release.prerelease and page.release_only %}
                     <item>
@@ -16,7 +16,7 @@
                                 {% assign version = build_nums[1] %}
                                 {% assign short_version = release.tag_name | remove_first:'v' %}
                                 {% if short_version contains '1.4' %}
-                                    <sparkle:minimumSystemVersion>11</sparkle:minimumSystemVersion>
+                                    <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
                                 {% else %}
                                     <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
                                     <sparkle:maximumSystemVersion>10.15.7</sparkle:maximumSystemVersion>
