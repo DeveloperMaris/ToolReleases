@@ -17,7 +17,7 @@
                                 {% assign short_version = release.tag_name | remove_first:'v' %}
                                 {% if short_version contains '1.4' %}
                                 {% else %}
-                                    <sparkle:maximumSystemVersion>11.2</sparkle:maximumSystemVersion>
+                                    <sparkle:maximumSystemVersion>11.3</sparkle:maximumSystemVersion>
                                 {% endif %}
                                 {{min_version}}
                             {% else %}
