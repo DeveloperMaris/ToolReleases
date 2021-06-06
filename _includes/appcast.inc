@@ -26,6 +26,7 @@
                             {% endif %}
                             <enclosure
                                 url="{{ asset.browser_download_url }}"
+                                sparkle:os="macos"
                                 sparkle:version="{{ version }}"
                                 {% if short_version %}sparkle:shortVersionString="{{ release.tag_name | remove_first:'v' }}"{% endif %}
                                 length="{{ asset.size }}"
