@@ -16,11 +16,8 @@
                                 {% assign version = build_nums[1] %}
                                 {% assign short_version = release.tag_name | remove_first:'v' %}
                                 {% if short_version contains '1.4' %}
-                                    <sparkle:minimumSystemVersion>11</sparkle:minimumSystemVersion>
-                                    <sparkle:maximumSystemVersion>11.5</sparkle:maximumSystemVersion>
                                 {% else %}
-                                    <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
-                                    <sparkle:maximumSystemVersion>10.15.7</sparkle:maximumSystemVersion>
+                                    <sparkle:maximumSystemVersion>11.2</sparkle:maximumSystemVersion>
                                 {% endif %}
                                 {{min_version}}
                             {% else %}
