@@ -3,12 +3,13 @@
     <channel>
         <title>{{ site.github.project_title }}</title>
         <description>Most recent changes with links to updates.</description>
-        {% for release in site.github.releases limit:4 %}
+        {% for release in site.github.releases reversed %}
             {% unless release.draft %}
                 {% unless release.prerelease and page.release_only %}
                     <item>
                         <title>{{ release.name }}</title>
                         <description><![CDATA[{{ release.body | markdownify }}]]></description>
+                        <pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
                         {% for asset in release.assets limit:1 %}
                             {% assign build_nums = asset.name | replace_first:'ToolReleases_v','' | replace_first:'.b',',' | remove_first:'.zip' | split:',' %}
                             {% if build_nums.size == 2 %}
