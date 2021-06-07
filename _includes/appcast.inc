@@ -3,7 +3,7 @@
     <channel>
         <title>{{ site.github.project_title }}</title>
         <description>Most recent changes with links to updates.</description>
-        {% for release in site.github.releases %}
+        {% for release in site.github.releases reversed %}
             {% unless release.draft %}
                 {% unless release.prerelease and page.release_only %}
                     <item>
