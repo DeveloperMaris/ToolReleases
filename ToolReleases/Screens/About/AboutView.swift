@@ -40,6 +40,13 @@ struct AboutView: View {
                 Text("Collected content copyrights belongs to Apple Inc.")
             }
 
+            Divider()
+
+            HStack(spacing: 3) {
+                Text("To report an issue, please visit")
+                Link("github.com", destination: URL(string: "https://github.com/DeveloperMaris/ToolReleases/issues")!)
+            }
+
             Spacer()
         }
     }

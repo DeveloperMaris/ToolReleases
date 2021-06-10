@@ -16,7 +16,7 @@ class AboutWindowController: NSWindowController {
         self.aboutView = aboutView
 
         let window = NSWindow(
-            contentRect: CGRect(origin: .zero, size: CGSize(width: 650, height: 250)),
+            contentRect: CGRect(origin: .zero, size: CGSize(width: 650, height: 300)),
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false
