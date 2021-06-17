@@ -34,7 +34,7 @@ This application for free retrieves, notifies and shows you the latest Apple too
 
 1. Open Terminal.
 
-2. Execute command `brew cask install toolreleases`.
+2. Execute command `brew install cask toolreleases`.
 
 ![Install app using Homebrew](./Screenshots/install_using_homebrew.png)
 
