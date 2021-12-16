@@ -15,10 +15,8 @@ extension ToolRowView {
     class ViewModel: ObservableObject {
         private static let fullDateFormatter: DateFormatter = {
             let formatter = DateFormatter()
-
             formatter.dateStyle = .full
             formatter.timeStyle = .short
-
             return formatter
         }()
 
@@ -27,7 +25,6 @@ extension ToolRowView {
             formatter.unitsStyle = .full
             formatter.dateTimeStyle = .numeric
             formatter.formattingContext = .standalone
-
             return formatter
         }()
 
@@ -62,7 +59,6 @@ extension ToolRowView {
                     return
                 }
 
-                os_log(.debug, log: .views, "Update tool relative date for %{public}@", self.tool.title)
                 self.relativeDate = self.relativeDate(against: date)
                 self.isRecentRelease = self.isRecentRelease(against: date)
             }

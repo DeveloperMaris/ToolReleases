@@ -27,7 +27,7 @@ struct AboutView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text("Copyright © 2021 Maris Lagzdins. All rights reserved.")
+                Text("Copyright © 2022 Maris Lagzdins. All rights reserved.")
                     .font(.caption)
                     .italic()
             }

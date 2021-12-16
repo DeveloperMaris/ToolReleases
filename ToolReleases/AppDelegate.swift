@@ -11,11 +11,12 @@ import Combine
 import os.log
 import SwiftUI
 import ToolReleasesCore
+import UserNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    private let notificationCenter = NotificationCenter.default
+    private let notificationCenter: NotificationCenter = .default
 
     private lazy var popover = NSPopover()
     private lazy var toolManager = ToolManager.current
@@ -38,19 +39,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var subscriptions = Set<AnyCancellable>()
     private var eventMonitor: EventMonitor?
-    private var showBadge = false {
+    private var showsBadge = false {
         didSet {
-            badge.isHidden = showBadge == false
+            badge.isHidden = showsBadge == false
         }
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        subscribeForReleaseUpdates()
-        toolManager.subscribeForAutomaticUpdates()
+        UNUserNotificationCenter.current().delegate = self
 
         configureStatusBarButton()
-        configureEventMonitor()
         configurePopover()
+        setupEventMonitor()
+
+        toolManager.subscribeForAutomaticUpdates()
+        subscribeForReleaseUpdates()
     }
 
     func closePopover(sender: Any?) {
@@ -60,21 +63,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+// MARK: - Private methods
 private extension AppDelegate {
     func subscribeForReleaseUpdates() {
-        let subscription = toolManager.$newReleasesAvailable
+        toolManager.$isNewReleaseAvailable
+            .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] newReleasesAvailable in
-                guard self?.popover.isShown == false else {
-                    return
-                }
+            .sink { [weak self] isNewReleaseAvailable in
+                guard self?.popover.isShown == false else { return }
 
-                if newReleasesAvailable {
-                    self?.showBadge = true
+                if isNewReleaseAvailable {
+                    self?.showsBadge = true
                 }
             }
-
-        subscriptions.insert(subscription)
+            .store(in: &subscriptions)
     }
 
     func configureStatusBarButton() {
@@ -82,13 +84,13 @@ private extension AppDelegate {
             fatalError("Status item does not exist")
         }
 
+        badge.translatesAutoresizingMaskIntoConstraints = false
+        badge.isHidden = true
+
         button.image = NSImage(named: "StatusBarIcon")
         button.image?.size = NSSize(width: 20, height: 20)
         button.action = #selector(togglePopover)
-
         button.addSubview(badge)
-        badge.translatesAutoresizingMaskIntoConstraints = false
-        badge.isHidden = true
 
         NSLayoutConstraint.activate([
             badge.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -2),
@@ -96,16 +98,6 @@ private extension AppDelegate {
             badge.widthAnchor.constraint(equalToConstant: 10),
             badge.heightAnchor.constraint(equalToConstant: 10)
         ])
-    }
-
-    func configureEventMonitor() {
-        // Events are received only when user generates those events outside of the main application window.
-        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
-            guard let self = self else { return }
-            if self.popover.isShown {
-                self.closePopover(sender: event)
-            }
-        }
     }
 
     func configurePopover() {
@@ -116,6 +108,17 @@ private extension AppDelegate {
 
         popover.contentViewController = host
         popover.contentSize = NSSize(width: 400, height: 400)
+    }
+
+    func setupEventMonitor() {
+        // Events are received only when user generates
+        // those events outside of the main application
+        // window.
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            if self?.popover.isShown == true {
+                self?.closePopover(sender: event)
+            }
+        }
     }
 
     @objc
@@ -133,13 +136,25 @@ private extension AppDelegate {
             return
         }
 
-        guard popover.isShown == false else {
-            return
-        }
+        guard popover.isShown == false else { return }
 
         notificationCenter.post(name: .windowWillAppear, object: nil)
         eventMonitor?.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-        showBadge = false
+        showsBadge = false
+    }
+}
+
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            // The user launched the app
+            showPopover(sender: nil)
+        }
     }
 }

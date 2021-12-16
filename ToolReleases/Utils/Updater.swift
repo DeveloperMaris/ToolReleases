@@ -17,7 +17,7 @@ class Updater: NSObject, ObservableObject {
         #if DEBUG
             interval = 10 // 10 seconds
         #else
-            interval = 3600 // 1 hour
+            interval = 3_600 // 1 hour
         #endif
         os_log(.debug, log: .updater, "Update check interval set to %{public}f", interval)
         return interval
@@ -47,7 +47,10 @@ class Updater: NSObject, ObservableObject {
     func startAutomaticBackgroundUpdateChecks() {
         os_log(.debug, log: .updater, "%{public}@", #function)
         automaticUpdateCheckTimer?.invalidate()
-        automaticUpdateCheckTimer = Timer.scheduledTimer(withTimeInterval: Self.automaticUpdateCheckTimeInterval, repeats: true) { [weak self] _ in
+        automaticUpdateCheckTimer = Timer.scheduledTimer(
+            withTimeInterval: Self.automaticUpdateCheckTimeInterval,
+            repeats: true
+        ) { [weak self] _ in
             self?.silentlyCheckForUpdates()
         }
     }
@@ -61,7 +64,13 @@ class Updater: NSObject, ObservableObject {
 
 extension Updater: SUUpdaterDelegate {
     func updater(_ updater: SUUpdater, didFindValidUpdate item: SUAppcastItem) {
-        os_log(.debug, log: .updater, "Update found, version: %{public}@.%{public}@", item.displayVersionString, item.versionString)
+        os_log(
+            .debug,
+            log: .updater,
+            "Update found, version: %{public}@.%{public}@",
+            item.displayVersionString,
+            item.versionString
+        )
         isUpdateAvailable = true
     }
 

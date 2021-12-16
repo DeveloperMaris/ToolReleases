@@ -9,9 +9,10 @@
 import FeedKit
 import Foundation
 
-public struct Tool: Identifiable, Equatable {
+public struct Tool: Identifiable, Equatable, Hashable {
     public let id: String
     public let title: String
+    public let shortTitle: String
     public let description: String?
     public let url: URL?
     public let date: Date
@@ -22,6 +23,7 @@ public struct Tool: Identifiable, Equatable {
     public init(id: String, title: String, date: Date, url: URL?, description: String?) {
         self.id = id
         self.title = title
+        self.shortTitle = ""
         self.date = date
         self.url = url
         self.description = description
@@ -49,6 +51,7 @@ public struct Tool: Identifiable, Equatable {
 
         self.id = title
         self.title = title
+        self.shortTitle = String(title.prefix { $0 != "(" }).trimmingCharacters(in: .whitespacesAndNewlines)
         self.description = item.description?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.date = date
 
