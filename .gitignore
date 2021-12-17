@@ -1,5 +1,6 @@
-# Created by https://www.toptal.com/developers/gitignore/api/swift,macos,dotenv,fastlane
-# Edit at https://www.toptal.com/developers/gitignore?templates=swift,macos,dotenv,fastlane
+
+# Created by https://www.toptal.com/developers/gitignore/api/swift,macos,dotenv,fastlane,xcode,swiftpackagemanager
+# Edit at https://www.toptal.com/developers/gitignore?templates=swift,macos,dotenv,fastlane,xcode,swiftpackagemanager
 
 ### dotenv ###
 .env
@@ -136,4 +137,27 @@ Dependencies/
 
 iOSInjectionProject/
 
-# End of https://www.toptal.com/developers/gitignore/api/swift,macos,dotenv,fastlane
+### SwiftPackageManager ###
+Packages
+xcuserdata
+*.xcodeproj
+
+
+### Xcode ###
+# Xcode
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+
+
+
+## Gcc Patch
+/*.gcno
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# End of https://www.toptal.com/developers/gitignore/api/swift,macos,dotenv,fastlane,xcode,swiftpackagemanager

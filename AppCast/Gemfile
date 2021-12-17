@@ -1,0 +1,4 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.2.1"
+gem "jekyll-github-metadata", group: :jekyll_plugins
