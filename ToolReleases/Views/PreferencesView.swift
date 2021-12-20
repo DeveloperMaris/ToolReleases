@@ -58,7 +58,7 @@ struct PreferencesView: View {
 
         if let window = controller.window {
             if let delegate = NSApp.delegate as? AppDelegate {
-                delegate.closePopover(sender: nil)
+                delegate.closePopover()
             }
             NSApp.runModal(for: window)
         }

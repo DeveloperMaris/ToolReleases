@@ -12,7 +12,7 @@ import ToolReleasesCore
 
 extension ToolSummaryView {
     class ViewModel: ObservableObject {
-        private let manager: ToolManager
+        private let provider: ToolProvider
         private var cancellables: Set<AnyCancellable> = []
 
         @Published private(set) var tools: [Tool]
@@ -22,10 +22,10 @@ extension ToolSummaryView {
         @Published var isKeywordFilterEnabled: Bool
 
         let timer: Publishers.Autoconnect<Timer.TimerPublisher>
-        var lastRefresh: Date? { manager.lastRefresh }
+        var lastRefresh: Date? { provider.lastRefresh }
 
-        init(manager: ToolManager) {
-            self.manager = manager
+        init(provider: ToolProvider) {
+            self.provider = provider
             self.tools = []
             self.filter = .all
             self.keywords = ""
@@ -33,9 +33,11 @@ extension ToolSummaryView {
             self.timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
             self.isKeywordFilterEnabled = false
 
-            manager.$tools
-                .map { tools in
-                    self.filter(
+            provider.$tools
+                .map { [weak self] tools in
+                    guard let self = self else { return [] }
+
+                    return self.filter(
                         tools,
                         filter: self.filter,
                         includingKeywordFilter: self.isKeywordFilterEnabled,
@@ -50,9 +52,11 @@ extension ToolSummaryView {
             $keywords
                 .dropFirst()
                 .debounce(for: 0.3, scheduler: DispatchQueue.main)
-                .map { searchString in
-                    self.filter(
-                        manager.tools,
+                .map { [weak self] searchString in
+                    guard let self = self else { return [] }
+
+                    return self.filter(
+                        self.provider.tools,
                         filter: self.filter,
                         includingKeywordFilter: self.isKeywordFilterEnabled,
                         by: String(searchString)
@@ -65,9 +69,11 @@ extension ToolSummaryView {
 
             $filter
                 .dropFirst()
-                .map { filter in
-                    self.filter(
-                        manager.tools,
+                .map { [weak self] filter in
+                    guard let self = self else { return [] }
+
+                    return self.filter(
+                        self.provider.tools,
                         filter: filter,
                         includingKeywordFilter: self.isKeywordFilterEnabled,
                         by: self.keywords
@@ -80,9 +86,11 @@ extension ToolSummaryView {
 
             $isKeywordFilterEnabled
                 .dropFirst()
-                .map { filterEnabled in
-                    self.filter(
-                        manager.tools,
+                .map { [weak self] filterEnabled in
+                    guard let self = self else { return [] }
+
+                    return self.filter(
+                        self.provider.tools,
                         filter: self.filter,
                         includingKeywordFilter: filterEnabled,
                         by: self.keywords
@@ -93,14 +101,19 @@ extension ToolSummaryView {
                 }
                 .store(in: &cancellables)
 
-            manager.$isRefreshing
-                .sink { isRefreshing in
-                    self.isRefreshing = isRefreshing
+            provider.$isRefreshing
+                .sink { [weak self] isRefreshing in
+                    self?.isRefreshing = isRefreshing
                 }
                 .store(in: &cancellables)
         }
 
-        func filter(_ tools: [Tool], filter: Filter, includingKeywordFilter: Bool = true, by keywords: String) -> [Tool] {
+        func filter(
+            _ tools: [Tool],
+            filter: Filter,
+            includingKeywordFilter: Bool = true,
+            by keywords: String
+        ) -> [Tool] {
             let keywordGroups = Search.transformKeywords(keywords)
 
             return tools
@@ -114,7 +127,7 @@ extension ToolSummaryView {
         }
 
         func fetch() {
-            manager.fetch()
+            provider.fetch()
         }
     }
 }

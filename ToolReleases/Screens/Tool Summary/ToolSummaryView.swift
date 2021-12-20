@@ -12,6 +12,8 @@ import SwiftUI
 import ToolReleasesCore
 
 struct ToolSummaryView: View {
+    static private let logger = Logger(category: "ToolSummaryView")
+
     @StateObject private var viewModel: ViewModel
     
     var body: some View {
@@ -71,13 +73,13 @@ struct ToolSummaryView: View {
         }
         .background(Color(.windowBackgroundColor))
         .onAppear {
-            os_log(.info, log: .views, "Fetch tools on view appear")
+            Self.logger.debug("Fetch tools on view appear")
             fetch()
         }
     }
 
-    init(manager: ToolManager = .current) {
-        let viewModel = ViewModel(manager: manager)
+    init(provider: ToolProvider) {
+        let viewModel = ViewModel(provider: provider)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 }
@@ -97,6 +99,6 @@ private extension ToolSummaryView {
 
 struct ToolSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolSummaryView()
+        ToolSummaryView(provider: .init(loader: .init()))
     }
 }

@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import ToolReleasesCore
 
 struct ContentView: View {
+    @EnvironmentObject var provider: ToolProvider
+
     var body: some View {
-        ToolSummaryView()
+        ToolSummaryView(provider: provider)
     }
 }
 

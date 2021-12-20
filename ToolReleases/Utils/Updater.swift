@@ -12,6 +12,8 @@ import os.log
 import Sparkle
 
 class Updater: NSObject, ObservableObject {
+    static private let logger = Logger(category: "Updater")
+
     static private let automaticUpdateCheckTimeInterval: TimeInterval = {
         let interval: TimeInterval
         #if DEBUG
@@ -19,7 +21,7 @@ class Updater: NSObject, ObservableObject {
         #else
             interval = 3_600 // 1 hour
         #endif
-        os_log(.debug, log: .updater, "Update check interval set to %{public}f", interval)
+        logger.debug("Update check interval set to \(interval, privacy: .public)")
         return interval
     }()
     private let manager: SUUpdater
@@ -35,17 +37,17 @@ class Updater: NSObject, ObservableObject {
     }
 
     func checkForUpdates() {
-        os_log(.debug, log: .updater, "Explicitly check for an app update")
+        Self.logger.debug("Explicitly check for an app update")
         manager.checkForUpdates(nil)
     }
 
     func silentlyCheckForUpdates() {
-        os_log(.debug, log: .updater, "Silently check for an app update")
+        Self.logger.debug("Silently check for an app update")
         manager.checkForUpdateInformation()
     }
 
     func startAutomaticBackgroundUpdateChecks() {
-        os_log(.debug, log: .updater, "%{public}@", #function)
+        Self.logger.debug("Start automatic background update checks")
         automaticUpdateCheckTimer?.invalidate()
         automaticUpdateCheckTimer = Timer.scheduledTimer(
             withTimeInterval: Self.automaticUpdateCheckTimeInterval,
@@ -56,7 +58,7 @@ class Updater: NSObject, ObservableObject {
     }
 
     func stopAutomaticBackgroundUpdateChecks() {
-        os_log(.debug, log: .updater, "%{public}@", #function)
+        Self.logger.debug("Stop automatic background update checks")
         automaticUpdateCheckTimer?.invalidate()
         automaticUpdateCheckTimer = nil
     }
@@ -64,18 +66,14 @@ class Updater: NSObject, ObservableObject {
 
 extension Updater: SUUpdaterDelegate {
     func updater(_ updater: SUUpdater, didFindValidUpdate item: SUAppcastItem) {
-        os_log(
-            .debug,
-            log: .updater,
-            "Update found, version: %{public}@.%{public}@",
-            item.displayVersionString,
-            item.versionString
+        Self.logger.debug(
+            "Update found, version \(item.displayVersionString, privacy: .public).\(item.versionString, privacy: .public)"
         )
         isUpdateAvailable = true
     }
 
     func updaterDidNotFindUpdate(_ updater: SUUpdater) {
-        os_log(.debug, log: .updater, "Update not found")
+        Self.logger.debug("Update not found")
         isUpdateAvailable = false
     }
 }

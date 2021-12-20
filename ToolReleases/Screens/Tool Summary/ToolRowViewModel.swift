@@ -13,6 +13,8 @@ import ToolReleasesCore
 
 extension ToolRowView {
     class ViewModel: ObservableObject {
+        static private let logger = Logger(category: "ToolRowView")
+
         private static let fullDateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .full
@@ -53,7 +55,8 @@ extension ToolRowView {
         }
 
         func subscribeForTimerUpdates() {
-            os_log(.debug, log: .views, "Subscribe for timer updates; %{public}@", tool.title)
+            Self.logger.debug("Subscribe for timer updates, \(self.tool.title, privacy: .public)")
+
             cancellableTimer = timer.sink { [weak self] date in
                 guard let self = self else {
                     return
@@ -65,7 +68,8 @@ extension ToolRowView {
         }
 
         func unsubscribeFromTimerUpdates() {
-            os_log(.debug, log: .views, "Unsubscribe for timer updates; %{public}@", tool.title)
+            Self.logger.debug("Unsubscribe for timer updates, \(self.tool.title, privacy: .public)")
+
             cancellableTimer = nil
         }
 
