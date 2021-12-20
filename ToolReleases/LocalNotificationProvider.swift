@@ -12,6 +12,7 @@ import UserNotifications
 
 struct LocalNotificationProvider {
     private static let notificationID = "tool-releases-new-versions-available"
+    
     private let center: UNUserNotificationCenter
     private let delegateQueue: DispatchQueue
 

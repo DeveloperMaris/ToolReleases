@@ -8,8 +8,8 @@
 
 import Cocoa
 import Foundation
-import SwiftUI
 import os.log
+import SwiftUI
 
 class PopoverController {
     static private let logger = Logger(category: "PopoverController")
