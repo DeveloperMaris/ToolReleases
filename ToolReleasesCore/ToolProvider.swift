@@ -55,13 +55,15 @@ public class ToolProvider: ObservableObject {
         }
 
         loader.load { [weak self] tools in
-            defer {
-                self?.delegateQueue.async {
-                    self?.isRefreshing = false
+            self?.privateQueue.async {
+                defer {
+                    self?.delegateQueue.async {
+                        self?.isRefreshing = false
+                    }
                 }
-            }
 
-            self?.process(tools)
+                self?.process(tools)
+            }
         }
     }
 

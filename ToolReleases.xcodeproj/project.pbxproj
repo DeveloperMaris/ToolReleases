@@ -45,11 +45,13 @@
 		B5E5D13B276F6A1E00AFAE19 /* Logger+CustomInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D13A276F6A1E00AFAE19 /* Logger+CustomInitializer.swift */; };
 		B5E5D13D276F709400AFAE19 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D13C276F709400AFAE19 /* Bootstrap.swift */; };
 		B5E5D141276F71FA00AFAE19 /* PopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D140276F71FA00AFAE19 /* PopoverController.swift */; };
+		B5E5D1432770820500AFAE19 /* ToolProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */; };
+		B5E5D1452770836700AFAE19 /* Tool+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */; };
 		B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B5EE21232660DDFD0070E302 /* Sparkle */; };
 		B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE21282661576E0070E302 /* ToolSummaryView.swift */; };
 		B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */; };
 		B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */; };
-		B5F00B1624E5465F00540FCE /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool.swift */; };
+		B5F00B1624E5465F00540FCE /* Tool+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +97,6 @@
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
 		B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DateComparison.swift"; sourceTree = "<group>"; };
 		B510D0AC248A344D003FAEC0 /* ToolReleasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B510D0B0248A344D003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateComparisonTests.swift; sourceTree = "<group>"; };
 		B510D0BD248B756C003FAEC0 /* ToolReleasesCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B510D0C1248B756C003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,10 +138,13 @@
 		B5E5D13A276F6A1E00AFAE19 /* Logger+CustomInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+CustomInitializer.swift"; sourceTree = "<group>"; };
 		B5E5D13C276F709400AFAE19 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		B5E5D140276F71FA00AFAE19 /* PopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverController.swift; sourceTree = "<group>"; };
+		B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolProviderTests.swift; sourceTree = "<group>"; };
+		B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Stubs.swift"; sourceTree = "<group>"; };
+		B5E5D14627708C9200AFAE19 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5EE21282661576E0070E302 /* ToolSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryView.swift; sourceTree = "<group>"; };
 		B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryViewModel.swift; sourceTree = "<group>"; };
 		B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowViewModelTests.swift; sourceTree = "<group>"; };
-		B5F00B1524E5465F00540FCE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Stubs.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,35 +217,37 @@
 				B510D0C9248B75C1003FAEC0 /* FilterTests.swift */,
 				B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */,
 				B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */,
-				B5F00B1424E5464C00540FCE /* Helpers */,
-				B510D0B6248A3460003FAEC0 /* Supporting Files */,
+				B510D0B6248A3460003FAEC0 /* Support */,
 			);
 			path = ToolReleasesTests;
 			sourceTree = "<group>";
 		};
-		B510D0B6248A3460003FAEC0 /* Supporting Files */ = {
+		B510D0B6248A3460003FAEC0 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				B510D0B0248A344D003FAEC0 /* Info.plist */,
+				B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */,
+				B5E5D14627708C9200AFAE19 /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B510D0BE248B756C003FAEC0 /* ToolReleasesCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */,
 				B510D0CB248B7930003FAEC0 /* ToolTests.swift */,
-				B510D0C8248B7580003FAEC0 /* Supporting Files */,
+				B510D0C8248B7580003FAEC0 /* Support */,
 			);
 			path = ToolReleasesCoreTests;
 			sourceTree = "<group>";
 		};
-		B510D0C8248B7580003FAEC0 /* Supporting Files */ = {
+		B510D0C8248B7580003FAEC0 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				B510D0C1248B756C003FAEC0 /* Info.plist */,
+				B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */,
 			);
-			path = "Supporting Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B52A52022412353100DF7F22 = {
@@ -410,14 +416,6 @@
 				B5C05818266760E600557F9D /* Tool Summary */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		B5F00B1424E5464C00540FCE /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				B5F00B1524E5465F00540FCE /* Tool.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E08DF628250256C93A46F3F4 /* Frameworks */ = {
@@ -637,7 +635,7 @@
 				B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */,
 				B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */,
 				B510D0B8248A3470003FAEC0 /* CalendarDateComparisonTests.swift in Sources */,
-				B5F00B1624E5465F00540FCE /* Tool.swift in Sources */,
+				B5F00B1624E5465F00540FCE /* Tool+Stubs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +643,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E5D1432770820500AFAE19 /* ToolProviderTests.swift in Sources */,
+				B5E5D1452770836700AFAE19 /* Tool+Stubs.swift in Sources */,
 				B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,7 +730,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
-				INFOPLIST_FILE = "ToolReleasesTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -752,7 +752,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
-				INFOPLIST_FILE = "ToolReleasesTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -772,7 +772,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "ToolReleasesCoreTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCoreTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -790,7 +790,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "ToolReleasesCoreTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCoreTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

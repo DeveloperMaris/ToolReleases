@@ -11,7 +11,7 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class CalendarDateComparisonTests: XCTestCase {
+final class CalendarDateComparisonTests: XCTestCase {
     func testToollessThanOneHourAgo() {
         // Given
         let component = DateComponents(minute: 59)

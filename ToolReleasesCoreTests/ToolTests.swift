@@ -11,13 +11,19 @@ import FeedKit
 import ToolReleasesCore
 import XCTest
 
-class ToolTests: XCTestCase {
+final class ToolTests: XCTestCase {
 
     // MARK: - Initialization
 
     func testToolInit() {
         // When
-        let sut = Tool(id: UUID().uuidString, title: "Tool title", date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
+        let sut = Tool(
+            id: UUID().uuidString,
+            title: "Tool title",
+            date: Date(),
+            url: URL(string: "www.example.com"),
+            description: "Tool Description"
+        )
 
         // Then
         XCTAssertNotNil(sut)
@@ -491,15 +497,32 @@ class ToolTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut)
     }
-}
 
-// MARK: - Helpers
-fileprivate extension Tool {
-    static func make(withTitle title: String) -> Self {
-        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
+    // MARK: - Tool parameter validations
+
+    func testShortTitleDoesNotContainVersionNumber() throws {
+        // Given
+        let longTitle = "iOS 15.3 beta (19D5026g)"
+        let shortTitle = "iOS 15.3 beta"
+
+        let item = RSSFeedItem()
+        item.guid = .default
+        item.title = "iOS 15.3 beta (19D5026g)"
+        item.link = "www.example.com"
+        item.description = "iOS Release"
+        item.pubDate = Date()
+
+        // When
+        let sut = try XCTUnwrap(Tool(item))
+
+        // Then
+        XCTAssertNotEqual(sut.shortTitle, sut.title)
+        XCTAssertEqual(sut.title, longTitle)
+        XCTAssertEqual(sut.shortTitle, shortTitle)
     }
 }
 
+// MARK: - Helpers
 fileprivate extension RSSFeedItemGUID {
     static var `default`: RSSFeedItemGUID {
         let guid = RSSFeedItemGUID()

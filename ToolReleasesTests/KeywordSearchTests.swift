@@ -11,7 +11,7 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class SearchKeywordsTests: XCTestCase {
+final class SearchKeywordsTests: XCTestCase {
     func testKeywordTransformationReturnsCorrectly() {
         // Given
         let keywords = "iOS"

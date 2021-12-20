@@ -12,7 +12,7 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class ToolRowViewModelTests: XCTestCase {
+final class ToolRowViewModelTests: XCTestCase {
     var timer: Publishers.Autoconnect<Timer.TimerPublisher>!
     var actualDate: Date!
 
