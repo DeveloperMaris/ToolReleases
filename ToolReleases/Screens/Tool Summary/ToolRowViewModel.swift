@@ -85,7 +85,7 @@ extension ToolRowView {
         ///   - calendar: Calendar is used to calculate precise dates.
         /// - Returns: Localized relative date time format.
         func string(for date: Date, relativeTo relativeDate: Date, calendar: Calendar = .current) -> String {
-            if DateComparison.isDate(date, lessThan: 1, .minute, since: relativeDate) {
+            if calendar.isDateComponent(.minute, from: date, to: relativeDate, lessThan: 1) {
                 return "Just now"
             } else {
                 // Remove exact time and leave only the date
@@ -96,7 +96,7 @@ extension ToolRowView {
                 let sourceDateOnly = calendar.date(from: sourceDateComponents) ?? date
                 let relativeDateOnly = calendar.date(from: relativeDateComponents) ?? relativeDate
 
-                if DateComparison.isDate(sourceDateOnly, lessThan: 1, .day, since: relativeDateOnly) {
+                if calendar.isDateComponent(.day, from: sourceDateOnly, to: relativeDateOnly, lessThan: 1) {
                     // Show exact hour count only if the tool was released in the same day
                     return Self.relativeDateFormatter.localizedString(for: date, relativeTo: relativeDate).capitalized
                 } else {
@@ -118,6 +118,6 @@ private extension ToolRowView.ViewModel {
     }
 
     func isRecentRelease(against date: Date) -> Bool {
-        DateComparison.isDate(tool.date, lessThan: Self.recentReleaseDays, .day, since: date)
+        Calendar.current.isDateComponent(.day, from: tool.date, to: date, lessThan: Self.recentReleaseDays)
     }
 }

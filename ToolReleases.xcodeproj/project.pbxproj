@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		B505404724E1966500A1D56B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505404624E1966500A1D56B /* BadgeView.swift */; };
 		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
-		B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* DateComparison.swift */; };
-		B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */; };
+		B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */; };
+		B510D0B8248A3470003FAEC0 /* CalendarDateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */; };
 		B510D0C2248B756C003FAEC0 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0CB248B7930003FAEC0 /* ToolTests.swift */; };
 		B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A520E2412353100DF7F22 /* AppDelegate.swift */; };
@@ -93,10 +93,10 @@
 /* Begin PBXFileReference section */
 		B505404624E1966500A1D56B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
-		B510D095248A2E8A003FAEC0 /* DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComparison.swift; sourceTree = "<group>"; };
+		B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DateComparison.swift"; sourceTree = "<group>"; };
 		B510D0AC248A344D003FAEC0 /* ToolReleasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B510D0B0248A344D003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComparisonTests.swift; sourceTree = "<group>"; };
+		B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateComparisonTests.swift; sourceTree = "<group>"; };
 		B510D0BD248B756C003FAEC0 /* ToolReleasesCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B510D0C1248B756C003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B510D0C9248B75C1003FAEC0 /* FilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		B510D0AD248A344D003FAEC0 /* ToolReleasesTests */ = {
 			isa = PBXGroup;
 			children = (
-				B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */,
+				B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */,
 				B510D0C9248B75C1003FAEC0 /* FilterTests.swift */,
 				B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */,
 				B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */,
@@ -306,10 +306,10 @@
 			isa = PBXGroup;
 			children = (
 				B593D8B02490C16C006E8265 /* Bundle+Version.swift */,
-				B510D095248A2E8A003FAEC0 /* DateComparison.swift */,
+				B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */,
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
-				B596D51F24A5F73C00A5714A /* Notification+Extension.swift */,
 				B52A522824123D5F00DF7F22 /* Logger+CustomInitializer.swift */,
+				B596D51F24A5F73C00A5714A /* Notification+Extension.swift */,
 				B52FC78E24B8AAA600B98B46 /* Search.swift */,
 				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
 			);
@@ -636,7 +636,7 @@
 				B5C0581E2668B1B000557F9D /* FilterTests.swift in Sources */,
 				B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */,
 				B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */,
-				B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */,
+				B510D0B8248A3470003FAEC0 /* CalendarDateComparisonTests.swift in Sources */,
 				B5F00B1624E5465F00540FCE /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +661,7 @@
 				B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */,
 				B5E5D137276CE0A700AFAE19 /* LocalNotificationProvider.swift in Sources */,
 				B560170724AB240A0091692A /* AboutView.swift in Sources */,
-				B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */,
+				B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */,
 				B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */,
 				B5E5D13D276F709400AFAE19 /* Bootstrap.swift in Sources */,
