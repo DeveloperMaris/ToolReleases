@@ -11,7 +11,7 @@ import ToolReleases
 import ToolReleasesCore
 import XCTest
 
-class FilterTests: XCTestCase {
+final class FilterTests: XCTestCase {
     var release1: Tool!
     var release2: Tool!
     var beta1: Tool!
@@ -64,12 +64,5 @@ class FilterTests: XCTestCase {
 
         // Then
         XCTAssertEqual(result.count, 5)
-    }
-}
-
-// MARK: - Helpers
-fileprivate extension Tool {
-    static func make(withTitle title: String) -> Self {
-        Tool(id: "https://developer.apple.com/news/releases/?id=1234567890a", title: title, date: Date(), url: URL(string: "www.example.com"), description: "Tool Description")
     }
 }
