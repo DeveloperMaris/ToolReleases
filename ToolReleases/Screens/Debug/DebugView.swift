@@ -6,6 +6,8 @@
 //  Copyright © 2021 Maris Lagzdins. All rights reserved.
 //
 
+#if DEBUG
+
 import SwiftUI
 import ToolReleasesCore
 
@@ -56,3 +58,5 @@ struct DebugView_Previews: PreviewProvider {
         DebugView()
     }
 }
+
+#endif
