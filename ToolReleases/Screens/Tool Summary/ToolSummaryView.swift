@@ -35,6 +35,11 @@ struct ToolSummaryView: View {
                     }
 
                     PreferencesView()
+                    #if DEBUG
+                        .contextMenu {
+                            DebugView()
+                        }
+                    #endif
                 }
 
                 if viewModel.isKeywordFilterEnabled {

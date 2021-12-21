@@ -140,3 +140,32 @@ private extension ToolProvider {
         }
     }
 }
+
+#if DEBUG
+
+// MARK: Debug methods
+extension ToolProvider {
+    /// A method which randomly generates a new tool versions
+    /// and adds it to the current tool list.
+    /// - Warning: This method should be used only for debug purposes.
+    /// - Parameter count: New tool release count.
+    public func simulateNewReleases(_ count: Int = 1) {
+        privateQueue.async { [weak self] in
+            guard let self = self else { return }
+
+            Self.logger.debug("Simulate \(count, privacy: .public) new tool releases.")
+
+            var tools = self.tools
+            let simulator = ReleaseSimulator()
+
+            for _ in 0..<count {
+                let tool = simulator.makeRandomRelease()
+                tools.append(tool)
+            }
+
+            self.process(tools)
+        }
+    }
+}
+
+#endif
