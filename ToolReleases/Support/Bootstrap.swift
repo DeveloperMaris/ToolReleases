@@ -63,13 +63,17 @@ private extension Bootstrap {
     func subscribeForToolUpdates() {
         toolProvider.newToolsPublisher
             .sink { [weak self] tools in
-                guard self?.popover.isPopoverShown == false else {
+                guard let self = self else {
+                    return
+                }
+
+                guard self.popover.isPopoverShown == false else {
                     return
                 }
 
                 if tools.isEmpty == false {
-                    self?.popover.showBadge()
-                    self?.localNotificationProvider.addNotification(about: tools) { success in
+                    self.popover.showBadge()
+                    self.localNotificationProvider.addNotification(about: tools) { success in
                         if success {
                             Self.logger.debug("Notification added")
                         } else {

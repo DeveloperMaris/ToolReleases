@@ -11,9 +11,8 @@ import Foundation
 import os.log
 import Sparkle
 
-class Updater: NSObject, ObservableObject {
+final class Updater: NSObject, ObservableObject {
     static private let logger = Logger(category: "Updater")
-
     static private let automaticUpdateCheckTimeInterval: TimeInterval = {
         let interval: TimeInterval
         #if DEBUG
@@ -24,26 +23,28 @@ class Updater: NSObject, ObservableObject {
         logger.debug("Update check interval set to \(interval, privacy: .public)")
         return interval
     }()
-    private let manager: SUUpdater
+    private var updaterController: SPUStandardUpdaterController!
     private var automaticUpdateCheckTimer: Timer?
 
     @Published public private(set) var isUpdateAvailable = false
 
-    init(manager: SUUpdater = .shared()) {
-        self.manager = manager
+    override init() {
         super.init()
-
-        self.manager.delegate = self
+        self.updaterController = SPUStandardUpdaterController(
+            startingUpdater: true,
+            updaterDelegate: self,
+            userDriverDelegate: nil
+        )
     }
 
     func checkForUpdates() {
         Self.logger.debug("Explicitly check for an app update")
-        manager.checkForUpdates(nil)
+        updaterController.checkForUpdates(nil)
     }
 
     func silentlyCheckForUpdates() {
         Self.logger.debug("Silently check for an app update")
-        manager.checkForUpdateInformation()
+        updaterController.updater.checkForUpdateInformation()
     }
 
     func startAutomaticBackgroundUpdateChecks() {
@@ -64,16 +65,21 @@ class Updater: NSObject, ObservableObject {
     }
 }
 
-extension Updater: SUUpdaterDelegate {
-    func updater(_ updater: SUUpdater, didFindValidUpdate item: SUAppcastItem) {
+extension Updater: SPUUpdaterDelegate {
+    func updater(_ updater: SPUUpdater, didFindValidUpdate item: SUAppcastItem) {
         Self.logger.debug(
-            "Update found, version \(item.displayVersionString, privacy: .public).\(item.versionString, privacy: .public)"
+            """
+            New version available, /
+            version /
+            \(item.displayVersionString ?? "n/a", privacy: .public)./
+            \(item.versionString, privacy: .public)
+            """
         )
         isUpdateAvailable = true
     }
 
-    func updaterDidNotFindUpdate(_ updater: SUUpdater) {
-        Self.logger.debug("Update not found")
+    func updaterDidNotFindUpdate(_ updater: SPUUpdater) {
+        Self.logger.debug("New version is not available.")
         isUpdateAvailable = false
     }
 }
