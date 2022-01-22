@@ -25,7 +25,7 @@ struct LocalNotificationProvider {
         center.getNotificationSettings { settings in
             switch settings.authorizationStatus {
             case .notDetermined:
-                self.requestNotifications { success in
+                requestNotifications { success in
                     if success {
                         placeNotification(for: tools, completion: completion)
                     } else {
@@ -34,8 +34,9 @@ struct LocalNotificationProvider {
                         }
                     }
                 }
+
             case .authorized:
-                self.placeNotification(for: tools, completion: completion)
+                placeNotification(for: tools, completion: completion)
 
             default:
                 delegateQueue.async {
@@ -65,14 +66,17 @@ private extension LocalNotificationProvider {
 
         switch tools.count {
         case 0:
-            assertionFailure("Do not display notification for no new tools.")
+            assertionFailure("Do not display notification when there are no new tools.")
             delegateQueue.async {
                 completion(false)
             }
+
         case 1:
             content.subtitle = "\(tools[0].shortTitle)"
+
         case 2:
             content.subtitle = "\(tools[0].shortTitle) and \(tools[1].shortTitle)"
+
         default:
             content.subtitle = "\(tools[0].shortTitle), \(tools[1].shortTitle) and more"
         }
@@ -81,7 +85,6 @@ private extension LocalNotificationProvider {
 
         let id = makeNotificationID(for: tools)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-
         center.add(request) { error in
             delegateQueue.async {
                 if error == nil {
