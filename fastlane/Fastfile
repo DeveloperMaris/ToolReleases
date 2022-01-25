@@ -6,8 +6,14 @@ platform :mac do
     desc "Do all the necessary things to prepare a new release"
     lane :release do
         build
+        notarize(
+            package: "#{APP_BUILD_PATH}/ToolReleases.app",
+            print_log: true,
+            verbose: true
+        )
         compress
-        release_hash
+        sign_update_for_sparkle
+        release_hash_for_homebrew
         release_on_github
     end
 
@@ -20,10 +26,6 @@ platform :mac do
             clean: true,
             skip_package_pkg: true,
             export_method: "developer-id"
-        )
-        notarize(
-            package: "#{APP_BUILD_PATH}/ToolReleases.app",
-            print_log: true
         )
     end
 
@@ -38,11 +40,22 @@ platform :mac do
         )
     end
 
-    desc "Return sha-256 hash from the application zip file. This is necessary for the Homebrew version."
-    lane :release_hash do
+    lane :sign_update_for_sparkle do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
-        sh("cd .. && shasum -a 256 #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip | awk '{print $1}'")
+        sparkle = sh("cd .. && ./scripts/sign_update #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip")
+
+        # Create a file .sparkle and write the edSignature in it.
+        File.write("../#{APP_BUILD_PATH}/.sparkle", sparkle, mode: 'w')
+    end
+
+    desc "Return sha-256 hash from the application zip file. This is necessary for the Homebrew version."
+    lane :release_hash_for_homebrew do
+        version = get_version_number(target: "ToolReleases")
+        build = get_build_number()
+        hash = sh("cd .. && shasum -a 256 #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip | awk '{print $1}'")
+
+        File.write("../#{APP_BUILD_PATH}/.release_hash", hash, mode: 'w')
     end
 
     desc "Uploads the latest build to the GitHub Releases."
@@ -54,9 +67,19 @@ platform :mac do
             api_token: ENV["GITHUB_TOKEN"],
             name: "v#{version}",
             tag_name: "v#{version}",
-            description: (File.read("CHANGELOG.md") rescue "No changelog provided"),
+            description: prepare_changelog,
             commitish: "master",
-            upload_assets: ["#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip"]
+            upload_assets: ["#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip"],
+            is_draft: true
         )
     end
+end
+
+def prepare_changelog
+    changelog = (File.read("../CHANGELOG.md") rescue "No changelog provided")
+    sparkle = (File.read("../#{APP_BUILD_PATH}/.sparkle") rescue "").gsub("\n","")
+    
+    # We need to add the comment symbols so that the Sparkle public encryption key would be added to the changelog description, but not visible publicly. It is then used then to generate the correct appcast.xml file.
+
+    "#{changelog}\n<!-- #{sparkle} -->"
 end

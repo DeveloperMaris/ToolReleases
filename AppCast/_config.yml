@@ -24,8 +24,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
-# plugins:
-#   - jekyll-feed
+plugins:
+  - "jekyll-github-metadata"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
