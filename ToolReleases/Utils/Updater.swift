@@ -23,6 +23,12 @@ final class Updater: NSObject, ObservableObject {
         logger.debug("Update check interval set to \(interval, privacy: .public)")
         return interval
     }()
+    static private let betaChannels = Set(["beta"])
+
+    private var isBetaUpdatesEnabled: Bool {
+        get { UserDefaults.standard.bool(forKey: Storage.isBetaUpdatesEnabled.rawValue) }
+    }
+
     private var updaterController: SPUStandardUpdaterController!
     private var automaticUpdateCheckTimer: Timer?
 
@@ -81,5 +87,13 @@ extension Updater: SPUUpdaterDelegate {
     func updaterDidNotFindUpdate(_ updater: SPUUpdater) {
         Self.logger.debug("New version is not available.")
         isUpdateAvailable = false
+    }
+
+    func allowedChannels(for updater: SPUUpdater) -> Set<String> {
+        if isBetaUpdatesEnabled {
+            return Self.betaChannels
+        } else {
+            return []
+        }
     }
 }

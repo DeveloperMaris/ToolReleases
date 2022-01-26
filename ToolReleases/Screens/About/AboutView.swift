@@ -11,6 +11,9 @@ import SwiftUI
 struct AboutView: View {
     private let appVersion = Bundle.main.appVersion ?? "N/A"
     private let buildVersion = Bundle.main.buildVersion ?? "N/A"
+
+    @AppStorage(Storage.isBetaUpdatesEnabled.rawValue)
+    private var isBetaUpdatesEnabled: Bool = false
     
     var body: some View {
         VStack(spacing: 10) {
@@ -22,6 +25,9 @@ struct AboutView: View {
                     .frame(width: 64, height: 64)
                 Text("Tool Releases")
                     .font(.headline)
+                    .onTapGesture(count: 5) {
+                        isBetaUpdatesEnabled.toggle()
+                    }
 
                 Text("v\(appVersion), build \(buildVersion)")
                     .font(.caption)
