@@ -15,53 +15,29 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Mac
 
+### mac beta
+
+```sh
+[bundle exec] fastlane mac beta
+```
+
+Do all the necessary things to prepare and publish a new beta version (pre-release)
+
 ### mac release
 
 ```sh
 [bundle exec] fastlane mac release
 ```
 
-Do all the necessary things to prepare a new release
+Do all the necessary things to prepare and publish a new release
 
-### mac build
-
-```sh
-[bundle exec] fastlane mac build
-```
-
-Build and notarize the app
-
-### mac compress
+### mac prepare_build
 
 ```sh
-[bundle exec] fastlane mac compress
+[bundle exec] fastlane mac prepare_build
 ```
 
-Create zip file with the application and provides the necessary name format (which is used by the Sparkle framework).
-
-### mac sign_update_for_sparkle
-
-```sh
-[bundle exec] fastlane mac sign_update_for_sparkle
-```
-
-
-
-### mac release_hash_for_homebrew
-
-```sh
-[bundle exec] fastlane mac release_hash_for_homebrew
-```
-
-Return sha-256 hash from the application zip file. This is necessary for the Homebrew version.
-
-### mac release_on_github
-
-```sh
-[bundle exec] fastlane mac release_on_github
-```
-
-Uploads the latest build to the GitHub Releases.
+Prepare a new build
 
 ----
 

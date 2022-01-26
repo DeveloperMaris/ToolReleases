@@ -3,8 +3,20 @@ default_platform(:mac)
 APP_BUILD_PATH = 'build'
 
 platform :mac do
-    desc "Do all the necessary things to prepare a new release"
+    desc "Do all the necessary things to prepare and publish a new beta version (pre-release)"
+    lane :beta do
+        prepare_build
+        github_release(is_prerelease: true)
+    end
+
+    desc "Do all the necessary things to prepare and publish a new release"
     lane :release do
+        prepare_build
+        github_release(is_prerelease: false)
+    end
+
+    desc "Prepare a new build"
+    lane :prepare_build do
         build
         notarize(
             package: "#{APP_BUILD_PATH}/ToolReleases.app",
@@ -14,11 +26,10 @@ platform :mac do
         compress
         sign_update_for_sparkle
         release_hash_for_homebrew
-        release_on_github
     end
 
-    desc "Build and notarize the app"
-    lane :build do
+    desc "Build the app"
+    private_lane :build do
         build_mac_app(
             scheme: "ToolReleases",
             configuration: "Release",
@@ -30,7 +41,7 @@ platform :mac do
     end
 
     desc "Create zip file with the application and provides the necessary name format (which is used by the Sparkle framework)."
-    lane :compress do
+    private_lane :compress do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
         zip(
@@ -40,7 +51,7 @@ platform :mac do
         )
     end
 
-    lane :sign_update_for_sparkle do
+    private_lane :sign_update_for_sparkle do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
         sparkle = sh("cd .. && ./scripts/sign_update #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip")
@@ -50,7 +61,7 @@ platform :mac do
     end
 
     desc "Return sha-256 hash from the application zip file. This is necessary for the Homebrew version."
-    lane :release_hash_for_homebrew do
+    private_lane :release_hash_for_homebrew do
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
         hash = sh("cd .. && shasum -a 256 #{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip | awk '{print $1}'")
@@ -59,18 +70,21 @@ platform :mac do
     end
 
     desc "Uploads the latest build to the GitHub Releases."
-    lane :release_on_github do
+    private_lane :github_release do |options|
         version = get_version_number(target: "ToolReleases")
         build = get_build_number()
+        commit = last_git_commit
+        hash = commit[:commit_hash] # long sha of commit
+
         set_github_release(
             repository_name: "DeveloperMaris/ToolReleases",
             api_token: ENV["GITHUB_TOKEN"],
             name: "v#{version}",
             tag_name: "v#{version}",
             description: prepare_changelog,
-            commitish: "master",
+            commitish: "#{hash}",
             upload_assets: ["#{APP_BUILD_PATH}/ToolReleases_v#{version}.b#{build}.zip"],
-            is_draft: true
+            is_prerelease: options[:is_prerelease]
         )
     end
 end
