@@ -5,46 +5,39 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         {% for release in site.github.releases -%}
-            {% unless release.draft -%}
-                {% unless release.prerelease and page.release_only -%}
+        {% unless release.draft -%}
         <item>
             <title>{{ release.name }}</title>
             <link>https://github.com/DeveloperMaris/ToolReleases</link>
             <description><![CDATA[{{ release.body | markdownify | strip_newlines }}]]></description>
             <pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
-                        {% for asset in release.assets limit:1 -%}
-                            {% assign signature = release.body | sparkle_signature -%}
-
-                            {% assign build_nums = asset.name | replace_first:'ToolReleases_v','' | replace_first:'.b',',' | remove_first:'.zip' | split:',' -%}
-                            {% if build_nums.size == 2 -%}
-                                {% assign version = build_nums[1] -%}
-                                {% assign short_version = build_nums[0] | remove_first:'v' -%}
-                                {% if short_version < '1.4' -%}
+            {% for asset in release.assets limit:1 -%}
+            {% assign signature = release.body | sparkle_signature -%}
+            {% assign build_nums = asset.name | replace_first:'ToolReleases_v','' | replace_first:'.b',',' | remove_first:'.zip' | split:',' -%}
+            {% if build_nums.size == 2 -%}
+            {% assign version = build_nums[1] -%}
+            {% assign short_version = build_nums[0] | remove_first:'v' -%}
+            {% if short_version < '1.4' -%}
             <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
-                                {% elsif short_version < '1.5' -%}
+            {% elsif short_version < '1.5' -%}
             <sparkle:minimumSystemVersion>10.16</sparkle:minimumSystemVersion>
-                                {% else -%}
+            {% else -%}
             <sparkle:minimumSystemVersion>11</sparkle:minimumSystemVersion>
-                                {% endif -%}
-                            {% else -%}
-                                {% assign version = release.tag_name | remove_first:'v' -%}
-                            {% endif -%}
+            {% endif -%}
+            {% else -%}
+            {% assign version = release.tag_name | remove_first:'v' -%}
+            {% endif -%}
+            {% if release.prerelease -%}
+            <sparkle:channel>beta</sparkle:channel>
+            {% endif -%}
             <sparkle:version>{{ version }}</sparkle:version>
-                            {% if short_version -%}
+            {% if short_version -%}
             <sparkle:shortVersionString>{{ short_version }}</sparkle:shortVersionString>
-                            {% endif -%}
-            <enclosure
-                    url="{{ asset.browser_download_url }}"
-                    {% if signature != "" -%}
-                    sparkle:edSignature="{{ signature }}"
-                    {% endif -%}
-                    sparkle:os="macos"
-                    length="{{ asset.size }}"
-                    type="application/octet-stream" />
-                        {% endfor -%}
+            {% endif -%}
+            <enclosure url="{{ asset.browser_download_url }}" length="{{ asset.size }}" sparkle:os="macos" type="application/octet-stream" {% if signature != "" -%}sparkle:edSignature="{{ signature }}"{% endif -%} />
+        {% endfor -%}
         </item>
-                {% endunless -%}
-            {% endunless -%}
+        {% endunless -%}
         {% endfor -%}
     </channel>
 </rss>
