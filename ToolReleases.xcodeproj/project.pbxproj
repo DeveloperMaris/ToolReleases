@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48620E86279C239600A77972 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 48620E85279C239600A77972 /* Sparkle */; };
 		48E95A4B27A1491E0039B266 /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */; };
+		48E95A4D27A14E050039B266 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */; };
 		B505404724E1966500A1D56B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505404624E1966500A1D56B /* BadgeView.swift */; };
 		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
 		B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
+		48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
 		B505404624E1966500A1D56B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
 		B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DateComparison.swift"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
 				B52A522824123D5F00DF7F22 /* Logger+CustomInitializer.swift */,
 				B596D51F24A5F73C00A5714A /* Notification+Extension.swift */,
+				48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */,
 				B52FC78E24B8AAA600B98B46 /* Search.swift */,
 				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
 			);
@@ -391,9 +394,9 @@
 			children = (
 				B52A521A2412353500DF7F22 /* Info.plist */,
 				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
+				48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */,
 				B5E5D13C276F709400AFAE19 /* Bootstrap.swift */,
 				B52A52172412353500DF7F22 /* Main.storyboard */,
-				48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */,
 				B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */,
 				B5E5D13D276F709400AFAE19 /* Bootstrap.swift in Sources */,
+				48E95A4D27A14E050039B266 /* NSApplication+Extension.swift in Sources */,
 				B5E5D1572771BA9000AFAE19 /* DebugView.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
@@ -946,7 +950,7 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -975,7 +979,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;

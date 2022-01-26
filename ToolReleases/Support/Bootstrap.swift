@@ -40,6 +40,12 @@ class Bootstrap {
     }()
 
     func start() {
+        registerUserDefaults()
+        
+        if NSApplication.isBetaVersion {
+            UserDefaults.standard.set(true, forKey: Storage.isBetaUpdatesEnabled.rawValue)
+        }
+
         let vc = makeInitialViewController()
 
         popover.configureStatusBarView()
@@ -97,5 +103,11 @@ private extension Bootstrap {
     @objc
     func removeLocalNotifications() {
         localNotificationProvider.removeAllNotifications()
+    }
+
+    func registerUserDefaults() {
+        UserDefaults.standard.register(defaults: [
+            Storage.isBetaUpdatesEnabled.rawValue: false
+        ])
     }
 }

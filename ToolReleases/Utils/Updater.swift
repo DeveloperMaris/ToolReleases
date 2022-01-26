@@ -90,10 +90,6 @@ extension Updater: SPUUpdaterDelegate {
     }
 
     func allowedChannels(for updater: SPUUpdater) -> Set<String> {
-        if isBetaUpdatesEnabled {
-            return Self.betaChannels
-        } else {
-            return []
-        }
+        return isBetaUpdatesEnabled ? Self.betaChannels : []
     }
 }
