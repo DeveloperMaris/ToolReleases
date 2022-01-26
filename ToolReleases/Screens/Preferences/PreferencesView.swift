@@ -12,7 +12,10 @@ import SwiftUI
 struct PreferencesView: View {
     @EnvironmentObject private var updater: Updater
 
+    @AppStorage(Storage.isBetaUpdatesEnabled.rawValue)
+    private var isBetaUpdatesEnabled: Bool = false
     private var isUpdateAvailable: Bool { updater.isUpdateAvailable }
+    private var isBetaVersion: Bool { NSApplication.isBetaVersion }
 
     var updateMenuString: String {
         if isUpdateAvailable {
@@ -31,9 +34,22 @@ struct PreferencesView: View {
             // frame size, so that the icon would only be
             // visible.
             Menu {
+                if isBetaVersion {
+                    Text("Beta version")
+                    Divider()
+                }
+
                 Button("About", action: showAbout)
                 Button(updateMenuString, action: checkForUpdates)
                 Button("Quit", action: quit)
+
+                if isBetaUpdatesEnabled {
+                    Divider()
+                    Text("Beta updates enabled")
+                    Button("Disable") {
+                        isBetaUpdatesEnabled = false
+                    }
+                }
             } label: {
                 Label("Settings", systemImage: "gear")
                     .labelStyle(IconOnlyLabelStyle())
