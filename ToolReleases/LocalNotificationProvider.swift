@@ -78,7 +78,7 @@ private extension LocalNotificationProvider {
             content.subtitle = "\(tools[0].shortTitle) and \(tools[1].shortTitle)"
 
         default:
-            content.subtitle = "\(tools[0].shortTitle), \(tools[1].shortTitle) and more"
+            content.subtitle = "\(tools[0].shortTitle), \(tools[1].shortTitle) and more..."
         }
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

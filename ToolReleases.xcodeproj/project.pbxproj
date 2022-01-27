@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48620E86279C239600A77972 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 48620E85279C239600A77972 /* Sparkle */; };
-		48E95A4B27A1491E0039B266 /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */; };
 		48E95A4D27A14E050039B266 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */; };
+		48E95A5327A2F3870039B266 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A5227A2F3870039B266 /* Preferences.swift */; };
 		B505404724E1966500A1D56B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505404624E1966500A1D56B /* BadgeView.swift */; };
 		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
 		B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */; };
@@ -97,8 +97,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
 		48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
+		48E95A5227A2F3870039B266 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		B505404624E1966500A1D56B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
 		B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DateComparison.swift"; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		B5C05818266760E600557F9D /* Tool Summary */ = {
+		B5C05818266760E600557F9D /* ToolSummary */ = {
 			isa = PBXGroup;
 			children = (
 				B52CF74324B7307100562D91 /* LastRefreshView.swift */,
@@ -338,7 +338,7 @@
 				B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */,
 				B5E5D15B2771CA9900AFAE19 /* Rows */,
 			);
-			path = "Tool Summary";
+			path = ToolSummary;
 			sourceTree = "<group>";
 		};
 		B5C058192667613800557F9D /* About */ = {
@@ -394,8 +394,8 @@
 			children = (
 				B52A521A2412353500DF7F22 /* Info.plist */,
 				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
-				48E95A4A27A1491E0039B266 /* AppStorageKeys.swift */,
 				B5E5D13C276F709400AFAE19 /* Bootstrap.swift */,
+				48E95A5227A2F3870039B266 /* Preferences.swift */,
 				B52A52172412353500DF7F22 /* Main.storyboard */,
 			);
 			path = Support;
@@ -433,7 +433,7 @@
 				B5C058192667613800557F9D /* About */,
 				B5E5D15A2771C59500AFAE19 /* Debug */,
 				B5E5D1592771BE8B00AFAE19 /* Preferences */,
-				B5C05818266760E600557F9D /* Tool Summary */,
+				B5C05818266760E600557F9D /* ToolSummary */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -691,10 +691,10 @@
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
 				B505404724E1966500A1D56B /* BadgeView.swift in Sources */,
 				B5E5D141276F71FA00AFAE19 /* PopoverController.swift in Sources */,
-				48E95A4B27A1491E0039B266 /* AppStorageKeys.swift in Sources */,
 				B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */,
 				B52A522924123D5F00DF7F22 /* Logger+CustomInitializer.swift in Sources */,
 				B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */,
+				48E95A5327A2F3870039B266 /* Preferences.swift in Sources */,
 				B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */,
 				B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */,
 				B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */,

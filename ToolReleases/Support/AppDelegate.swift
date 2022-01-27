@@ -15,13 +15,12 @@ import UserNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var bootstrap: Bootstrap!
+    private var bootstrap: Bootstrap!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UNUserNotificationCenter.current().delegate = self
 
-        let bootstrap = Bootstrap()
-        self.bootstrap = bootstrap
+        bootstrap = Bootstrap()
         bootstrap.start()
     }
 

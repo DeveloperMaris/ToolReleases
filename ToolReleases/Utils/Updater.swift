@@ -13,34 +13,37 @@ import Sparkle
 
 final class Updater: NSObject, ObservableObject {
     static private let logger = Logger(category: "Updater")
-    static private let automaticUpdateCheckTimeInterval: TimeInterval = {
-        let interval: TimeInterval
-        #if DEBUG
-            interval = 10 // 10 seconds
-        #else
-            interval = 3_600 // 1 hour
-        #endif
-        logger.debug("Update check interval set to \(interval, privacy: .public)")
-        return interval
-    }()
-    static private let betaChannels = Set(["beta"])
 
-    private var isBetaUpdatesEnabled: Bool {
-        get { UserDefaults.standard.bool(forKey: Storage.isBetaUpdatesEnabled.rawValue) }
-    }
+    private let preferences: Preferences
+    private let betaChannels: Set<String>
 
+    /// A time interval for the automatic app update checks.
+    private let automaticUpdateInterval: TimeInterval
+
+    private var updateCancellable: AnyCancellable?
     private var updaterController: SPUStandardUpdaterController!
-    private var automaticUpdateCheckTimer: Timer?
 
     @Published public private(set) var isUpdateAvailable = false
 
-    override init() {
+    init(preferences: Preferences) {
+        self.preferences = preferences
+        self.betaChannels = Set(["beta"])
+        
+        #if DEBUG
+        self.automaticUpdateInterval = 10 // 10 seconds
+        #else
+        self.automaticUpdateInterval = 3_600 // 1 hour
+        #endif
+
         super.init()
+
         self.updaterController = SPUStandardUpdaterController(
             startingUpdater: true,
             updaterDelegate: self,
             userDriverDelegate: nil
         )
+
+        Self.logger.debug("Update check interval set to \(self.automaticUpdateInterval, privacy: .public)")
     }
 
     func checkForUpdates() {
@@ -48,26 +51,24 @@ final class Updater: NSObject, ObservableObject {
         updaterController.checkForUpdates(nil)
     }
 
-    func silentlyCheckForUpdates() {
+    func checkForUpdatesSilently() {
         Self.logger.debug("Silently check for an app update")
         updaterController.updater.checkForUpdateInformation()
     }
 
-    func startAutomaticBackgroundUpdateChecks() {
+    func startBackgroundChecks() {
         Self.logger.debug("Start automatic background update checks")
-        automaticUpdateCheckTimer?.invalidate()
-        automaticUpdateCheckTimer = Timer.scheduledTimer(
-            withTimeInterval: Self.automaticUpdateCheckTimeInterval,
-            repeats: true
-        ) { [weak self] _ in
-            self?.silentlyCheckForUpdates()
-        }
+        updateCancellable = Timer
+            .publish(every: automaticUpdateInterval, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.checkForUpdatesSilently()
+            }
     }
 
-    func stopAutomaticBackgroundUpdateChecks() {
+    func stopBackgroundChecks() {
         Self.logger.debug("Stop automatic background update checks")
-        automaticUpdateCheckTimer?.invalidate()
-        automaticUpdateCheckTimer = nil
+        updateCancellable = nil
     }
 }
 
@@ -90,6 +91,6 @@ extension Updater: SPUUpdaterDelegate {
     }
 
     func allowedChannels(for updater: SPUUpdater) -> Set<String> {
-        return isBetaUpdatesEnabled ? Self.betaChannels : []
+        return preferences.isBetaUpdatesEnabled ? betaChannels : []
     }
 }

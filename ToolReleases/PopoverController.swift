@@ -106,9 +106,6 @@ class PopoverController {
         notificationCenter.post(name: .windowWillAppear, object: nil)
         eventMonitor.start()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-
-        // Remove any notifications about new tool releases.
-        removeBadge()
     }
 
     func closePopover() {
