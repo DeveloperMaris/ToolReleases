@@ -39,6 +39,14 @@ Do all the necessary things to prepare and publish a new release
 
 Prepare a new build
 
+### mac prepare_build_without_notarization
+
+```sh
+[bundle exec] fastlane mac prepare_build_without_notarization
+```
+
+Prepare a new build
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

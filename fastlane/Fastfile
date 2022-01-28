@@ -28,6 +28,14 @@ platform :mac do
         release_hash_for_homebrew
     end
 
+    desc "Prepare a new build"
+    lane :prepare_build_without_notarization do
+        build
+        compress
+        sign_update_for_sparkle
+        release_hash_for_homebrew
+    end
+
     desc "Build the app"
     private_lane :build do
         build_mac_app(
