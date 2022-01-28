@@ -5,17 +5,6 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>v1.5.0-beta.1</title>
-            <link>https://github.com/DeveloperMaris/ToolReleases</link>
-            <description><![CDATA[<ul>  <li>Local Notification support for new releases;</li>  <li>New application update mechanism;</li>  <li>Bugfixes;</li></ul><!-- sparkle:edSignature="9X3VUQLcWIVuvgNbI+7MqFUATOKdIDFCkAd7z7NQauUe4zrub1bIlJNbB9SsuIaQRNIiDG2cUQujbjlqmovLDA==" length="2319711" -->]]></description>
-            <pubDate>Fri, 28 Jan 2022 10:53:06 +0000</pubDate>
-            <sparkle:minimumSystemVersion>11</sparkle:minimumSystemVersion>
-            <sparkle:channel>beta</sparkle:channel>
-            <sparkle:version>54</sparkle:version>
-            <sparkle:shortVersionString>1.5.0-beta.1</sparkle:shortVersionString>
-            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.5.0-beta.1/ToolReleases_v1.5.0-beta.1.b54.zip" length="2319711" sparkle:os="macos" type="application/octet-stream" sparkle:edSignature="9X3VUQLcWIVuvgNbI+7MqFUATOKdIDFCkAd7z7NQauUe4zrub1bIlJNbB9SsuIaQRNIiDG2cUQujbjlqmovLDA=="/>
-        </item>
-        <item>
             <title>v1.4.2</title>
             <link>https://github.com/DeveloperMaris/ToolReleases</link>
             <description><![CDATA[<ul>  <li>macOS Big Sur support;</li>  <li>Dropped support for macOS Catalina;</li>  <li>Design updates;</li>  <li>Bugfixes;</li></ul>]]></description>
