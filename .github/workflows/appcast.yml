@@ -3,7 +3,7 @@ name: Build and publish a new AppCast file
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   jekyll:
