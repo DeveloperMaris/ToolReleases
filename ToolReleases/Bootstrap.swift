@@ -18,7 +18,10 @@ class Bootstrap {
 
     private let notificationCenter: NotificationCenter = .default
     private let localNotificationProvider = LocalNotificationProvider()
-    private var subscriptions = Set<AnyCancellable>()
+
+    private var cancellables = Set<AnyCancellable>()
+
+    private lazy var preferences = Preferences()
 
     /// Manages tool information
     private lazy var toolProvider: ToolProvider = {
@@ -29,8 +32,8 @@ class Bootstrap {
 
     /// Manages in-app updates
     private lazy var updater: Updater = {
-        let updater = Updater()
-        updater.startAutomaticBackgroundUpdateChecks()
+        let updater = Updater(preferences: preferences)
+        updater.startBackgroundChecks()
         return updater
     }()
 
@@ -40,20 +43,19 @@ class Bootstrap {
     }()
 
     func start() {
-        registerUserDefaults()
-        
-        if NSApplication.isBetaVersion {
-            UserDefaults.standard.set(true, forKey: Storage.isBetaUpdatesEnabled.rawValue)
-        }
-
         let vc = makeInitialViewController()
 
         popover.configureStatusBarView()
         popover.setContentViewController(vc)
 
+        localNotificationProvider.requestNotificationAuthorizationIfNecessary()
+
         toolProvider.enableAutomaticUpdates()
         subscribeForToolUpdates()
         subscribeForPopoverAppearNotification()
+
+        // To make the first app launch faster, just pre-fetch all the available tool releases.
+        toolProvider.fetch()
     }
 }
 
@@ -61,6 +63,7 @@ private extension Bootstrap {
     func makeInitialViewController() -> NSViewController {
         let view = ContentView()
             .environmentObject(updater)
+            .environmentObject(preferences)
             .environmentObject(toolProvider)
 
         return NSHostingController(rootView: view)
@@ -68,6 +71,7 @@ private extension Bootstrap {
 
     func subscribeForToolUpdates() {
         toolProvider.newToolsPublisher
+            .filter { $0.isEmpty == false }
             .sink { [weak self] tools in
                 guard let self = self else {
                     return
@@ -77,8 +81,9 @@ private extension Bootstrap {
                     return
                 }
 
-                if tools.isEmpty == false {
-                    self.popover.showBadge()
+                self.popover.showBadge()
+
+                if self.preferences.isNotificationsEnabled {
                     self.localNotificationProvider.addNotification(about: tools) { success in
                         if success {
                             Self.logger.debug("Notification added")
@@ -88,26 +93,20 @@ private extension Bootstrap {
                     }
                 }
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
     }
 
     func subscribeForPopoverAppearNotification() {
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(removeLocalNotifications),
-            name: .windowWillAppear,
-            object: nil
-        )
+        notificationCenter
+            .publisher(for: .windowWillAppear)
+            .sink { [weak self] _ in
+                self?.removeNotifications()
+            }
+            .store(in: &cancellables)
     }
 
-    @objc
-    func removeLocalNotifications() {
+    func removeNotifications() {
+        popover.removeBadge()
         localNotificationProvider.removeAllNotifications()
-    }
-
-    func registerUserDefaults() {
-        UserDefaults.standard.register(defaults: [
-            Storage.isBetaUpdatesEnabled.rawValue: false
-        ])
     }
 }

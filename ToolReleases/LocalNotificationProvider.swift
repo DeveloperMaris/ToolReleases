@@ -21,6 +21,17 @@ struct LocalNotificationProvider {
         self.delegateQueue = delegateQueue
     }
 
+    /// Request notification authorization in case the authorization status is not determined.
+    func requestNotificationAuthorizationIfNecessary() {
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .notDetermined {
+                requestNotifications { _ in
+                    // Do nothing...
+                }
+            }
+        }
+    }
+
     func addNotification(about tools: [Tool], completion: @escaping (Bool) -> Void) {
         center.getNotificationSettings { settings in
             switch settings.authorizationStatus {
@@ -78,7 +89,7 @@ private extension LocalNotificationProvider {
             content.subtitle = "\(tools[0].shortTitle) and \(tools[1].shortTitle)"
 
         default:
-            content.subtitle = "\(tools[0].shortTitle), \(tools[1].shortTitle) and more"
+            content.subtitle = "\(tools[0].shortTitle), \(tools[1].shortTitle) and more..."
         }
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

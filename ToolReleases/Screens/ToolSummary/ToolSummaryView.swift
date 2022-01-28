@@ -25,7 +25,7 @@ struct ToolSummaryView: View {
                             Text($0.description)
                         }
                     }
-                    .pickerStyle(SegmentedPickerStyle())
+                    .pickerStyle(.segmented)
                     .labelsHidden()
 
                     SearchButton {
@@ -35,16 +35,16 @@ struct ToolSummaryView: View {
                     }
 
                     PreferencesView()
-                    #if DEBUG
+                        #if DEBUG
                         .contextMenu {
                             DebugView()
                         }
-                    #endif
+                        #endif
                 }
 
                 if viewModel.isKeywordFilterEnabled {
                     TextField("iOS; macOS beta", text: $viewModel.keywords)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textFieldStyle(.roundedBorder)
                         .transition(.opacity)
                 }
             }

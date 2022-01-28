@@ -11,14 +11,10 @@ import SwiftUI
 
 struct PreferencesView: View {
     @EnvironmentObject private var updater: Updater
-
-    @AppStorage(Storage.isBetaUpdatesEnabled.rawValue)
-    private var isBetaUpdatesEnabled: Bool = false
-    private var isUpdateAvailable: Bool { updater.isUpdateAvailable }
-    private var isBetaVersion: Bool { NSApplication.isBetaVersion }
+    @EnvironmentObject private var preferences: Preferences
 
     var updateMenuString: String {
-        if isUpdateAvailable {
+        if updater.isUpdateAvailable {
             return "Update is available!"
         } else {
             return "Check for Updates"
@@ -28,38 +24,40 @@ struct PreferencesView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             // Menu appears as a dropdown box with an icon
-            // and a space for the text. If we to hide the
+            // and a space for the text. If we want to hide the
             // text, it still shows an empty space for the
             // text by default, so we need to set a custom
             // frame size, so that the icon would only be
             // visible.
             Menu {
-                if isBetaVersion {
+                if preferences.isBetaVersion {
                     Text("Beta version")
                     Divider()
                 }
 
                 Button("About", action: showAbout)
+                Button("Notifications", action: showNotificationPreferences)
                 Button(updateMenuString, action: checkForUpdates)
+                Divider()
                 Button("Quit", action: quit)
 
-                if isBetaUpdatesEnabled {
+                if preferences.isBetaUpdatesEnabled {
                     Divider()
                     Text("Beta updates enabled")
                     Button("Disable") {
-                        isBetaUpdatesEnabled = false
+                        preferences.isBetaUpdatesEnabled = false
                     }
                 }
             } label: {
                 Label("Settings", systemImage: "gear")
-                    .labelStyle(IconOnlyLabelStyle())
+                    .labelStyle(.iconOnly)
                     .foregroundColor(Color(.labelColor))
             }
-            .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+            .menuStyle(.borderlessButton)
             .frame(width: 14, height: 20)
 
             BadgeView()
-                .opacity(isUpdateAvailable ? 1 : 0)
+                .opacity(updater.isUpdateAvailable ? 1 : 0)
                 .allowsHitTesting(false)
         }
     }
@@ -69,15 +67,25 @@ struct PreferencesView: View {
     }
 
     func showAbout() {
-        let view = AboutView()
+        let view = AboutView(preferences: preferences)
         let controller = AboutWindowController(aboutView: view)
 
-        if let window = controller.window {
-            if let delegate = NSApp.delegate as? AppDelegate {
-                delegate.closePopover()
-            }
-            NSApp.runModal(for: window)
+        if let delegate = NSApp.delegate as? AppDelegate {
+            delegate.closePopover()
         }
+
+        controller.showWindow(nil)
+    }
+
+    func showNotificationPreferences() {
+        let view = NotificationPreferencesView(preferences: preferences)
+        let controller = NotificationPreferencesWindowController(view: view)
+
+        if let delegate = NSApp.delegate as? AppDelegate {
+            delegate.closePopover()
+        }
+
+        controller.showWindow(nil)
     }
 
     func checkForUpdates() {

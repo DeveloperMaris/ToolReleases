@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct AboutView: View {
-    private let appVersion = Bundle.main.appVersion ?? "N/A"
-    private let buildVersion = Bundle.main.buildVersion ?? "N/A"
+    @ObservedObject private var preferences: Preferences
 
-    @AppStorage(Storage.isBetaUpdatesEnabled.rawValue)
-    private var isBetaUpdatesEnabled: Bool = false
-    
+    init(preferences: Preferences) {
+        _preferences = ObservedObject(wrappedValue: preferences)
+    }
+
     var body: some View {
         VStack(spacing: 10) {
             Spacer()
@@ -26,10 +26,10 @@ struct AboutView: View {
                 Text("Tool Releases")
                     .font(.headline)
                     .onTapGesture(count: 5) {
-                        isBetaUpdatesEnabled.toggle()
+                        preferences.isBetaUpdatesEnabled.toggle()
                     }
 
-                Text("v\(appVersion), build \(buildVersion)")
+                Text("v\(preferences.appVersion), build \(preferences.buildVersion)")
                     .font(.caption)
                     .foregroundColor(.secondary)
 
@@ -60,6 +60,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutView()
+        AboutView(preferences: Preferences())
     }
 }
