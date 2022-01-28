@@ -1,5 +1,131 @@
----
-release_only: true
----
-{%include appcast.inc %}
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>ToolReleases</title>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>v1.5.0-beta.1</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Local Notification support for new releases;</li>  <li>New application update mechanism;</li>  <li>Bugfixes;</li></ul><!-- sparkle:edSignature="9X3VUQLcWIVuvgNbI+7MqFUATOKdIDFCkAd7z7NQauUe4zrub1bIlJNbB9SsuIaQRNIiDG2cUQujbjlqmovLDA==" length="2319711" -->]]></description>
+            <pubDate>Fri, 28 Jan 2022 10:53:06 +0000</pubDate>
+            <sparkle:minimumSystemVersion>11</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
+            <sparkle:version>54</sparkle:version>
+            <sparkle:shortVersionString>1.5.0-beta.1</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.5.0-beta.1/ToolReleases_v1.5.0-beta.1.b54.zip" length="2319711" sparkle:os="macos" type="application/octet-stream" sparkle:edSignature="9X3VUQLcWIVuvgNbI+7MqFUATOKdIDFCkAd7z7NQauUe4zrub1bIlJNbB9SsuIaQRNIiDG2cUQujbjlqmovLDA=="/>
+        </item>
+        <item>
+            <title>v1.4.2</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>macOS Big Sur support;</li>  <li>Dropped support for macOS Catalina;</li>  <li>Design updates;</li>  <li>Bugfixes;</li></ul>]]></description>
+            <pubDate>Thu, 10 Jun 2021 17:39:11 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.16</sparkle:minimumSystemVersion>
+            <sparkle:version>45</sparkle:version>
+            <sparkle:shortVersionString>1.4.2</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.4.2/ToolReleases_v1.4.2.b45.zip" length="2016312" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>v1.4.1</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>macOS Big Sur support;</li>  <li>Dropped support for macOS Catalina;</li>  <li>Design updates;</li>  <li>Bugfixes;</li></ul>]]></description>
+            <pubDate>Thu, 03 Jun 2021 09:26:11 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.16</sparkle:minimumSystemVersion>
+            <sparkle:version>44</sparkle:version>
+            <sparkle:shortVersionString>1.4.1</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.4.1/ToolReleases_v1.4.1.b44.zip" length="2014382" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Support for "RC" keyword</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<p>Support for “RC” keyword</p>]]></description>
+            <pubDate>Thu, 12 Nov 2020 14:19:09 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>38</sparkle:version>
+            <sparkle:shortVersionString>1.3.7</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.7/ToolReleases_v1.3.7.b38.zip" length="2502529" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Deprecate "GM seed"</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Update Tool to look for “Release Candidate” not “GM seed”</li></ul>]]></description>
+            <pubDate>Tue, 03 Nov 2020 09:09:29 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>31</sparkle:version>
+            <sparkle:shortVersionString>1.3.5</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.5/ToolReleases_v1.3.5.b31.zip" length="2511722" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Bug fix</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Fixed an issue with a non-visible badge in the menu for the app update in Big Sur;</li></ul>]]></description>
+            <pubDate>Fri, 14 Aug 2020 07:38:24 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>30</sparkle:version>
+            <sparkle:shortVersionString>1.3.4</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.4/ToolReleases_v1.3.4.b30.zip" length="2549793" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>New app icon and larger window size</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Updated the app icon to match macOS Big Sur design guidelines;</li>  <li>Increased the popover width size for better readability;</li></ul>]]></description>
+            <pubDate>Fri, 14 Aug 2020 06:00:15 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>29</sparkle:version>
+            <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v.1.3.3/ToolReleases_v1.3.3.b29.zip" length="2549672" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Bug fixes</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Fixed issue with incorrect relative date-time string;</li>  <li>Added a badge to inform users about a new available version in the preferences menu;</li></ul>]]></description>
+            <pubDate>Thu, 13 Aug 2020 11:14:29 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.2/ToolReleases_v1.3.2.b28.zip" length="2661699" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Bug fixes</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Fixed an issue with app status bar icon being not visible in macOS Big Sur;</li>  <li>Fixed an issue with not displaying macOS Big Sur beta 3 release;</li></ul>]]></description>
+            <pubDate>Thu, 23 Jul 2020 17:18:26 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>26</sparkle:version>
+            <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.1/ToolReleases_v1.3.1.b26.zip" length="2649942" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Search</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Possibility to search the tool list by keywords (multiple keyword groups can be separated with semicolons, for example, “iOS beta; macOS Big Sur”);</li>  <li>Accessibility bugfixes (improved user interface for “Reduce transparency” mode);</li></ul>]]></description>
+            <pubDate>Thu, 16 Jul 2020 05:56:13 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>24</sparkle:version>
+            <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.3.0/ToolReleases_v1.3.0.b24.zip" length="2649007" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>In-App Updates</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Updated URL for in-app updates</li></ul>]]></description>
+            <pubDate>Thu, 02 Jul 2020 10:00:10 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.2.1/ToolReleases_v1.2.1.b23.zip" length="2630490" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>Initial release</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>In-app updates added</li></ul>]]></description>
+            <pubDate>Wed, 01 Jul 2020 11:13:31 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.2.0/ToolReleases_v1.2.0.b22.zip" length="2629143" sparkle:os="macos" type="application/octet-stream" />
+        </item>
+        </channel>
+</rss>
+
 
