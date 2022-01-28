@@ -48,9 +48,14 @@ class Bootstrap {
         popover.configureStatusBarView()
         popover.setContentViewController(vc)
 
+        localNotificationProvider.requestNotificationAuthorizationIfNecessary()
+
         toolProvider.enableAutomaticUpdates()
         subscribeForToolUpdates()
         subscribeForPopoverAppearNotification()
+
+        // To make the first app launch faster, just pre-fetch all the available tool releases.
+        toolProvider.fetch()
     }
 }
 
@@ -77,11 +82,14 @@ private extension Bootstrap {
                 }
 
                 self.popover.showBadge()
-                self.localNotificationProvider.addNotification(about: tools) { success in
-                    if success {
-                        Self.logger.debug("Notification added")
-                    } else {
-                        Self.logger.debug("Notification adding failed")
+
+                if self.preferences.isNotificationsEnabled {
+                    self.localNotificationProvider.addNotification(about: tools) { success in
+                        if success {
+                            Self.logger.debug("Notification added")
+                        } else {
+                            Self.logger.debug("Notification adding failed")
+                        }
                     }
                 }
             }

@@ -36,7 +36,9 @@ struct PreferencesView: View {
                 }
 
                 Button("About", action: showAbout)
+                Button("Notifications", action: showNotificationPreferences)
                 Button(updateMenuString, action: checkForUpdates)
+                Divider()
                 Button("Quit", action: quit)
 
                 if preferences.isBetaUpdatesEnabled {
@@ -68,12 +70,22 @@ struct PreferencesView: View {
         let view = AboutView(preferences: preferences)
         let controller = AboutWindowController(aboutView: view)
 
-        if let window = controller.window {
-            if let delegate = NSApp.delegate as? AppDelegate {
-                delegate.closePopover()
-            }
-            NSApp.runModal(for: window)
+        if let delegate = NSApp.delegate as? AppDelegate {
+            delegate.closePopover()
         }
+
+        controller.showWindow(nil)
+    }
+
+    func showNotificationPreferences() {
+        let view = NotificationPreferencesView(preferences: preferences)
+        let controller = NotificationPreferencesWindowController(view: view)
+
+        if let delegate = NSApp.delegate as? AppDelegate {
+            delegate.closePopover()
+        }
+
+        controller.showWindow(nil)
     }
 
     func checkForUpdates() {

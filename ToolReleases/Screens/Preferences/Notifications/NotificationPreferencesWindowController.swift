@@ -1,29 +1,30 @@
 //
-//  AboutViewContainer.swift
+//  NotificationPreferencesWindowController.swift
 //  ToolReleases
 //
-//  Created by Maris Lagzdins on 30/06/2020.
-//  Copyright © 2020 Maris Lagzdins. All rights reserved.
+//  Created by Maris Lagzdins on 28/01/2022.
+//  Copyright © 2022 Maris Lagzdins. All rights reserved.
 //
 
 import Cocoa
 import SwiftUI
 
-class AboutWindowController: NSWindowController {
-    let aboutView: AboutView
+class NotificationPreferencesWindowController: NSWindowController {
+    let view: NotificationPreferencesView
 
-    init(aboutView: AboutView) {
-        self.aboutView = aboutView
+    init(view: NotificationPreferencesView) {
+        self.view = view
 
         let window = NSWindow(
-            contentRect: CGRect(origin: .zero, size: CGSize(width: 650, height: 300)),
+            contentRect: CGRect(origin: .zero, size: CGSize(width: 400, height: 400)),
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false
         )
-        window.title = "About"
+
+        window.title = "Tool Release Notifications"
         window.level = .normal
-        window.contentView = NSHostingView(rootView: aboutView)
+        window.contentView = NSHostingView(rootView: view)
         window.center()
 
         super.init(window: window)

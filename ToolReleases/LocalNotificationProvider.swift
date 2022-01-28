@@ -21,6 +21,17 @@ struct LocalNotificationProvider {
         self.delegateQueue = delegateQueue
     }
 
+    /// Request notification authorization in case the authorization status is not determined.
+    func requestNotificationAuthorizationIfNecessary() {
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .notDetermined {
+                requestNotifications { _ in
+                    // Do nothing...
+                }
+            }
+        }
+    }
+
     func addNotification(about tools: [Tool], completion: @escaping (Bool) -> Void) {
         center.getNotificationSettings { settings in
             switch settings.authorizationStatus {
