@@ -41,7 +41,7 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://developermaris.github.io/ToolReleases/appcast.xml</string>
+	<string>https://developermaris.github.io/ToolReleases/appcast_v2.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>iTuIRfSGfUqjp+W51Hejdll8ZepmtibsB2K1KVFlPAM=</string>
 </dict>

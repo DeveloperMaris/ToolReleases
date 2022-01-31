@@ -18,16 +18,16 @@ struct NotificationPreferencesView: View {
     var body: some View {
         Form {
             Section {
-                Toggle("New tool notifications", isOn: $preferences.isNotificationsEnabled)
+                Toggle("Allow Notifications", isOn: $preferences.isNotificationsEnabled)
                     .toggleStyle(.switch)
             } footer: {
-                Text("Allows the app to show a notification each time a new tool releases are detected.")
+                Text("Allows the app to show a notification each time new tool releases are detected.")
                     .font(.footnote)
                     .foregroundColor(Color(.secondaryLabelColor))
             }
         }
-        .padding()
-        .frame(width: 330, height: 100)
+        .padding(.horizontal, 20)
+        .frame(width: 350, height: 100)
     }
 }
 

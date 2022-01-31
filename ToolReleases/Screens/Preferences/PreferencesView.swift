@@ -30,21 +30,22 @@ struct PreferencesView: View {
             // frame size, so that the icon would only be
             // visible.
             Menu {
-                if preferences.isBetaVersion {
-                    Text("Beta version")
-                    Divider()
-                }
-
                 Button("About", action: showAbout)
                 Button("Notifications", action: showNotificationPreferences)
                 Button(updateMenuString, action: checkForUpdates)
                 Divider()
                 Button("Quit", action: quit)
 
-                if preferences.isBetaUpdatesEnabled {
+                if preferences.isBetaVersion || preferences.isBetaUpdatesEnabled {
                     Divider()
-                    Text("Beta updates enabled")
-                    Button("Disable") {
+                }
+
+                if preferences.isBetaVersion {
+                    Text("Beta version \(preferences.appVersion)")
+                }
+
+                if preferences.isBetaUpdatesEnabled {
+                    Button("Disable Beta updates") {
                         preferences.isBetaUpdatesEnabled = false
                     }
                 }
