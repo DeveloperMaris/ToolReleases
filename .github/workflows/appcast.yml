@@ -1,4 +1,4 @@
-name: Build and publish a new AppCast file
+name: Generate AppCast
 
 on:
   workflow_dispatch:
