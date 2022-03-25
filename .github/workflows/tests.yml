@@ -18,29 +18,30 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_12.5.app
+      - name: Set Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app
 
-      - name: Import Code-Signing Certificates
+      - name: Import Certificates
         uses: Apple-Actions/import-codesign-certs@v1
         with:
-          p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+          p12-file-base64: ${{ secrets.CERTIFICATES_P12_B64 }}
           p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
 
-      - uses: actions/cache@v2
+      - name: Cache
+        uses: actions/cache@v2
         with:
           path: .build
-          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          key: ${{ runner.os }}-spm-v1.0-${{ hashFiles('**/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
 
-      - name: Resolve packages
+      - name: Resolve SPM packages
         run: xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath .build
 
-      - name: Clean project
+      - name: Clean
         run: |
           set -o pipefail
           xcodebuild -clonedSourcePackagesDirPath .build clean

@@ -1,0 +1,51 @@
+name: Generate AppCast
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+      with:
+        # If you're using actions/checkout@v2.4.0 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        persist-credentials: false
+
+    - name: Cache
+      uses: actions/cache@v2.1.7
+      with:
+        path: AppCast/vendor/bundle
+        key: ${{ runner.os }}-gems-v1.0-${{ hashFiles('AppCast/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1.0'
+
+    - name: Bundler
+      working-directory: AppCast
+      env:
+        BUNDLE_PATH: vendor/bundle
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Build
+      working-directory: AppCast
+      env:
+        BUNDLE_PATH: vendor/bundle
+        JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: bundle exec jekyll build
+
+    - name: Publish
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: AppCast/_site

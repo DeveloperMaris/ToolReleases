@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.2.1"
+gem "jekyll-github-metadata", group: :jekyll_plugins
+gem 'dotenv', '~> 2.7.6'

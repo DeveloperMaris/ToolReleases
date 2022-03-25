@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48620E86279C239600A77972 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 48620E85279C239600A77972 /* Sparkle */; };
+		48E95A4D27A14E050039B266 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */; };
+		48E95A5327A2F3870039B266 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A5227A2F3870039B266 /* Preferences.swift */; };
+		48E95A5627A3E28B0039B266 /* NotificationPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A5527A3E28B0039B266 /* NotificationPreferencesView.swift */; };
+		48E95A5827A3E3920039B266 /* NotificationPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E95A5727A3E3920039B266 /* NotificationPreferencesWindowController.swift */; };
 		B505404724E1966500A1D56B /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505404624E1966500A1D56B /* BadgeView.swift */; };
-		B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D07F2488C8E3003FAEC0 /* OSLog.swift */; };
 		B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0812488D145003FAEC0 /* RSSFeedItem.swift */; };
-		B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* DateComparison.swift */; };
-		B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */; };
+		B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */; };
+		B510D0B8248A3470003FAEC0 /* CalendarDateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */; };
 		B510D0C2248B756C003FAEC0 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510D0CB248B7930003FAEC0 /* ToolTests.swift */; };
 		B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A520E2412353100DF7F22 /* AppDelegate.swift */; };
@@ -20,14 +24,13 @@
 		B52A52162412353500DF7F22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52A52152412353500DF7F22 /* Preview Assets.xcassets */; };
 		B52A52192412353500DF7F22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52A52172412353500DF7F22 /* Main.storyboard */; };
 		B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A5223241239D400DF7F22 /* EventMonitor.swift */; };
-		B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A522824123D5F00DF7F22 /* OSLog.swift */; };
+		B52A522924123D5F00DF7F22 /* Logger+CustomInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A522824123D5F00DF7F22 /* Logger+CustomInitializer.swift */; };
 		B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CF74024B71F3A00562D91 /* SearchButton.swift */; };
 		B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CF74324B7307100562D91 /* LastRefreshView.swift */; };
 		B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */; };
 		B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC78E24B8AAA600B98B46 /* Search.swift */; };
 		B560170724AB240A0091692A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170624AB240A0091692A /* AboutView.swift */; };
 		B560170924AB42730091692A /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560170824AB42730091692A /* AboutWindowController.swift */; };
-		B563A4C9247FDA6E007101C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563A4C8247FDA6E007101C7 /* Date.swift */; };
 		B5777E79246DA2C8000B4CA9 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5777E78246DA2C8000B4CA9 /* FeedKit */; };
 		B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8AE2490C0F2006E8265 /* PreferencesView.swift */; };
 		B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593D8B02490C16C006E8265 /* Bundle+Version.swift */; };
@@ -39,14 +42,22 @@
 		B5D45A4424544C08007FF637 /* ToolReleasesCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D45A4224544C08007FF637 /* ToolReleasesCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; };
 		B5D45A4824544C08007FF637 /* ToolReleasesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A4E245452C0007FF637 /* ToolManager.swift */; };
+		B5D45A4F245452C0007FF637 /* ToolProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A4E245452C0007FF637 /* ToolProvider.swift */; };
 		B5D45A5324545B20007FF637 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D45A5224545B20007FF637 /* Tool.swift */; };
 		B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2F92246682270010DA70 /* ToolRowView.swift */; };
-		B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = B5EE21232660DDFD0070E302 /* Sparkle */; };
+		B5E5D137276CE0A700AFAE19 /* LocalNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D136276CE0A700AFAE19 /* LocalNotificationProvider.swift */; };
+		B5E5D139276F685500AFAE19 /* ToolLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D138276F685500AFAE19 /* ToolLoader.swift */; };
+		B5E5D13B276F6A1E00AFAE19 /* Logger+CustomInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D13A276F6A1E00AFAE19 /* Logger+CustomInitializer.swift */; };
+		B5E5D13D276F709400AFAE19 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D13C276F709400AFAE19 /* Bootstrap.swift */; };
+		B5E5D141276F71FA00AFAE19 /* PopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D140276F71FA00AFAE19 /* PopoverController.swift */; };
+		B5E5D1432770820500AFAE19 /* ToolProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */; };
+		B5E5D1452770836700AFAE19 /* Tool+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */; };
+		B5E5D1572771BA9000AFAE19 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1562771BA9000AFAE19 /* DebugView.swift */; };
+		B5E5D1582771BB3600AFAE19 /* ReleaseSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5D1522771B6B900AFAE19 /* ReleaseSimulator.swift */; };
 		B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE21282661576E0070E302 /* ToolSummaryView.swift */; };
 		B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */; };
 		B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */; };
-		B5F00B1624E5465F00540FCE /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool.swift */; };
+		B5F00B1624E5465F00540FCE /* Tool+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,13 +99,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
+		48E95A5227A2F3870039B266 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		48E95A5527A3E28B0039B266 /* NotificationPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferencesView.swift; sourceTree = "<group>"; };
+		48E95A5727A3E3920039B266 /* NotificationPreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferencesWindowController.swift; sourceTree = "<group>"; };
 		B505404624E1966500A1D56B /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
-		B510D07F2488C8E3003FAEC0 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		B510D0812488D145003FAEC0 /* RSSFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedItem.swift; sourceTree = "<group>"; };
-		B510D095248A2E8A003FAEC0 /* DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComparison.swift; sourceTree = "<group>"; };
+		B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DateComparison.swift"; sourceTree = "<group>"; };
 		B510D0AC248A344D003FAEC0 /* ToolReleasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B510D0B0248A344D003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComparisonTests.swift; sourceTree = "<group>"; };
+		B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateComparisonTests.swift; sourceTree = "<group>"; };
 		B510D0BD248B756C003FAEC0 /* ToolReleasesCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolReleasesCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B510D0C1248B756C003FAEC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B510D0C9248B75C1003FAEC0 /* FilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
@@ -108,7 +121,7 @@
 		B52A521A2412353500DF7F22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52A521B2412353500DF7F22 /* ToolReleases.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToolReleases.entitlements; sourceTree = "<group>"; };
 		B52A5223241239D400DF7F22 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		B52A522824123D5F00DF7F22 /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		B52A522824123D5F00DF7F22 /* Logger+CustomInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+CustomInitializer.swift"; sourceTree = "<group>"; };
 		B52CF74024B71F3A00562D91 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		B52CF74324B7307100562D91 /* LastRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastRefreshView.swift; sourceTree = "<group>"; };
 		B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchTests.swift; sourceTree = "<group>"; };
@@ -117,25 +130,33 @@
 		B5448ACD255D627500728F3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B560170624AB240A0091692A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B560170824AB42730091692A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
-		B563A4C8247FDA6E007101C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B593D8AE2490C0F2006E8265 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		B593D8B02490C16C006E8265 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
 		B594ABB82498B0570042ED1F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B596D51F24A5F73C00A5714A /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowViewModel.swift; sourceTree = "<group>"; };
-		B5C058202668CF9800557F9D /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		B5CBE60D24C5E16C0016CC96 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		B5D45A4024544C07007FF637 /* ToolReleasesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToolReleasesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D45A4224544C08007FF637 /* ToolReleasesCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolReleasesCore.h; sourceTree = "<group>"; };
 		B5D45A4324544C08007FF637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5D45A4E245452C0007FF637 /* ToolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolManager.swift; sourceTree = "<group>"; };
+		B5D45A4E245452C0007FF637 /* ToolProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolProvider.swift; sourceTree = "<group>"; };
 		B5D45A5224545B20007FF637 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B5DE2F92246682270010DA70 /* ToolRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowView.swift; sourceTree = "<group>"; };
 		B5E13214256E5C6900CB4AEF /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
+		B5E5D136276CE0A700AFAE19 /* LocalNotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationProvider.swift; sourceTree = "<group>"; };
+		B5E5D138276F685500AFAE19 /* ToolLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolLoader.swift; sourceTree = "<group>"; };
+		B5E5D13A276F6A1E00AFAE19 /* Logger+CustomInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+CustomInitializer.swift"; sourceTree = "<group>"; };
+		B5E5D13C276F709400AFAE19 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		B5E5D140276F71FA00AFAE19 /* PopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverController.swift; sourceTree = "<group>"; };
+		B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolProviderTests.swift; sourceTree = "<group>"; };
+		B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Stubs.swift"; sourceTree = "<group>"; };
+		B5E5D14627708C9200AFAE19 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5E5D1522771B6B900AFAE19 /* ReleaseSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSimulator.swift; sourceTree = "<group>"; };
+		B5E5D1562771BA9000AFAE19 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		B5EE21282661576E0070E302 /* ToolSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryView.swift; sourceTree = "<group>"; };
 		B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolSummaryViewModel.swift; sourceTree = "<group>"; };
 		B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRowViewModelTests.swift; sourceTree = "<group>"; };
-		B5F00B1524E5465F00540FCE /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Stubs.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D45A4724544C08007FF637 /* ToolReleasesCore.framework in Frameworks */,
-				B5EE21242660DDFD0070E302 /* Sparkle in Frameworks */,
+				48620E86279C239600A77972 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,29 +195,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48E95A5427A3E2670039B266 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				48E95A5527A3E28B0039B266 /* NotificationPreferencesView.swift */,
+				48E95A5727A3E3920039B266 /* NotificationPreferencesWindowController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		B510D07C2488C715003FAEC0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B505404624E1966500A1D56B /* BadgeView.swift */,
-				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
-				B52CF74224B71FC600562D91 /* Elements */,
-				B510D07D2488C728003FAEC0 /* Helpers */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B510D07D2488C728003FAEC0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				B560170824AB42730091692A /* AboutWindowController.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B510D07E2488C8D0003FAEC0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B510D07F2488C8E3003FAEC0 /* OSLog.swift */,
+				B5E5D13A276F6A1E00AFAE19 /* Logger+CustomInitializer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -204,39 +223,41 @@
 		B510D0AD248A344D003FAEC0 /* ToolReleasesTests */ = {
 			isa = PBXGroup;
 			children = (
-				B510D0B7248A3470003FAEC0 /* DateComparisonTests.swift */,
+				B510D0B7248A3470003FAEC0 /* CalendarDateComparisonTests.swift */,
 				B510D0C9248B75C1003FAEC0 /* FilterTests.swift */,
 				B52FC78C24B8AA2800B98B46 /* KeywordSearchTests.swift */,
 				B5F00B1224E545CE00540FCE /* ToolRowViewModelTests.swift */,
-				B5F00B1424E5464C00540FCE /* Helpers */,
-				B510D0B6248A3460003FAEC0 /* Supporting Files */,
+				B510D0B6248A3460003FAEC0 /* Support */,
 			);
 			path = ToolReleasesTests;
 			sourceTree = "<group>";
 		};
-		B510D0B6248A3460003FAEC0 /* Supporting Files */ = {
+		B510D0B6248A3460003FAEC0 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				B510D0B0248A344D003FAEC0 /* Info.plist */,
+				B5F00B1524E5465F00540FCE /* Tool+Stubs.swift */,
+				B5E5D14627708C9200AFAE19 /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B510D0BE248B756C003FAEC0 /* ToolReleasesCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5E5D1422770820500AFAE19 /* ToolProviderTests.swift */,
 				B510D0CB248B7930003FAEC0 /* ToolTests.swift */,
-				B510D0C8248B7580003FAEC0 /* Supporting Files */,
+				B510D0C8248B7580003FAEC0 /* Support */,
 			);
 			path = ToolReleasesCoreTests;
 			sourceTree = "<group>";
 		};
-		B510D0C8248B7580003FAEC0 /* Supporting Files */ = {
+		B510D0C8248B7580003FAEC0 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				B510D0C1248B756C003FAEC0 /* Info.plist */,
+				B5E5D1442770836700AFAE19 /* Tool+Stubs.swift */,
 			);
-			path = "Supporting Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B52A52022412353100DF7F22 = {
@@ -268,11 +289,13 @@
 			isa = PBXGroup;
 			children = (
 				B52A521B2412353500DF7F22 /* ToolReleases.entitlements */,
-				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
+				B5E5D13C276F709400AFAE19 /* Bootstrap.swift */,
+				B5E5D136276CE0A700AFAE19 /* LocalNotificationProvider.swift */,
+				B5E5D140276F71FA00AFAE19 /* PopoverController.swift */,
 				B52A52142412353500DF7F22 /* Preview Content */,
 				B52A52222412399000DF7F22 /* Resources */,
 				B5EE2125266156E50070E302 /* Screens */,
-				B52A52212412396D00DF7F22 /* Supporting Files */,
+				B5E5D13E276F713300AFAE19 /* Support */,
 				B52A5225241239DD00DF7F22 /* Utils */,
 				B510D07C2488C715003FAEC0 /* Views */,
 			);
@@ -285,15 +308,6 @@
 				B52A52152412353500DF7F22 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B52A52212412396D00DF7F22 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B52A52172412353500DF7F22 /* Main.storyboard */,
-				B52A521A2412353500DF7F22 /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B52A52222412399000DF7F22 /* Resources */ = {
@@ -309,24 +323,14 @@
 			isa = PBXGroup;
 			children = (
 				B593D8B02490C16C006E8265 /* Bundle+Version.swift */,
-				B563A4C8247FDA6E007101C7 /* Date.swift */,
-				B510D095248A2E8A003FAEC0 /* DateComparison.swift */,
+				B510D095248A2E8A003FAEC0 /* Calendar+DateComparison.swift */,
 				B52A5223241239D400DF7F22 /* EventMonitor.swift */,
+				B52A522824123D5F00DF7F22 /* Logger+CustomInitializer.swift */,
 				B596D51F24A5F73C00A5714A /* Notification+Extension.swift */,
-				B52A522824123D5F00DF7F22 /* OSLog.swift */,
+				48E95A4C27A14E050039B266 /* NSApplication+Extension.swift */,
 				B52FC78E24B8AAA600B98B46 /* Search.swift */,
-				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		B52CF74224B71FC600562D91 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				B52CF74324B7307100562D91 /* LastRefreshView.swift */,
-				B52CF74024B71F3A00562D91 /* SearchButton.swift */,
-			);
-			path = Elements;
 			sourceTree = "<group>";
 		};
 		B5448AB8255D548400728F3F /* Configuration */ = {
@@ -334,26 +338,27 @@
 			children = (
 				B5448ACD255D627500728F3F /* README.md */,
 				B5448AB9255D54A000728F3F /* Release.xcconfig */,
-				B5C058202668CF9800557F9D /* File */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		B5C05818266760E600557F9D /* Tool Summary */ = {
+		B5C05818266760E600557F9D /* ToolSummary */ = {
 			isa = PBXGroup;
 			children = (
-				B5DE2F92246682270010DA70 /* ToolRowView.swift */,
-				B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */,
+				B52CF74324B7307100562D91 /* LastRefreshView.swift */,
+				B52CF74024B71F3A00562D91 /* SearchButton.swift */,
 				B5EE21282661576E0070E302 /* ToolSummaryView.swift */,
 				B5EE212B266157AF0070E302 /* ToolSummaryViewModel.swift */,
+				B5E5D15B2771CA9900AFAE19 /* Rows */,
 			);
-			path = "Tool Summary";
+			path = ToolSummary;
 			sourceTree = "<group>";
 		};
 		B5C058192667613800557F9D /* About */ = {
 			isa = PBXGroup;
 			children = (
 				B560170624AB240A0091692A /* AboutView.swift */,
+				B560170824AB42730091692A /* AboutWindowController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -361,21 +366,23 @@
 		B5D45A4124544C07007FF637 /* ToolReleasesCore */ = {
 			isa = PBXGroup;
 			children = (
-				B5D45A4E245452C0007FF637 /* ToolManager.swift */,
+				B5E5D1522771B6B900AFAE19 /* ReleaseSimulator.swift */,
+				B5E5D138276F685500AFAE19 /* ToolLoader.swift */,
+				B5D45A4E245452C0007FF637 /* ToolProvider.swift */,
 				B5D45A5124545B02007FF637 /* Models */,
-				B5D45A4D24544DA5007FF637 /* Supporting Files */,
+				B5D45A4D24544DA5007FF637 /* Support */,
 				B510D07E2488C8D0003FAEC0 /* Utils */,
 			);
 			path = ToolReleasesCore;
 			sourceTree = "<group>";
 		};
-		B5D45A4D24544DA5007FF637 /* Supporting Files */ = {
+		B5D45A4D24544DA5007FF637 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				B5D45A4224544C08007FF637 /* ToolReleasesCore.h */,
 				B5D45A4324544C08007FF637 /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B5D45A5124545B02007FF637 /* Models */ = {
@@ -395,22 +402,54 @@
 			path = TestPlans;
 			sourceTree = "<group>";
 		};
+		B5E5D13E276F713300AFAE19 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B52A521A2412353500DF7F22 /* Info.plist */,
+				B52A520E2412353100DF7F22 /* AppDelegate.swift */,
+				48E95A5227A2F3870039B266 /* Preferences.swift */,
+				B5CBE60D24C5E16C0016CC96 /* Updater.swift */,
+				B52A52172412353500DF7F22 /* Main.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		B5E5D1592771BE8B00AFAE19 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				B593D8AE2490C0F2006E8265 /* PreferencesView.swift */,
+				48E95A5427A3E2670039B266 /* Notifications */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		B5E5D15A2771C59500AFAE19 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				B5E5D1562771BA9000AFAE19 /* DebugView.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		B5E5D15B2771CA9900AFAE19 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE2F92246682270010DA70 /* ToolRowView.swift */,
+				B5C0581A266761DF00557F9D /* ToolRowViewModel.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
 		B5EE2125266156E50070E302 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				B52A52102412353100DF7F22 /* ContentView.swift */,
 				B5C058192667613800557F9D /* About */,
-				B5C05818266760E600557F9D /* Tool Summary */,
+				B5E5D15A2771C59500AFAE19 /* Debug */,
+				B5E5D1592771BE8B00AFAE19 /* Preferences */,
+				B5C05818266760E600557F9D /* ToolSummary */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		B5F00B1424E5464C00540FCE /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				B5F00B1524E5465F00540FCE /* Tool.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E08DF628250256C93A46F3F4 /* Frameworks */ = {
@@ -487,7 +526,7 @@
 			);
 			name = ToolReleases;
 			packageProductDependencies = (
-				B5EE21232660DDFD0070E302 /* Sparkle */,
+				48620E85279C239600A77972 /* Sparkle */,
 			);
 			productName = ToolReleases;
 			productReference = B52A520B2412353100DF7F22 /* ToolReleases.app */;
@@ -617,7 +656,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# For Apple notarization, we need to deep sign Sparkle framework\n#LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\nLOCATION=\"${BUILT_PRODUCTS_DIR}/../../../../../../SourcePackages/artifacts/Sparkle/Sparkle.xcframework/macos-arm64_x86_64\"\nIDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
+			shellScript = "# For Apple notarizations, we need to re-sign Sparkle framework\n\nIDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\nSPARKLE_ARTIFACT_PATH=\"${PROJECT_TEMP_DIR}/../../../../../../SourcePackages/artifacts/Sparkle\"\nSPARKLE_FRAMEWORK_PATH=\"${SPARKLE_ARTIFACT_PATH}/Sparkle.xcframework/macos-arm64_x86_64\"\n\ncodesign -f -s \"$IDENTITY\" -o runtime \"$SPARKLE_FRAMEWORK_PATH/Sparkle.framework/Versions/B/XPCServices/org.sparkle-project.InstallerLauncher.xpc\"\ncodesign -f -s \"$IDENTITY\" -o runtime --entitlements \"$SPARKLE_ARTIFACT_PATH/Entitlements/org.sparkle-project.Downloader.entitlements\" \"$SPARKLE_FRAMEWORK_PATH/Sparkle.framework/Versions/B/XPCServices/org.sparkle-project.Downloader.xpc\"\n\ncodesign -f -s \"$IDENTITY\" -o runtime \"$SPARKLE_FRAMEWORK_PATH/Sparkle.framework/Versions/B/Autoupdate\"\ncodesign -f -s \"$IDENTITY\" -o runtime \"$SPARKLE_FRAMEWORK_PATH/Sparkle.framework/Versions/B/Updater.app\"\ncodesign -f -s \"$IDENTITY\" -o runtime \"$SPARKLE_FRAMEWORK_PATH/Sparkle.framework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -629,8 +668,8 @@
 				B5C0581E2668B1B000557F9D /* FilterTests.swift in Sources */,
 				B5F00B1324E545CE00540FCE /* ToolRowViewModelTests.swift in Sources */,
 				B52FC78D24B8AA2800B98B46 /* KeywordSearchTests.swift in Sources */,
-				B510D0B8248A3470003FAEC0 /* DateComparisonTests.swift in Sources */,
-				B5F00B1624E5465F00540FCE /* Tool.swift in Sources */,
+				B510D0B8248A3470003FAEC0 /* CalendarDateComparisonTests.swift in Sources */,
+				B5F00B1624E5465F00540FCE /* Tool+Stubs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +677,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E5D1432770820500AFAE19 /* ToolProviderTests.swift in Sources */,
+				B5E5D1452770836700AFAE19 /* Tool+Stubs.swift in Sources */,
 				B510D0CC248B7930003FAEC0 /* ToolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,21 +689,28 @@
 			files = (
 				B52A5224241239D400DF7F22 /* EventMonitor.swift in Sources */,
 				B52FC78F24B8AAA600B98B46 /* Search.swift in Sources */,
-				B563A4C9247FDA6E007101C7 /* Date.swift in Sources */,
 				B5C0581B266761DF00557F9D /* ToolRowViewModel.swift in Sources */,
+				48E95A5827A3E3920039B266 /* NotificationPreferencesWindowController.swift in Sources */,
 				B5CBE60E24C5E16C0016CC96 /* Updater.swift in Sources */,
 				B560170924AB42730091692A /* AboutWindowController.swift in Sources */,
 				B52CF74124B71F3A00562D91 /* SearchButton.swift in Sources */,
+				48E95A5627A3E28B0039B266 /* NotificationPreferencesView.swift in Sources */,
+				B5E5D137276CE0A700AFAE19 /* LocalNotificationProvider.swift in Sources */,
 				B560170724AB240A0091692A /* AboutView.swift in Sources */,
-				B510D096248A2E8A003FAEC0 /* DateComparison.swift in Sources */,
+				B510D096248A2E8A003FAEC0 /* Calendar+DateComparison.swift in Sources */,
 				B5DE2F93246682270010DA70 /* ToolRowView.swift in Sources */,
 				B596D52024A5F73C00A5714A /* Notification+Extension.swift in Sources */,
+				B5E5D13D276F709400AFAE19 /* Bootstrap.swift in Sources */,
+				48E95A4D27A14E050039B266 /* NSApplication+Extension.swift in Sources */,
+				B5E5D1572771BA9000AFAE19 /* DebugView.swift in Sources */,
 				B52A52112412353100DF7F22 /* ContentView.swift in Sources */,
 				B52A520F2412353100DF7F22 /* AppDelegate.swift in Sources */,
 				B505404724E1966500A1D56B /* BadgeView.swift in Sources */,
+				B5E5D141276F71FA00AFAE19 /* PopoverController.swift in Sources */,
 				B5EE212C266157AF0070E302 /* ToolSummaryViewModel.swift in Sources */,
-				B52A522924123D5F00DF7F22 /* OSLog.swift in Sources */,
+				B52A522924123D5F00DF7F22 /* Logger+CustomInitializer.swift in Sources */,
 				B593D8B22490C1D1006E8265 /* Bundle+Version.swift in Sources */,
+				48E95A5327A2F3870039B266 /* Preferences.swift in Sources */,
 				B52CF74424B7307100562D91 /* LastRefreshView.swift in Sources */,
 				B593D8AF2490C0F2006E8265 /* PreferencesView.swift in Sources */,
 				B5EE21292661576E0070E302 /* ToolSummaryView.swift in Sources */,
@@ -673,9 +721,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5D45A4F245452C0007FF637 /* ToolManager.swift in Sources */,
+				B5E5D13B276F6A1E00AFAE19 /* Logger+CustomInitializer.swift in Sources */,
+				B5D45A4F245452C0007FF637 /* ToolProvider.swift in Sources */,
+				B5E5D1582771BB3600AFAE19 /* ReleaseSimulator.swift in Sources */,
+				B5E5D139276F685500AFAE19 /* ToolLoader.swift in Sources */,
 				B510D0822488D145003FAEC0 /* RSSFeedItem.swift in Sources */,
-				B510D0802488C8E3003FAEC0 /* OSLog.swift in Sources */,
 				B5D45A5324545B20007FF637 /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,7 +770,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
-				INFOPLIST_FILE = "ToolReleasesTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -742,7 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
-				INFOPLIST_FILE = "ToolReleasesTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -762,7 +812,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "ToolReleasesCoreTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCoreTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -780,7 +830,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "ToolReleasesCoreTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCoreTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -916,17 +966,17 @@
 				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 59;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "ToolReleases/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleases/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -942,20 +992,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ToolReleases/ToolReleases.entitlements;
-				CODE_SIGN_IDENTITY = "${CODE_SIGN_IDENTITY}";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 59;
 				DEVELOPMENT_ASSET_PATHS = "\"ToolReleases/Preview Content\"";
 				DEVELOPMENT_TEAM = 94EK2XEZUL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "ToolReleases/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleases/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developermaris.ToolReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -975,7 +1025,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ToolReleasesCore/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCore/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1002,7 +1052,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ToolReleasesCore/Supporting Files/Info.plist";
+				INFOPLIST_FILE = ToolReleasesCore/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,22 +1130,22 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.26.0;
+				kind = exactVersion;
+				version = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		48620E85279C239600A77972 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5EE21202660DDBA0070E302 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
 		B5777E78246DA2C8000B4CA9 /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5777E77246DA2C8000B4CA9 /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
-		};
-		B5EE21232660DDFD0070E302 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5EE21202660DDBA0070E302 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
