@@ -1,3 +1,3 @@
-- Local Notification support for new releases;
+- Local notification support for new releases;
 - New application update mechanism;
 - Bugfixes;

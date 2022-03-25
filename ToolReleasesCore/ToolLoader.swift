@@ -26,8 +26,8 @@ public class ToolLoader {
             switch result {
             case .success(let feed):
                 guard let items = feed.rssFeed?.items else {
-                    closure([])
                     Self.logger.debug("Tool fetching failed, no information available.")
+                    closure([])
                     return
                 }
 

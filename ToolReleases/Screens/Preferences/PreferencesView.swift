@@ -13,6 +13,41 @@ struct PreferencesView: View {
     @EnvironmentObject private var updater: Updater
     @EnvironmentObject private var preferences: Preferences
 
+    @ViewBuilder
+    private var menu: some View {
+        let menu = Menu {
+            Button("About", action: showAbout)
+            Button("Notifications", action: showNotificationPreferences)
+            Button(updateMenuString, action: checkForUpdates)
+            Divider()
+            Button("Quit", action: quit)
+
+            if preferences.isBetaVersion || preferences.isBetaUpdatesEnabled {
+                Divider()
+            }
+
+            if preferences.isBetaVersion {
+                Text("Beta version \(preferences.appVersion)")
+            }
+
+            if preferences.isBetaUpdatesEnabled {
+                Button("Disable Beta updates") {
+                    preferences.isBetaUpdatesEnabled = false
+                }
+            }
+        } label: {
+            Label("Settings", systemImage: "gear")
+                .imageScale(.medium)
+                .labelStyle(.iconOnly)
+        }
+
+        if #available(macOS 12, *) {
+            menu.menuIndicator(.hidden)
+        } else {
+            menu
+        }
+    }
+
     var updateMenuString: String {
         if updater.isUpdateAvailable {
             return "Update is available!"
@@ -29,33 +64,10 @@ struct PreferencesView: View {
             // text by default, so we need to set a custom
             // frame size, so that the icon would only be
             // visible.
-            Menu {
-                Button("About", action: showAbout)
-                Button("Notifications", action: showNotificationPreferences)
-                Button(updateMenuString, action: checkForUpdates)
-                Divider()
-                Button("Quit", action: quit)
-
-                if preferences.isBetaVersion || preferences.isBetaUpdatesEnabled {
-                    Divider()
-                }
-
-                if preferences.isBetaVersion {
-                    Text("Beta version \(preferences.appVersion)")
-                }
-
-                if preferences.isBetaUpdatesEnabled {
-                    Button("Disable Beta updates") {
-                        preferences.isBetaUpdatesEnabled = false
-                    }
-                }
-            } label: {
-                Label("Settings", systemImage: "gear")
-                    .labelStyle(.iconOnly)
-                    .foregroundColor(Color(.labelColor))
-            }
-            .menuStyle(.borderlessButton)
-            .frame(width: 14, height: 20)
+            menu
+                .frame(width: 20, height: 20)
+                .menuStyle(.borderlessButton)
+                .foregroundColor(Color(.labelColor))
 
             BadgeView()
                 .opacity(updater.isUpdateAvailable ? 1 : 0)
@@ -71,10 +83,7 @@ struct PreferencesView: View {
         let view = AboutView(preferences: preferences)
         let controller = AboutWindowController(aboutView: view)
 
-        if let delegate = NSApp.delegate as? AppDelegate {
-            delegate.closePopover()
-        }
-
+        closeMainWindow()
         controller.showWindow(nil)
     }
 
@@ -82,15 +91,19 @@ struct PreferencesView: View {
         let view = NotificationPreferencesView(preferences: preferences)
         let controller = NotificationPreferencesWindowController(view: view)
 
-        if let delegate = NSApp.delegate as? AppDelegate {
-            delegate.closePopover()
-        }
-
+        closeMainWindow()
         controller.showWindow(nil)
     }
 
     func checkForUpdates() {
+        closeMainWindow()
         updater.checkForUpdates()
+    }
+
+    private func closeMainWindow() {
+        if let delegate = NSApp.delegate as? AppDelegate {
+            delegate.closePopover()
+        }
     }
 }
 

@@ -23,6 +23,7 @@ class PopoverController {
     private lazy var popover: NSPopover = {
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 400, height: 400)
+        popover.animates = false
         return popover
     }()
 

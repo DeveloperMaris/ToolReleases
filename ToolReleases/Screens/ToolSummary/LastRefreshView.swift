@@ -41,13 +41,14 @@ struct LastRefreshView: View {
             Group {
                 if isRefreshing {
                     ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
+                        .progressViewStyle(.circular)
                         .scaleEffect(0.5)
                 } else {
                     Button(action: handler) {
-                        Image(systemName: "arrow.clockwise")
+                        Label("Reload", systemImage: "arrow.clockwise")
+                            .labelStyle(.iconOnly)
                     }
-                    .buttonStyle(BorderlessButtonStyle())
+                    .buttonStyle(.borderless)
                     .foregroundColor(Color(.labelColor))
                     .disabled(isRefreshing)
                 }

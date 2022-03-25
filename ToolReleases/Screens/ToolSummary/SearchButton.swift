@@ -13,17 +13,19 @@ struct SearchButton: View {
 
     var body: some View {
         Button(action: handler) {
-            Image(systemName: "magnifyingglass")
+            Label("Search", systemImage: "magnifyingglass")
+                .imageScale(.medium)
+                .labelStyle(.iconOnly)
         }
-        .buttonStyle(BorderlessButtonStyle())
-        .foregroundColor(Color(.labelColor))
         .frame(width: 20, height: 20)
+        .buttonStyle(.borderless)
+        .foregroundColor(Color(.labelColor))
     }
 }
 
 struct SearchButton_Previews: PreviewProvider {
     static var previews: some View {
-        SearchButton {
+        SearchButton() {
             // do nothing
         }
     }
