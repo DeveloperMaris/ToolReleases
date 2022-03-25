@@ -5,6 +5,16 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>v1.5.0</title>
+            <link>https://github.com/DeveloperMaris/ToolReleases</link>
+            <description><![CDATA[<ul>  <li>Local notification support for new releases;</li>  <li>New application update mechanism;</li>  <li>Bugfixes;</li></ul><!-- sparkle:edSignature="R3bdr2+UNnaASwyFAGseV69JbmeLnihTCsf+fkCxwoQdm1i+m6UH5Pf4tEyxAjVyes9HZx5XtFwBLyhtvsrfCw==" length="2371441" -->]]></description>
+            <pubDate>Fri, 25 Mar 2022 07:37:53 +0000</pubDate>
+            <sparkle:minimumSystemVersion>10.16</sparkle:minimumSystemVersion>
+            <sparkle:version>59</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+            <enclosure url="https://github.com/DeveloperMaris/ToolReleases/releases/download/v1.5.0/ToolReleases_v1.5.0.b59.zip" length="2371441" sparkle:os="macos" type="application/octet-stream" sparkle:edSignature="R3bdr2+UNnaASwyFAGseV69JbmeLnihTCsf+fkCxwoQdm1i+m6UH5Pf4tEyxAjVyes9HZx5XtFwBLyhtvsrfCw=="/>
+        </item>
+        <item>
             <title>v1.4.2</title>
             <link>https://github.com/DeveloperMaris/ToolReleases</link>
             <description><![CDATA[<ul>  <li>macOS Big Sur support;</li>  <li>Dropped support for macOS Catalina;</li>  <li>Design updates;</li>  <li>Bugfixes;</li></ul>]]></description>
